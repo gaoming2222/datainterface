@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.UserDAO">
+  <resultMap id="BaseResultMap1" type="com.itclj.database.entity.User">
+    <result column="UID_" jdbcType="DECIMAL" property="uid" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="ADMINISTRATOR" jdbcType="DECIMAL" property="administrator" />
+  </resultMap>
+  <!-- 插入新用户 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.User">
+    insert into USER_ (UID_, `NAME`, `PASSWORD`, 
+      ADMINISTRATOR)
+    values (#{uid,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{administrator,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.User">
+    insert into USER_
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        UID_,
+      </if>
+      <if test="name != null">
+        `NAME`,
+      </if>
+      <if test="password != null">
+        `PASSWORD`,
+      </if>
+      <if test="administrator != null">
+        ADMINISTRATOR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="administrator != null">
+        #{administrator,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 更新用户 -->
+  <update id="updateUser" parameterType="User">
+    update USER_
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=CHAR},
+      </if>
+      <if test="administrator != null">
+        ADMINISTRATOR = #{administrator,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where UID = #{stationid,jdbcType=VARCHAR}
+  </update>
+
+
+  <!-- 删除用户 -->
+    <delete id="deleteUser" parameterType="User">
+    	delete from USER_
+    	where  1=1
+       <if test="stationid != null and stationid != ''">
+       and UID_ = #{uid}
+       </if>
+    </delete>
+
+  <!-- 查询用户 -->
+  <select id="getUserList" resultType="User" >
+       select 
+       t.UID_,
+       t.NAME,
+       t.PASSWORD,
+       t.ADMINISTRATOR
+       from USER_ t
+       where
+       1=1
+       <if test="uid != null and uid != ''">
+       and UID_ = #{uid}
+       </if>
+       <if test="name != null and name != ''">
+       and NAME LIKE #{name}
+       </if>
+       order by t.UID_
+    </select>
+
+</mapper>

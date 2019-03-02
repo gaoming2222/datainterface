@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.WarninginfoDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Warninginfo">
+    <id column="INFOID" jdbcType="DECIMAL" property="infoid" />
+    <result column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="INFODETAIL" jdbcType="VARCHAR" property="infodetail" />
+    <result column="ERROCODE" jdbcType="CHAR" property="errocode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    INFOID, STATIONID, DATATIME, INFODETAIL, ERROCODE
+  </sql>
+  
+  <!-- 根据条件查询告警日志 -->
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from WARNINGINFO
+    where
+    1=1
+    <if test="stationid != null and stationid != ''">
+    and STATIONID = #{stationid}
+    </if>
+    <if test="datatime != null and datatime != ''">
+    and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+    </if>
+    <if test="strttime != null and strttime != ''">
+    and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+    </if>
+    <if test="endtime != null and endtime != ''">
+    and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+    </if>
+    <if test="errocode != null and errocode != ''">
+    and ERROCODE = #{errocode}
+    </if>
+    <if test="infodetail != null and infodetail != ''">
+    and INFODETAIL = #{infodetail}
+    </if>
+  </select>
+  
+  
+  <!-- 根据主键删除告警日志 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from WARNINGINFO
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.itclj.database.entity.Warninginfo">
+    <selectKey keyProperty="infoid" order="AFTER" resultType="java.math.BigDecimal">
+      Oracle
+    </selectKey>
+    insert into WARNINGINFO (STATIONID, DATATIME, INFODETAIL, 
+      ERROCODE)
+    values (#{stationid,jdbcType=CHAR}, #{datatime,jdbcType=TIMESTAMP}, #{infodetail,jdbcType=VARCHAR}, 
+      #{errocode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Warninginfo">
+    <selectKey keyProperty="infoid" order="AFTER" resultType="java.math.BigDecimal">
+      Oracle
+    </selectKey>
+    insert into WARNINGINFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        STATIONID,
+      </if>
+      <if test="datatime != null">
+        DATATIME,
+      </if>
+      <if test="infodetail != null">
+        INFODETAIL,
+      </if>
+      <if test="errocode != null">
+        ERROCODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        #{stationid,jdbcType=CHAR},
+      </if>
+      <if test="datatime != null">
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="infodetail != null">
+        #{infodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="errocode != null">
+        #{errocode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Warninginfo">
+    update WARNINGINFO
+    <set>
+      <if test="stationid != null">
+        STATIONID = #{stationid,jdbcType=CHAR},
+      </if>
+      <if test="datatime != null">
+        DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="infodetail != null">
+        INFODETAIL = #{infodetail,jdbcType=VARCHAR},
+      </if>
+      <if test="errocode != null">
+        ERROCODE = #{errocode,jdbcType=CHAR},
+      </if>
+    </set>
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Warninginfo">
+    update WARNINGINFO
+    set STATIONID = #{stationid,jdbcType=CHAR},
+      DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      INFODETAIL = #{infodetail,jdbcType=VARCHAR},
+      ERROCODE = #{errocode,jdbcType=CHAR}
+    where INFOID = #{infoid,jdbcType=DECIMAL}
+  </update>
+</mapper>

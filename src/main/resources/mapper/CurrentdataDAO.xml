@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.CurrentdataDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Currentdata">
+    <id column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
+    <result column="CTYPE" jdbcType="VARCHAR" property="ctype" />
+    <result column="YESTERDAYRAIN" jdbcType="DECIMAL" property="yesterdayrain" />
+    <result column="TODAYRAIN" jdbcType="DECIMAL" property="todayrain" />
+    <result column="PERIODRAIN" jdbcType="DECIMAL" property="periodrain" />
+    <result column="WATERSTAGE" jdbcType="DECIMAL" property="waterstage" />
+    <result column="WATERFLOW" jdbcType="DECIMAL" property="waterflow" />
+    <result column="VOLTAGE" jdbcType="DECIMAL" property="voltage" />
+    <result column="CURRENTSTATE" jdbcType="VARCHAR" property="currentstate" />
+    <result column="REPORTTYPE" jdbcType="VARCHAR" property="reporttype" />
+    <result column="GPRSTYPE" jdbcType="VARCHAR" property="gprstype" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    STATIONID, CNAME, CTYPE, YESTERDAYRAIN, TODAYRAIN, PERIODRAIN, WATERSTAGE, WATERFLOW, 
+    VOLTAGE, CURRENTSTATE, REPORTTYPE, GPRSTYPE, DATATIME
+  </sql>
+  
+  <!-- 根据主键查询,如果为空则查找全部-->
+  <select id="selectByPrimaryKey" resultType="Currentdata">
+    select 
+    <include refid="Base_Column_List" />
+    from CURRENTDATA
+    where 
+    1=1
+    <if test="stationid != null and stationid != ''">
+    AND STATIONID = #{stationid,jdbcType=CHAR}
+    </if>
+    <if test="ctype != null and ctype != ''">
+    AND CTYPE = #{ctype,jdbcType=VARCHAR}
+    </if>
+    <if test="currentstate != null and currentstate != ''">
+    AND CURRENTSTATE = #{currentstate,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <!-- 根据主键删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CURRENTDATA
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </delete>
+  
+  <!-- 单挑插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Currentdata">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into CURRENTDATA (STATIONID,CNAME, CTYPE, YESTERDAYRAIN, 
+      TODAYRAIN, PERIODRAIN, WATERSTAGE, 
+      WATERFLOW, VOLTAGE, CURRENTSTATE, 
+      REPORTTYPE, GPRSTYPE, DATATIME
+      )
+    values (#{stationid,jdbcType=CHAR},#{cname,jdbcType=VARCHAR}, #{ctype,jdbcType=VARCHAR}, #{yesterdayrain,jdbcType=DECIMAL}, 
+      #{todayrain,jdbcType=DECIMAL}, #{periodrain,jdbcType=DECIMAL}, #{waterstage,jdbcType=DECIMAL}, 
+      #{waterflow,jdbcType=DECIMAL}, #{voltage,jdbcType=DECIMAL}, #{currentstate,jdbcType=VARCHAR}, 
+      #{reporttype,jdbcType=VARCHAR}, #{gprstype,jdbcType=VARCHAR}, #{datatime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  
+  <!-- 批量插入 -->
+  <insert id="batchInsert" parameterType="java.util.List">
+    	insert into CURRENTDATA
+    	<include refid="Base_Column_List" />
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.stationid},
+                #{item.cname},
+                #{item.ctype},
+                #{item.yesterdayrain},
+                #{item.todayrain},
+                #{item.periodrain},
+                #{item.waterstage},
+                #{item.waterflow},
+                #{item.voltage},
+                #{item.currentstate},
+                #{item.reporttype},
+                #{item.gprstype},
+                #{item.datatime}
+                from dual
+                )
+        </foreach >
+    </insert>
+  
+  <!-- 有选择性单条插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Currentdata">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into CURRENTDATA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cname != null">
+        CNAME,
+      </if>
+      <if test="ctype != null">
+        CTYPE,
+      </if>
+      <if test="yesterdayrain != null">
+        YESTERDAYRAIN,
+      </if>
+      <if test="todayrain != null">
+        TODAYRAIN,
+      </if>
+      <if test="periodrain != null">
+        PERIODRAIN,
+      </if>
+      <if test="waterstage != null">
+        WATERSTAGE,
+      </if>
+      <if test="waterflow != null">
+        WATERFLOW,
+      </if>
+      <if test="voltage != null">
+        VOLTAGE,
+      </if>
+      <if test="currentstate != null">
+        CURRENTSTATE,
+      </if>
+      <if test="reporttype != null">
+        REPORTTYPE,
+      </if>
+      <if test="gprstype != null">
+        GPRSTYPE,
+      </if>
+      <if test="datatime != null">
+        DATATIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="yesterdayrain != null">
+        #{yesterdayrain,jdbcType=DECIMAL},
+      </if>
+      <if test="todayrain != null">
+        #{todayrain,jdbcType=DECIMAL},
+      </if>
+      <if test="periodrain != null">
+        #{periodrain,jdbcType=DECIMAL},
+      </if>
+      <if test="waterstage != null">
+        #{waterstage,jdbcType=DECIMAL},
+      </if>
+      <if test="waterflow != null">
+        #{waterflow,jdbcType=DECIMAL},
+      </if>
+      <if test="voltage != null">
+        #{voltage,jdbcType=DECIMAL},
+      </if>
+      <if test="currentstate != null">
+        #{currentstate,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttype != null">
+        #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="gprstype != null">
+        #{gprstype,jdbcType=VARCHAR},
+      </if>
+      <if test="datatime != null">
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 有选择性单条更新 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Currentdata">
+    update CURRENTDATA
+    <set>
+      <if test="cname != null">
+        CNAME = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        CTYPE = #{ctype,jdbcType=VARCHAR},
+      </if>
+      <if test="yesterdayrain != null">
+        YESTERDAYRAIN = #{yesterdayrain,jdbcType=DECIMAL},
+      </if>
+      <if test="todayrain != null">
+        TODAYRAIN = #{todayrain,jdbcType=DECIMAL},
+      </if>
+      <if test="periodrain != null">
+        PERIODRAIN = #{periodrain,jdbcType=DECIMAL},
+      </if>
+      <if test="waterstage != null">
+        WATERSTAGE = #{waterstage,jdbcType=DECIMAL},
+      </if>
+      <if test="waterflow != null">
+        WATERFLOW = #{waterflow,jdbcType=DECIMAL},
+      </if>
+      <if test="voltage != null">
+        VOLTAGE = #{voltage,jdbcType=DECIMAL},
+      </if>
+      <if test="currentstate != null">
+        CURRENTSTATE = #{currentstate,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttype != null">
+        REPORTTYPE = #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="gprstype != null">
+        GPRSTYPE = #{gprstype,jdbcType=VARCHAR},
+      </if>
+      <if test="datatime != null">
+        DATATIME = #{datatime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </update>
+  
+  <!-- 单条更新 -->
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Currentdata">
+    update CURRENTDATA
+    set CNAME = #{cname,jdbcType=VARCHAR},
+      CTYPE = #{ctype,jdbcType=VARCHAR},
+      YESTERDAYRAIN = #{yesterdayrain,jdbcType=DECIMAL},
+      TODAYRAIN = #{todayrain,jdbcType=DECIMAL},
+      PERIODRAIN = #{periodrain,jdbcType=DECIMAL},
+      WATERSTAGE = #{waterstage,jdbcType=DECIMAL},
+      WATERFLOW = #{waterflow,jdbcType=DECIMAL},
+      VOLTAGE = #{voltage,jdbcType=DECIMAL},
+      CURRENTSTATE = #{currentstate,jdbcType=VARCHAR},
+      REPORTTYPE = #{reporttype,jdbcType=VARCHAR},
+      GPRSTYPE = #{gprstype,jdbcType=VARCHAR},
+      DATATIME = #{datatime,jdbcType=TIMESTAMP}
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </update>
+</mapper>

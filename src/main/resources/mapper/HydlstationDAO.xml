@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.HydlstationDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.HydlStation">
+    <id column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="SUBCENTERID" jdbcType="DECIMAL" property="subcenterid" />
+    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
+    <result column="CTYPE" jdbcType="CHAR" property="ctype" />
+    <result column="WBASE" jdbcType="DECIMAL" property="wbase" />
+    <result column="WMAX" jdbcType="DECIMAL" property="wmax" />
+    <result column="WMIN" jdbcType="DECIMAL" property="wmin" />
+    <result column="WCHANGE" jdbcType="DECIMAL" property="wchange" />
+    <result column="RACCURACY" jdbcType="DECIMAL" property="raccuracy" />
+    <result column="RCHANGE" jdbcType="DECIMAL" property="rchange" />
+    <result column="GSM" jdbcType="VARCHAR" property="gsm" />
+    <result column="GPRS" jdbcType="VARCHAR" property="gprs" />
+    <result column="BDSATELLITE" jdbcType="VARCHAR" property="bdsatellite" />
+    <result column="BDMEMBER" jdbcType="VARCHAR" property="bdmember" />
+    <result column="VOLTAGEMIN" jdbcType="DECIMAL" property="voltagemin" />
+    <result column="MAINTRAN" jdbcType="VARCHAR" property="maintran" />
+    <result column="SUBTRAN" jdbcType="VARCHAR" property="subtran" />
+    <result column="DATAPROTOCOL" jdbcType="VARCHAR" property="dataprotocol" />
+    <result column="WATERSENSOR" jdbcType="CHAR" property="watersensor" />
+    <result column="RAINSENSOR" jdbcType="CHAR" property="rainsensor" />
+    <result column="REPORTINTERVAL" jdbcType="VARCHAR" property="reportinterval" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List">
+    STATIONID, SUBCENTERID, CNAME, CTYPE, WBASE, WMAX, WMIN, WCHANGE, RACCURACY, RCHANGE, 
+    GSM, GPRS, BDSATELLITE, BDMEMBER, VOLTAGEMIN, MAINTRAN, SUBTRAN, DATAPROTOCOL, WATERSENSOR, 
+    RAINSENSOR, REPORTINTERVAL
+  </sql>
+  
+  <!-- 根据条件查询水情站点 -->
+  <select id="selectByPrimaryKey"  resultType="HydlStation">
+    select 
+    <include refid="Base_Column_List" />
+    from HYDLSTATION
+    where
+    1=1
+    <if test="stationid != null and stationid != ''">
+     AND STATIONID = #{stationid,jdbcType=VARCHAR}
+    </if>
+    <if test="subcenterid != null and subcenterid != ''">
+     AND SUBCENTERID = #{subcenterid,jdbcType=VARCHAR}
+    </if>
+    <if test="ctype != null and ctype != ''">
+     AND CTYPE = #{ctype,jdbcType=VARCHAR}
+    </if>
+    <if test="MAINTRAN != null and maintran != ''">
+     AND MAINTRAN = #{maintran,jdbcType=VARCHAR}
+    </if>
+  </select>
+  
+  <!-- 根据主键删除水情站点 物理删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from HYDLSTATION
+    where STATIONID in
+    <foreach collection="array" item="stationid" open="(" separator="," close=")">
+    	#{stationid}
+    </foreach>
+  </delete>
+  
+  <!-- 批量插入 -->
+  <insert id="insertHydlstationList" parameterType="java.util.List">
+    	insert into HYDLSTATION
+    	<include refid="Base_Column_List" />
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.stationid},
+                #{item.subcenterid},
+                #{item.cname},
+                #{item.ctype},
+                #{item.wbase},
+                #{item.wmax},
+                #{item.wmin},
+                #{item.wchange},
+                #{item.raccuracy},
+                #{item.rchange},
+                #{item.gsm},
+                #{item.gprs},
+                #{item.bdsatellite},
+                #{item.bdmember},
+                #{item.voltagemin},
+                #{item.maintran},
+                #{item.subtran},
+                #{item.dataprotocol},
+                #{item.watersensor},
+                #{item.rainsensor},
+                #{item.reportinterval}
+                from dual
+                )
+        </foreach >
+    </insert>
+  
+  <!-- 单条插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.HydlStation">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into HYDLSTATION (SUBCENTERID, CNAME, CTYPE, 
+      WBASE, WMAX, WMIN, 
+      WCHANGE, RACCURACY, RCHANGE, 
+      GSM, GPRS, BDSATELLITE, 
+      BDMEMBER, VOLTAGEMIN, MAINTRAN, 
+      SUBTRAN, DATAPROTOCOL, WATERSENSOR, 
+      RAINSENSOR, REPORTINTERVAL)
+    values (#{subcenterid,jdbcType=DECIMAL}, #{cname,jdbcType=VARCHAR}, #{ctype,jdbcType=CHAR}, 
+      #{wbase,jdbcType=DECIMAL}, #{wmax,jdbcType=DECIMAL}, #{wmin,jdbcType=DECIMAL}, 
+      #{wchange,jdbcType=DECIMAL}, #{raccuracy,jdbcType=DECIMAL}, #{rchange,jdbcType=DECIMAL}, 
+      #{gsm,jdbcType=VARCHAR}, #{gprs,jdbcType=VARCHAR}, #{bdsatellite,jdbcType=VARCHAR}, 
+      #{bdmember,jdbcType=VARCHAR}, #{voltagemin,jdbcType=DECIMAL}, #{maintran,jdbcType=VARCHAR}, 
+      #{subtran,jdbcType=VARCHAR}, #{dataprotocol,jdbcType=VARCHAR}, #{watersensor,jdbcType=CHAR}, 
+      #{rainsensor,jdbcType=CHAR}, #{reportinterval,jdbcType=VARCHAR})
+  </insert>
+  
+  <!-- 根据已有字段插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.HydlStation">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into HYDLSTATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="subcenterid != null">
+        SUBCENTERID,
+      </if>
+      <if test="cname != null">
+        CNAME,
+      </if>
+      <if test="ctype != null">
+        CTYPE,
+      </if>
+      <if test="wbase != null">
+        WBASE,
+      </if>
+      <if test="wmax != null">
+        WMAX,
+      </if>
+      <if test="wmin != null">
+        WMIN,
+      </if>
+      <if test="wchange != null">
+        WCHANGE,
+      </if>
+      <if test="raccuracy != null">
+        RACCURACY,
+      </if>
+      <if test="rchange != null">
+        RCHANGE,
+      </if>
+      <if test="gsm != null">
+        GSM,
+      </if>
+      <if test="gprs != null">
+        GPRS,
+      </if>
+      <if test="bdsatellite != null">
+        BDSATELLITE,
+      </if>
+      <if test="bdmember != null">
+        BDMEMBER,
+      </if>
+      <if test="voltagemin != null">
+        VOLTAGEMIN,
+      </if>
+      <if test="maintran != null">
+        MAINTRAN,
+      </if>
+      <if test="subtran != null">
+        SUBTRAN,
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL,
+      </if>
+      <if test="watersensor != null">
+        WATERSENSOR,
+      </if>
+      <if test="rainsensor != null">
+        RAINSENSOR,
+      </if>
+      <if test="reportinterval != null">
+        REPORTINTERVAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="subcenterid != null">
+        #{subcenterid,jdbcType=DECIMAL},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        #{ctype,jdbcType=CHAR},
+      </if>
+      <if test="wbase != null">
+        #{wbase,jdbcType=DECIMAL},
+      </if>
+      <if test="wmax != null">
+        #{wmax,jdbcType=DECIMAL},
+      </if>
+      <if test="wmin != null">
+        #{wmin,jdbcType=DECIMAL},
+      </if>
+      <if test="wchange != null">
+        #{wchange,jdbcType=DECIMAL},
+      </if>
+      <if test="raccuracy != null">
+        #{raccuracy,jdbcType=DECIMAL},
+      </if>
+      <if test="rchange != null">
+        #{rchange,jdbcType=DECIMAL},
+      </if>
+      <if test="gsm != null">
+        #{gsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gprs != null">
+        #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="bdsatellite != null">
+        #{bdsatellite,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmember != null">
+        #{bdmember,jdbcType=VARCHAR},
+      </if>
+      <if test="voltagemin != null">
+        #{voltagemin,jdbcType=DECIMAL},
+      </if>
+      <if test="maintran != null">
+        #{maintran,jdbcType=VARCHAR},
+      </if>
+      <if test="subtran != null">
+        #{subtran,jdbcType=VARCHAR},
+      </if>
+      <if test="dataprotocol != null">
+        #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+      <if test="watersensor != null">
+        #{watersensor,jdbcType=CHAR},
+      </if>
+      <if test="rainsensor != null">
+        #{rainsensor,jdbcType=CHAR},
+      </if>
+      <if test="reportinterval != null">
+        #{reportinterval,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 根据字段单条更新 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.HydlStation">
+    update HYDLSTATION
+    <set>
+      <if test="subcenterid != null">
+        SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
+      </if>
+      <if test="cname != null">
+        CNAME = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        CTYPE = #{ctype,jdbcType=CHAR},
+      </if>
+      <if test="wbase != null">
+        WBASE = #{wbase,jdbcType=DECIMAL},
+      </if>
+      <if test="wmax != null">
+        WMAX = #{wmax,jdbcType=DECIMAL},
+      </if>
+      <if test="wmin != null">
+        WMIN = #{wmin,jdbcType=DECIMAL},
+      </if>
+      <if test="wchange != null">
+        WCHANGE = #{wchange,jdbcType=DECIMAL},
+      </if>
+      <if test="raccuracy != null">
+        RACCURACY = #{raccuracy,jdbcType=DECIMAL},
+      </if>
+      <if test="rchange != null">
+        RCHANGE = #{rchange,jdbcType=DECIMAL},
+      </if>
+      <if test="gsm != null">
+        GSM = #{gsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gprs != null">
+        GPRS = #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="bdsatellite != null">
+        BDSATELLITE = #{bdsatellite,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmember != null">
+        BDMEMBER = #{bdmember,jdbcType=VARCHAR},
+      </if>
+      <if test="voltagemin != null">
+        VOLTAGEMIN = #{voltagemin,jdbcType=DECIMAL},
+      </if>
+      <if test="maintran != null">
+        MAINTRAN = #{maintran,jdbcType=VARCHAR},
+      </if>
+      <if test="subtran != null">
+        SUBTRAN = #{subtran,jdbcType=VARCHAR},
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+      <if test="watersensor != null">
+        WATERSENSOR = #{watersensor,jdbcType=CHAR},
+      </if>
+      <if test="rainsensor != null">
+        RAINSENSOR = #{rainsensor,jdbcType=CHAR},
+      </if>
+      <if test="reportinterval != null">
+        REPORTINTERVAL = #{reportinterval,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 单条更新 -->
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.HydlStation">
+    update HYDLSTATION
+    set SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
+      CNAME = #{cname,jdbcType=VARCHAR},
+      CTYPE = #{ctype,jdbcType=CHAR},
+      WBASE = #{wbase,jdbcType=DECIMAL},
+      WMAX = #{wmax,jdbcType=DECIMAL},
+      WMIN = #{wmin,jdbcType=DECIMAL},
+      WCHANGE = #{wchange,jdbcType=DECIMAL},
+      RACCURACY = #{raccuracy,jdbcType=DECIMAL},
+      RCHANGE = #{rchange,jdbcType=DECIMAL},
+      GSM = #{gsm,jdbcType=VARCHAR},
+      GPRS = #{gprs,jdbcType=VARCHAR},
+      BDSATELLITE = #{bdsatellite,jdbcType=VARCHAR},
+      BDMEMBER = #{bdmember,jdbcType=VARCHAR},
+      VOLTAGEMIN = #{voltagemin,jdbcType=DECIMAL},
+      MAINTRAN = #{maintran,jdbcType=VARCHAR},
+      SUBTRAN = #{subtran,jdbcType=VARCHAR},
+      DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR},
+      WATERSENSOR = #{watersensor,jdbcType=CHAR},
+      RAINSENSOR = #{rainsensor,jdbcType=CHAR},
+      REPORTINTERVAL = #{reportinterval,jdbcType=VARCHAR}
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- 批量更新 -->
+  <update id="updateHydlstationList" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update HYDLSTATION
+    			<set>
+    				<if test="item.cname !=null and item.cname != ''">
+    				CNAME = #{item.cname},
+    				</if>
+    				<if test="item.ctype !=null and item.ctype != ''">
+    				CTYPE = #{item.ctype}
+    				</if>
+    				<if test="item.wbase !=null and item.wbase != ''">
+    				WBASE = #{item.wbase}
+    				</if>
+    				<if test="item.wmax !=null and item.wmax != ''">
+    				WMAX = #{item.wmax}
+    				</if>
+    				<if test="item.wmin !=null and item.wmin != ''">
+    				WMIN = #{item.wmin}
+    				</if>
+    				<if test="item.wchange !=null and item.wchange != ''">
+    				WCHANGE = #{item.wchange}
+    				</if>
+    				<if test="item.raccuracy !=null and item.raccuracy != ''">
+    				RACCURACY = #{item.raccuracy}
+    				</if>
+    				<if test="item.rchange !=null and item.rchange != ''">
+    				RCHANGE = #{item.rchange}
+    				</if>
+    				<if test="item.gsm !=null and item.gsm != ''">
+    				GSM = #{item.gsm}
+    				</if>
+    				<if test="item.gprs !=null and item.gprs != ''">
+    				GPRS = #{item.gprs}
+    				</if>
+    				<if test="item.bdsatellite !=null and item.bdsatellite != ''">
+    				BDSATELLITE = #{item.bdsatellite}
+    				</if>
+    				<if test="item.bdmember !=null and item.bdmember != ''">
+    				BDMEMBER = #{item.bdmember}
+    				</if>
+    				<if test="item.voltagemin !=null and item.voltagemin != ''">
+    				VOLTAGEMIN = #{item.voltagemin}
+    				</if>
+    				<if test="item.maintran !=null and item.maintran != ''">
+    				MAINTRAN = #{item.maintran}
+    				</if>
+    				<if test="item.subtran !=null and item.subtran != ''">
+    				SUBTRAN = #{item.subtran}
+    				</if>
+    				<if test="item.dataprotocol !=null and item.dataprotocol != ''">
+    				DATAPROTOCOL = #{item.dataprotocol}
+    				</if>
+    				<if test="item.watersensor !=null and item.watersensor != ''">
+    				WATERSENSOR = #{item.watersensor}
+    				</if>
+    				<if test="item.rainsensor !=null and item.rainsensor != ''">
+    				RAINSENSOR = #{item.rainsensor}
+    				</if>
+    				<if test="item.reportinterval !=null and item.reportinterval != ''">
+    				REPORTINTERVAL = #{item.reportinterval}
+    				</if>
+    			</set>
+    			 where 
+    			subcenterid=#{item.subcenterid}
+    		</foreach>
+    	;end;
+    </update>
+
+  <!-- 单挑删除 -->
+    <delete id="deleteHydlstation" parameterType="java.lang.String">
+    	delete from HYDLSTATION
+    	where  1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+    </delete>
+</mapper>

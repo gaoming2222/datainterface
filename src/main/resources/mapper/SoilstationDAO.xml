@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.SoilstationDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Soilstation">
+    <id column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="SUBCENTERID" jdbcType="DECIMAL" property="subcenterid" />
+    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
+    <result column="CTYPE" jdbcType="CHAR" property="ctype" />
+    <result column="A10" jdbcType="DECIMAL" property="a10" />
+    <result column="B10" jdbcType="DECIMAL" property="b10" />
+    <result column="C10" jdbcType="DECIMAL" property="c10" />
+    <result column="D10" jdbcType="DECIMAL" property="d10" />
+    <result column="M10" jdbcType="DECIMAL" property="m10" />
+    <result column="N10" jdbcType="DECIMAL" property="n10" />
+    <result column="A20" jdbcType="DECIMAL" property="a20" />
+    <result column="B20" jdbcType="DECIMAL" property="b20" />
+    <result column="C20" jdbcType="DECIMAL" property="c20" />
+    <result column="D20" jdbcType="DECIMAL" property="d20" />
+    <result column="M20" jdbcType="DECIMAL" property="m20" />
+    <result column="N20" jdbcType="DECIMAL" property="n20" />
+    <result column="A30" jdbcType="DECIMAL" property="a30" />
+    <result column="B30" jdbcType="DECIMAL" property="b30" />
+    <result column="C30" jdbcType="DECIMAL" property="c30" />
+    <result column="D30" jdbcType="DECIMAL" property="d30" />
+    <result column="M30" jdbcType="DECIMAL" property="m30" />
+    <result column="N30" jdbcType="DECIMAL" property="n30" />
+    <result column="A40" jdbcType="DECIMAL" property="a40" />
+    <result column="B40" jdbcType="DECIMAL" property="b40" />
+    <result column="C40" jdbcType="DECIMAL" property="c40" />
+    <result column="D40" jdbcType="DECIMAL" property="d40" />
+    <result column="M40" jdbcType="DECIMAL" property="m40" />
+    <result column="N40" jdbcType="DECIMAL" property="n40" />
+    <result column="A60" jdbcType="DECIMAL" property="a60" />
+    <result column="B60" jdbcType="DECIMAL" property="b60" />
+    <result column="C60" jdbcType="DECIMAL" property="c60" />
+    <result column="D60" jdbcType="DECIMAL" property="d60" />
+    <result column="M60" jdbcType="DECIMAL" property="m60" />
+    <result column="N60" jdbcType="DECIMAL" property="n60" />
+    <result column="VOLTAGEMIN" jdbcType="DECIMAL" property="voltagemin" />
+    <result column="GSM" jdbcType="VARCHAR" property="gsm" />
+    <result column="GPRS" jdbcType="VARCHAR" property="gprs" />
+    <result column="BDSATELLITE" jdbcType="VARCHAR" property="bdsatellite" />
+    <result column="BDMEMBER" jdbcType="VARCHAR" property="bdmember" />
+    <result column="MAINTRAN" jdbcType="VARCHAR" property="maintran" />
+    <result column="SUBTRAN" jdbcType="VARCHAR" property="subtran" />
+    <result column="DATAPROTOCOL" jdbcType="VARCHAR" property="dataprotocol" />
+    <result column="REPORTINTERVAL" jdbcType="VARCHAR" property="reportinterval" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STATIONID, SUBCENTERID, CNAME, CTYPE, A10, B10, C10, D10, M10, N10, A20, B20, C20, 
+    D20, M20, N20, A30, B30, C30, D30, M30, N30, A40, B40, C40, D40, M40, N40, A60, B60, 
+    C60, D60, M60, N60, VOLTAGEMIN, GSM, GPRS, BDSATELLITE, BDMEMBER, MAINTRAN, SUBTRAN, 
+    DATAPROTOCOL, REPORTINTERVAL
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SOILSTATION
+    where 1=1
+    <if test="stationid != null and stationid != ''">
+     AND STATIONID = #{stationid,jdbcType=VARCHAR}
+    </if>
+    <if test="subcenterid != null and subcenterid != ''">
+     AND SUBCENTERID = #{subcenterid,jdbcType=VARCHAR}
+    </if>
+    <if test="MAINTRAN != null and maintran != ''">
+     AND MAINTRAN = #{maintran,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SOILSTATION
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itclj.database.entity.Soilstation">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into SOILSTATION (SUBCENTERID, CNAME, CTYPE, 
+      A10, B10, C10, D10, 
+      M10, N10, A20, B20, 
+      C20, D20, M20, N20, 
+      A30, B30, C30, D30, 
+      M30, N30, A40, B40, 
+      C40, D40, M40, N40, 
+      A60, B60, C60, D60, 
+      M60, N60, VOLTAGEMIN, 
+      GSM, GPRS, BDSATELLITE, 
+      BDMEMBER, MAINTRAN, SUBTRAN, 
+      DATAPROTOCOL, REPORTINTERVAL)
+    values (#{subcenterid,jdbcType=DECIMAL}, #{cname,jdbcType=VARCHAR}, #{ctype,jdbcType=CHAR}, 
+      #{a10,jdbcType=DECIMAL}, #{b10,jdbcType=DECIMAL}, #{c10,jdbcType=DECIMAL}, #{d10,jdbcType=DECIMAL}, 
+      #{m10,jdbcType=DECIMAL}, #{n10,jdbcType=DECIMAL}, #{a20,jdbcType=DECIMAL}, #{b20,jdbcType=DECIMAL}, 
+      #{c20,jdbcType=DECIMAL}, #{d20,jdbcType=DECIMAL}, #{m20,jdbcType=DECIMAL}, #{n20,jdbcType=DECIMAL}, 
+      #{a30,jdbcType=DECIMAL}, #{b30,jdbcType=DECIMAL}, #{c30,jdbcType=DECIMAL}, #{d30,jdbcType=DECIMAL}, 
+      #{m30,jdbcType=DECIMAL}, #{n30,jdbcType=DECIMAL}, #{a40,jdbcType=DECIMAL}, #{b40,jdbcType=DECIMAL}, 
+      #{c40,jdbcType=DECIMAL}, #{d40,jdbcType=DECIMAL}, #{m40,jdbcType=DECIMAL}, #{n40,jdbcType=DECIMAL}, 
+      #{a60,jdbcType=DECIMAL}, #{b60,jdbcType=DECIMAL}, #{c60,jdbcType=DECIMAL}, #{d60,jdbcType=DECIMAL}, 
+      #{m60,jdbcType=DECIMAL}, #{n60,jdbcType=DECIMAL}, #{voltagemin,jdbcType=DECIMAL}, 
+      #{gsm,jdbcType=VARCHAR}, #{gprs,jdbcType=VARCHAR}, #{bdsatellite,jdbcType=VARCHAR}, 
+      #{bdmember,jdbcType=VARCHAR}, #{maintran,jdbcType=VARCHAR}, #{subtran,jdbcType=VARCHAR}, 
+      #{dataprotocol,jdbcType=VARCHAR}, #{reportinterval,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Soilstation">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into SOILSTATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="subcenterid != null">
+        SUBCENTERID,
+      </if>
+      <if test="cname != null">
+        CNAME,
+      </if>
+      <if test="ctype != null">
+        CTYPE,
+      </if>
+      <if test="a10 != null">
+        A10,
+      </if>
+      <if test="b10 != null">
+        B10,
+      </if>
+      <if test="c10 != null">
+        C10,
+      </if>
+      <if test="d10 != null">
+        D10,
+      </if>
+      <if test="m10 != null">
+        M10,
+      </if>
+      <if test="n10 != null">
+        N10,
+      </if>
+      <if test="a20 != null">
+        A20,
+      </if>
+      <if test="b20 != null">
+        B20,
+      </if>
+      <if test="c20 != null">
+        C20,
+      </if>
+      <if test="d20 != null">
+        D20,
+      </if>
+      <if test="m20 != null">
+        M20,
+      </if>
+      <if test="n20 != null">
+        N20,
+      </if>
+      <if test="a30 != null">
+        A30,
+      </if>
+      <if test="b30 != null">
+        B30,
+      </if>
+      <if test="c30 != null">
+        C30,
+      </if>
+      <if test="d30 != null">
+        D30,
+      </if>
+      <if test="m30 != null">
+        M30,
+      </if>
+      <if test="n30 != null">
+        N30,
+      </if>
+      <if test="a40 != null">
+        A40,
+      </if>
+      <if test="b40 != null">
+        B40,
+      </if>
+      <if test="c40 != null">
+        C40,
+      </if>
+      <if test="d40 != null">
+        D40,
+      </if>
+      <if test="m40 != null">
+        M40,
+      </if>
+      <if test="n40 != null">
+        N40,
+      </if>
+      <if test="a60 != null">
+        A60,
+      </if>
+      <if test="b60 != null">
+        B60,
+      </if>
+      <if test="c60 != null">
+        C60,
+      </if>
+      <if test="d60 != null">
+        D60,
+      </if>
+      <if test="m60 != null">
+        M60,
+      </if>
+      <if test="n60 != null">
+        N60,
+      </if>
+      <if test="voltagemin != null">
+        VOLTAGEMIN,
+      </if>
+      <if test="gsm != null">
+        GSM,
+      </if>
+      <if test="gprs != null">
+        GPRS,
+      </if>
+      <if test="bdsatellite != null">
+        BDSATELLITE,
+      </if>
+      <if test="bdmember != null">
+        BDMEMBER,
+      </if>
+      <if test="maintran != null">
+        MAINTRAN,
+      </if>
+      <if test="subtran != null">
+        SUBTRAN,
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL,
+      </if>
+      <if test="reportinterval != null">
+        REPORTINTERVAL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="subcenterid != null">
+        #{subcenterid,jdbcType=DECIMAL},
+      </if>
+      <if test="cname != null">
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        #{ctype,jdbcType=CHAR},
+      </if>
+      <if test="a10 != null">
+        #{a10,jdbcType=DECIMAL},
+      </if>
+      <if test="b10 != null">
+        #{b10,jdbcType=DECIMAL},
+      </if>
+      <if test="c10 != null">
+        #{c10,jdbcType=DECIMAL},
+      </if>
+      <if test="d10 != null">
+        #{d10,jdbcType=DECIMAL},
+      </if>
+      <if test="m10 != null">
+        #{m10,jdbcType=DECIMAL},
+      </if>
+      <if test="n10 != null">
+        #{n10,jdbcType=DECIMAL},
+      </if>
+      <if test="a20 != null">
+        #{a20,jdbcType=DECIMAL},
+      </if>
+      <if test="b20 != null">
+        #{b20,jdbcType=DECIMAL},
+      </if>
+      <if test="c20 != null">
+        #{c20,jdbcType=DECIMAL},
+      </if>
+      <if test="d20 != null">
+        #{d20,jdbcType=DECIMAL},
+      </if>
+      <if test="m20 != null">
+        #{m20,jdbcType=DECIMAL},
+      </if>
+      <if test="n20 != null">
+        #{n20,jdbcType=DECIMAL},
+      </if>
+      <if test="a30 != null">
+        #{a30,jdbcType=DECIMAL},
+      </if>
+      <if test="b30 != null">
+        #{b30,jdbcType=DECIMAL},
+      </if>
+      <if test="c30 != null">
+        #{c30,jdbcType=DECIMAL},
+      </if>
+      <if test="d30 != null">
+        #{d30,jdbcType=DECIMAL},
+      </if>
+      <if test="m30 != null">
+        #{m30,jdbcType=DECIMAL},
+      </if>
+      <if test="n30 != null">
+        #{n30,jdbcType=DECIMAL},
+      </if>
+      <if test="a40 != null">
+        #{a40,jdbcType=DECIMAL},
+      </if>
+      <if test="b40 != null">
+        #{b40,jdbcType=DECIMAL},
+      </if>
+      <if test="c40 != null">
+        #{c40,jdbcType=DECIMAL},
+      </if>
+      <if test="d40 != null">
+        #{d40,jdbcType=DECIMAL},
+      </if>
+      <if test="m40 != null">
+        #{m40,jdbcType=DECIMAL},
+      </if>
+      <if test="n40 != null">
+        #{n40,jdbcType=DECIMAL},
+      </if>
+      <if test="a60 != null">
+        #{a60,jdbcType=DECIMAL},
+      </if>
+      <if test="b60 != null">
+        #{b60,jdbcType=DECIMAL},
+      </if>
+      <if test="c60 != null">
+        #{c60,jdbcType=DECIMAL},
+      </if>
+      <if test="d60 != null">
+        #{d60,jdbcType=DECIMAL},
+      </if>
+      <if test="m60 != null">
+        #{m60,jdbcType=DECIMAL},
+      </if>
+      <if test="n60 != null">
+        #{n60,jdbcType=DECIMAL},
+      </if>
+      <if test="voltagemin != null">
+        #{voltagemin,jdbcType=DECIMAL},
+      </if>
+      <if test="gsm != null">
+        #{gsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gprs != null">
+        #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="bdsatellite != null">
+        #{bdsatellite,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmember != null">
+        #{bdmember,jdbcType=VARCHAR},
+      </if>
+      <if test="maintran != null">
+        #{maintran,jdbcType=VARCHAR},
+      </if>
+      <if test="subtran != null">
+        #{subtran,jdbcType=VARCHAR},
+      </if>
+      <if test="dataprotocol != null">
+        #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+      <if test="reportinterval != null">
+        #{reportinterval,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Soilstation">
+    update SOILSTATION
+    <set>
+      <if test="subcenterid != null">
+        SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
+      </if>
+      <if test="cname != null">
+        CNAME = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="ctype != null">
+        CTYPE = #{ctype,jdbcType=CHAR},
+      </if>
+      <if test="a10 != null">
+        A10 = #{a10,jdbcType=DECIMAL},
+      </if>
+      <if test="b10 != null">
+        B10 = #{b10,jdbcType=DECIMAL},
+      </if>
+      <if test="c10 != null">
+        C10 = #{c10,jdbcType=DECIMAL},
+      </if>
+      <if test="d10 != null">
+        D10 = #{d10,jdbcType=DECIMAL},
+      </if>
+      <if test="m10 != null">
+        M10 = #{m10,jdbcType=DECIMAL},
+      </if>
+      <if test="n10 != null">
+        N10 = #{n10,jdbcType=DECIMAL},
+      </if>
+      <if test="a20 != null">
+        A20 = #{a20,jdbcType=DECIMAL},
+      </if>
+      <if test="b20 != null">
+        B20 = #{b20,jdbcType=DECIMAL},
+      </if>
+      <if test="c20 != null">
+        C20 = #{c20,jdbcType=DECIMAL},
+      </if>
+      <if test="d20 != null">
+        D20 = #{d20,jdbcType=DECIMAL},
+      </if>
+      <if test="m20 != null">
+        M20 = #{m20,jdbcType=DECIMAL},
+      </if>
+      <if test="n20 != null">
+        N20 = #{n20,jdbcType=DECIMAL},
+      </if>
+      <if test="a30 != null">
+        A30 = #{a30,jdbcType=DECIMAL},
+      </if>
+      <if test="b30 != null">
+        B30 = #{b30,jdbcType=DECIMAL},
+      </if>
+      <if test="c30 != null">
+        C30 = #{c30,jdbcType=DECIMAL},
+      </if>
+      <if test="d30 != null">
+        D30 = #{d30,jdbcType=DECIMAL},
+      </if>
+      <if test="m30 != null">
+        M30 = #{m30,jdbcType=DECIMAL},
+      </if>
+      <if test="n30 != null">
+        N30 = #{n30,jdbcType=DECIMAL},
+      </if>
+      <if test="a40 != null">
+        A40 = #{a40,jdbcType=DECIMAL},
+      </if>
+      <if test="b40 != null">
+        B40 = #{b40,jdbcType=DECIMAL},
+      </if>
+      <if test="c40 != null">
+        C40 = #{c40,jdbcType=DECIMAL},
+      </if>
+      <if test="d40 != null">
+        D40 = #{d40,jdbcType=DECIMAL},
+      </if>
+      <if test="m40 != null">
+        M40 = #{m40,jdbcType=DECIMAL},
+      </if>
+      <if test="n40 != null">
+        N40 = #{n40,jdbcType=DECIMAL},
+      </if>
+      <if test="a60 != null">
+        A60 = #{a60,jdbcType=DECIMAL},
+      </if>
+      <if test="b60 != null">
+        B60 = #{b60,jdbcType=DECIMAL},
+      </if>
+      <if test="c60 != null">
+        C60 = #{c60,jdbcType=DECIMAL},
+      </if>
+      <if test="d60 != null">
+        D60 = #{d60,jdbcType=DECIMAL},
+      </if>
+      <if test="m60 != null">
+        M60 = #{m60,jdbcType=DECIMAL},
+      </if>
+      <if test="n60 != null">
+        N60 = #{n60,jdbcType=DECIMAL},
+      </if>
+      <if test="voltagemin != null">
+        VOLTAGEMIN = #{voltagemin,jdbcType=DECIMAL},
+      </if>
+      <if test="gsm != null">
+        GSM = #{gsm,jdbcType=VARCHAR},
+      </if>
+      <if test="gprs != null">
+        GPRS = #{gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="bdsatellite != null">
+        BDSATELLITE = #{bdsatellite,jdbcType=VARCHAR},
+      </if>
+      <if test="bdmember != null">
+        BDMEMBER = #{bdmember,jdbcType=VARCHAR},
+      </if>
+      <if test="maintran != null">
+        MAINTRAN = #{maintran,jdbcType=VARCHAR},
+      </if>
+      <if test="subtran != null">
+        SUBTRAN = #{subtran,jdbcType=VARCHAR},
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+      <if test="reportinterval != null">
+        REPORTINTERVAL = #{reportinterval,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Soilstation">
+    update SOILSTATION
+    set SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
+      CNAME = #{cname,jdbcType=VARCHAR},
+      CTYPE = #{ctype,jdbcType=CHAR},
+      A10 = #{a10,jdbcType=DECIMAL},
+      B10 = #{b10,jdbcType=DECIMAL},
+      C10 = #{c10,jdbcType=DECIMAL},
+      D10 = #{d10,jdbcType=DECIMAL},
+      M10 = #{m10,jdbcType=DECIMAL},
+      N10 = #{n10,jdbcType=DECIMAL},
+      A20 = #{a20,jdbcType=DECIMAL},
+      B20 = #{b20,jdbcType=DECIMAL},
+      C20 = #{c20,jdbcType=DECIMAL},
+      D20 = #{d20,jdbcType=DECIMAL},
+      M20 = #{m20,jdbcType=DECIMAL},
+      N20 = #{n20,jdbcType=DECIMAL},
+      A30 = #{a30,jdbcType=DECIMAL},
+      B30 = #{b30,jdbcType=DECIMAL},
+      C30 = #{c30,jdbcType=DECIMAL},
+      D30 = #{d30,jdbcType=DECIMAL},
+      M30 = #{m30,jdbcType=DECIMAL},
+      N30 = #{n30,jdbcType=DECIMAL},
+      A40 = #{a40,jdbcType=DECIMAL},
+      B40 = #{b40,jdbcType=DECIMAL},
+      C40 = #{c40,jdbcType=DECIMAL},
+      D40 = #{d40,jdbcType=DECIMAL},
+      M40 = #{m40,jdbcType=DECIMAL},
+      N40 = #{n40,jdbcType=DECIMAL},
+      A60 = #{a60,jdbcType=DECIMAL},
+      B60 = #{b60,jdbcType=DECIMAL},
+      C60 = #{c60,jdbcType=DECIMAL},
+      D60 = #{d60,jdbcType=DECIMAL},
+      M60 = #{m60,jdbcType=DECIMAL},
+      N60 = #{n60,jdbcType=DECIMAL},
+      VOLTAGEMIN = #{voltagemin,jdbcType=DECIMAL},
+      GSM = #{gsm,jdbcType=VARCHAR},
+      GPRS = #{gprs,jdbcType=VARCHAR},
+      BDSATELLITE = #{bdsatellite,jdbcType=VARCHAR},
+      BDMEMBER = #{bdmember,jdbcType=VARCHAR},
+      MAINTRAN = #{maintran,jdbcType=VARCHAR},
+      SUBTRAN = #{subtran,jdbcType=VARCHAR},
+      DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR},
+      REPORTINTERVAL = #{reportinterval,jdbcType=VARCHAR}
+    where STATIONID = #{stationid,jdbcType=CHAR}
+  </update>
+</mapper>

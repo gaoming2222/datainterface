@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.ErrorlogDAO">
+  
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Errorlog">
+    <result column="EL_PROCEDURE" jdbcType="CHAR" property="elProcedure" />
+    <result column="EL_OPERATETIME" jdbcType="TIMESTAMP" property="elOperatetime" />
+  </resultMap>
+  
+  <!-- 根据时间查询 -->
+  <select id="selectByTime" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    EL_PROCEDURE,EL_OPERATETIME
+    from ERRORLOG
+    where 
+    1=1
+    <if test="strtTime != null and strtTime != ''">
+    AND EL_OPERATETIME >= #{strtTime}
+    </if>
+    <if test="endTime != null and endTime != ''">
+    AND #{endTime} >= EL_OPERATETIME
+    </if>
+  </select>
+  
+  <!-- 单条插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Errorlog">
+    insert into ERRORLOG (EL_PROCEDURE, EL_OPERATETIME)
+    values (#{elProcedure,jdbcType=CHAR}, #{elOperatetime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  <!-- 选择性批量插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Errorlog">
+    insert into ERRORLOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="elProcedure != null">
+        EL_PROCEDURE,
+      </if>
+      <if test="elOperatetime != null">
+        EL_OPERATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="elProcedure != null">
+        #{elProcedure,jdbcType=CHAR},
+      </if>
+      <if test="elOperatetime != null">
+        #{elOperatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  
+</mapper>

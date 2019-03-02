@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.SerialportDAO">
+
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Serialport">
+    <id column="PORTNUMBER" jdbcType="DECIMAL" property="portnumber" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="BAUDRATE" jdbcType="DECIMAL" property="baudrate" />
+    <result column="DATABIT" jdbcType="DECIMAL" property="databit" />
+    <result column="STOPBIT" jdbcType="DECIMAL" property="stopbit" />
+    <result column="PARITY" jdbcType="CHAR" property="parity" />
+    <result column="STREAM" jdbcType="DECIMAL" property="stream" />
+    <result column="BREAK" jdbcType="DECIMAL" property="break" />
+    <result column="OPEN" jdbcType="DECIMAL" property="open" />
+    <result column="DATAPROTOCOL" jdbcType="VARCHAR" property="dataprotocol" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`, 
+    DATAPROTOCOL
+  </sql>
+  <!-- 根据条件查询 当条件为空时则时查询全部-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SERIALPORT
+    1=1
+    <if test="portnumber != null and portnumber != ''">
+    AND PORTNUMBER = #{portnumber,jdbcType=DECIMAL}
+    </if>
+  </select>
+  
+  <!-- 根据主键进行删除 -->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SERIALPORT
+    where PORTNUMBER = #{portnumber,jdbcType=DECIMAL}
+  </delete>
+  
+  <!-- 单条插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Serialport">
+    <selectKey keyProperty="portnumber" order="AFTER" resultType="java.lang.Long">
+      Oracle
+    </selectKey>
+    insert into SERIALPORT (TRANSTYPE, BAUDRATE, DATABIT, 
+      STOPBIT, PARITY, STREAM, 
+      `BREAK`, `OPEN`, DATAPROTOCOL
+      )
+    values (#{transtype,jdbcType=CHAR}, #{baudrate,jdbcType=DECIMAL}, #{databit,jdbcType=DECIMAL}, 
+      #{stopbit,jdbcType=DECIMAL}, #{parity,jdbcType=CHAR}, #{stream,jdbcType=DECIMAL}, 
+      #{break,jdbcType=DECIMAL}, #{open,jdbcType=DECIMAL}, #{dataprotocol,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  <!-- 选择性单条插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Serialport">
+    <selectKey keyProperty="portnumber" order="AFTER" resultType="java.lang.Long">
+      Oracle
+    </selectKey>
+    insert into SERIALPORT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="transtype != null">
+        TRANSTYPE,
+      </if>
+      <if test="baudrate != null">
+        BAUDRATE,
+      </if>
+      <if test="databit != null">
+        DATABIT,
+      </if>
+      <if test="stopbit != null">
+        STOPBIT,
+      </if>
+      <if test="parity != null">
+        PARITY,
+      </if>
+      <if test="stream != null">
+        STREAM,
+      </if>
+      <if test="break != null">
+        `BREAK`,
+      </if>
+      <if test="open != null">
+        `OPEN`,
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="transtype != null">
+        #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="baudrate != null">
+        #{baudrate,jdbcType=DECIMAL},
+      </if>
+      <if test="databit != null">
+        #{databit,jdbcType=DECIMAL},
+      </if>
+      <if test="stopbit != null">
+        #{stopbit,jdbcType=DECIMAL},
+      </if>
+      <if test="parity != null">
+        #{parity,jdbcType=CHAR},
+      </if>
+      <if test="stream != null">
+        #{stream,jdbcType=DECIMAL},
+      </if>
+      <if test="break != null">
+        #{break,jdbcType=DECIMAL},
+      </if>
+      <if test="open != null">
+        #{open,jdbcType=DECIMAL},
+      </if>
+      <if test="dataprotocol != null">
+        #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 选择性单条更新 -->
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Serialport">
+    update SERIALPORT
+    <set>
+      <if test="transtype != null">
+        TRANSTYPE = #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="baudrate != null">
+        BAUDRATE = #{baudrate,jdbcType=DECIMAL},
+      </if>
+      <if test="databit != null">
+        DATABIT = #{databit,jdbcType=DECIMAL},
+      </if>
+      <if test="stopbit != null">
+        STOPBIT = #{stopbit,jdbcType=DECIMAL},
+      </if>
+      <if test="parity != null">
+        PARITY = #{parity,jdbcType=CHAR},
+      </if>
+      <if test="stream != null">
+        STREAM = #{stream,jdbcType=DECIMAL},
+      </if>
+      <if test="break != null">
+        `BREAK` = #{break,jdbcType=DECIMAL},
+      </if>
+      <if test="open != null">
+        `OPEN` = #{open,jdbcType=DECIMAL},
+      </if>
+      <if test="dataprotocol != null">
+        DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PORTNUMBER = #{portnumber,jdbcType=DECIMAL}
+  </update>
+  
+  <!-- 单条更新 -->
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Serialport">
+    update SERIALPORT
+    set TRANSTYPE = #{transtype,jdbcType=CHAR},
+      BAUDRATE = #{baudrate,jdbcType=DECIMAL},
+      DATABIT = #{databit,jdbcType=DECIMAL},
+      STOPBIT = #{stopbit,jdbcType=DECIMAL},
+      PARITY = #{parity,jdbcType=CHAR},
+      STREAM = #{stream,jdbcType=DECIMAL},
+      `BREAK` = #{break,jdbcType=DECIMAL},
+      `OPEN` = #{open,jdbcType=DECIMAL},
+      DATAPROTOCOL = #{dataprotocol,jdbcType=VARCHAR}
+    where PORTNUMBER = #{portnumber,jdbcType=DECIMAL}
+  </update>
+</mapper>

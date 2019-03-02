@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.WaterDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Water">
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="WATERSTAGE" jdbcType="DECIMAL" property="waterstage" />
+    <result column="WATERFLOW" jdbcType="DECIMAL" property="waterflow" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
+  <!-- 单条插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Water">
+    insert into WATER (STATIONID, DATATIME, WATERSTAGE, 
+      WATERFLOW, TRANSTYPE, MESSAGETYPE, 
+      RECVDATATIME, `STATE`)
+    values (#{stationid,jdbcType=VARCHAR}, #{datatime,jdbcType=TIMESTAMP}, #{waterstage,jdbcType=DECIMAL}, 
+      #{waterflow,jdbcType=DECIMAL}, #{transtype,jdbcType=CHAR}, #{messagetype,jdbcType=CHAR}, 
+      #{recvdatatime,jdbcType=TIMESTAMP}, #{state,jdbcType=DECIMAL})
+  </insert>
+  
+  <!-- 选择性单条插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Water">
+    insert into WATER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        STATIONID,
+      </if>
+      <if test="datatime != null">
+        DATATIME,
+      </if>
+      <if test="waterstage != null">
+        WATERSTAGE,
+      </if>
+      <if test="waterflow != null">
+        WATERFLOW,
+      </if>
+      <if test="transtype != null">
+        TRANSTYPE,
+      </if>
+      <if test="messagetype != null">
+        MESSAGETYPE,
+      </if>
+      <if test="recvdatatime != null">
+        RECVDATATIME,
+      </if>
+      <if test="state != null">
+        `STATE`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        #{stationid,jdbcType=VARCHAR},
+      </if>
+      <if test="datatime != null">
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="waterstage != null">
+        #{waterstage,jdbcType=DECIMAL},
+      </if>
+      <if test="waterflow != null">
+        #{waterflow,jdbcType=DECIMAL},
+      </if>
+      <if test="transtype != null">
+        #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="messagetype != null">
+        #{messagetype,jdbcType=CHAR},
+      </if>
+      <if test="recvdatatime != null">
+        #{recvdatatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 批量插入 -->
+  <insert id="insertWaterList" parameterType="java.util.List">
+    	insert into WATER
+    	(STATIONID,DATATIME,WATERSTAGE,WATERFLOW,TRANSTYPE,MESSAGETYPE,RECVDATATIME,STATE)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.stationid},
+                to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss'),
+                #{item.waterstage},
+                #{item.waterflow},
+                #{item.transtype},
+                #{item.messagetype},
+                to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
+                #{item.state}
+                from dual
+                )
+        </foreach >
+    </insert>
+    
+    <!-- 批量更新 -->
+    <update id="updateWaterList" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update WATER
+    			<set>
+    				<if test="item.waterstage !=null and item.waterstage != ''">
+    				WATERSTAGE = #{item.waterstage},
+    				</if>
+    				<if test="item.waterflow !=null and item.waterflow != ''">
+    				WATERFLOW = #{item.waterflow},
+    				</if>
+    				<if test="item.messagetype !=null and item.messagetype != ''">
+    				MESSAGETYPE = #{item.messagetype},
+    				</if>
+    				<if test="item.state !=null and item.state != ''">
+    				STATE = #{item.state}
+    				</if>
+    			</set>
+    			 where 
+    			STATIONID=#{item.stationid}
+    			AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+    		</foreach>
+    	;end;
+    </update>
+    
+    <!-- 查询 -->
+    <select id="getWaterList" resultType="Water" >
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.WATERSTAGE,
+       t.WATERFLOW,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
+       t.RECVDATATIME，
+       t.STATE
+       from WATER t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID
+    </select>
+    
+    <!-- 单挑删除 -->
+    <delete id="deleteWater" parameterType="Water">
+    	delete from WATER
+    	where  1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+    </delete>
+    
+    
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itclj.database.mapper.SubcenterDao" >
+
+	<resultMap id="BaseResultMap" type="com.itclj.database.entity.Subcenter">
+    	<result column="subcenterid" jdbcType="DECIMAL" property="SubCenterID" />
+    	<result column="subcentername" jdbcType="VARCHAR" property="SubCenterName" />
+    	<result column="comment_" jdbcType="VARCHAR" property="Comment" />
+  	</resultMap>
+    <select id="getSubcenter" parameterType="java.util.Map" resultMap="BaseResultMap" >
+       select 
+       t.subcenterid,
+       t.subcentername,
+       t.comment_ 
+       from SUBCENTER t
+       where
+       1=1
+       <if test="subcenterId != null and subcenterId != ''">
+       and subcenterId = #{subcenterId}
+       </if>
+       <if test="subcenterName != null and subcenterName != ''">
+       and subcenterName like  #{subcenterName}
+       </if>
+       order by t.subcenterid
+    </select>
+    
+    <insert id="insertSubcenter" parameterType="java.util.List">
+    	insert into SUBCENTER
+    	(subcentername,comment_)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.subcenterName},
+                #{item.comment}
+                from dual
+                )
+        </foreach >
+    </insert>
+    
+    
+    <update id="updateSubcenter" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update SUBCENTER
+    			<set>
+    				<if test="item.subcenterName !=null and item.subcenterName != ''">
+    				subcentername = #{item.subcenterName},
+    				</if>
+    				<if test="item.comment !=null and item.comment != ''">
+    				comment_ = #{item.comment}
+    				</if>
+    			</set>
+    			 where 
+    			subcenterid=#{item.subcenterId}
+    		</foreach>
+    	;end;
+    </update>
+    
+    <delete id="deleteSubcenter" parameterType="java.lang.String">
+    	delete from SUBCENTER
+    	where subcenterId in
+    	<foreach collection="array" item="subcenterId" open="(" separator="," close=")">
+    	#{subcenterId}
+    	</foreach>
+    </delete>
+    
+</mapper>

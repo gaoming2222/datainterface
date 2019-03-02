@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.RainDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Rain">
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="PERIODRAIN" jdbcType="DECIMAL" property="periodrain" />
+    <result column="DIFFERENCERAIN" jdbcType="DECIMAL" property="differencerain" />
+    <result column="TOTALRAIN" jdbcType="DECIMAL" property="totalrain" />
+    <result column="DAYRAIN" jdbcType="DECIMAL" property="dayrain" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
+  <!-- 单条插入 -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Rain">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into RAIN (DATATIME, PERIODRAIN, DIFFERENCERAIN, 
+      TOTALRAIN, DAYRAIN, TRANSTYPE, 
+      MESSAGETYPE, RECVDATATIME, `STATE`
+      )
+    values (#{datatime,jdbcType=TIMESTAMP}, #{periodrain,jdbcType=DECIMAL}, #{differencerain,jdbcType=DECIMAL}, 
+      #{totalrain,jdbcType=DECIMAL}, #{dayrain,jdbcType=DECIMAL}, #{transtype,jdbcType=CHAR}, 
+      #{messagetype,jdbcType=CHAR}, #{recvdatatime,jdbcType=TIMESTAMP}, #{state,jdbcType=DECIMAL}
+      )
+  </insert>
+  <!-- 选择性单挑插入 -->
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Rain">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into RAIN
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="datatime != null">
+        DATATIME,
+      </if>
+      <if test="periodrain != null">
+        PERIODRAIN,
+      </if>
+      <if test="differencerain != null">
+        DIFFERENCERAIN,
+      </if>
+      <if test="totalrain != null">
+        TOTALRAIN,
+      </if>
+      <if test="dayrain != null">
+        DAYRAIN,
+      </if>
+      <if test="transtype != null">
+        TRANSTYPE,
+      </if>
+      <if test="messagetype != null">
+        MESSAGETYPE,
+      </if>
+      <if test="recvdatatime != null">
+        RECVDATATIME,
+      </if>
+      <if test="state != null">
+        `STATE`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="datatime != null">
+        #{datatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="periodrain != null">
+        #{periodrain,jdbcType=DECIMAL},
+      </if>
+      <if test="differencerain != null">
+        #{differencerain,jdbcType=DECIMAL},
+      </if>
+      <if test="totalrain != null">
+        #{totalrain,jdbcType=DECIMAL},
+      </if>
+      <if test="dayrain != null">
+        #{dayrain,jdbcType=DECIMAL},
+      </if>
+      <if test="transtype != null">
+        #{transtype,jdbcType=CHAR},
+      </if>
+      <if test="messagetype != null">
+        #{messagetype,jdbcType=CHAR},
+      </if>
+      <if test="recvdatatime != null">
+        #{recvdatatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 批量插入 -->
+  <insert id="insertRainList" parameterType="java.util.List">
+    	insert into RAIN
+    	(STATIONID,DATATIME,PERIODRAIN,DIFFERENCERAIN,TOTALRAIN,DAYRAIN,TRANSTYPE,MESSAGETYPE,RECVDATATIME,STATE)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.stationid},
+                to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss'),
+                #{item.periodrain},
+                #{item.differencerain},
+                #{item.totalrain},
+                #{item.dayrain},
+                #{item.transtype},
+                #{item.messagetype},
+                to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
+                #{item.state}
+                from dual
+                )
+        </foreach >
+    </insert>
+    
+    <!-- 批量更新 -->
+    <update id="updateRainList" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update RAIN
+    			<set>
+    				<if test="item.periodrain !=null and item.periodrain != ''">
+    				PERIODRAIN = #{item.periodrain},
+    				</if>
+    				<if test="item.differencerain !=null and item.differencerain != ''">
+    				DIFFERENCERAIN = #{item.differencerain},
+    				</if>
+    				<if test="item.totalrain !=null and item.totalrain != ''">
+    				TOTALRAIN = #{item.totalrain},
+    				</if>
+    				<if test="item.dayrain !=null and item.dayrain != ''">
+    				DAYRAIN = #{item.dayrain},
+    				</if>
+    				<if test="item.messagetype !=null and item.messagetype != ''">
+    				MESSAGETYPE = #{item.messagetype},
+    				</if>
+    				<if test="item.state !=null and item.state != ''">
+    				STATE = #{item.state}
+    				</if>
+    			</set>
+    			 where 
+    			STATIONID=#{item.stationid}
+    			AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+    		</foreach>
+    	;end;
+    </update>
+    
+    <!-- 查询 -->
+    <select id="getRainList" resultType="Rain" >
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.PERIODRAIN,
+       t.DIFFERENCERAIN,
+       t.TOTALRAIN,
+       t.DAYRAIN,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
+       t.RECVDATATIME，
+       t.STATE
+       from RAIN t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID
+    </select>
+    
+    <!-- 单挑删除 -->
+    <delete id="deleteRain" parameterType="Rain">
+    	delete from RAIN
+    	where  1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+    </delete>
+    
+</mapper>

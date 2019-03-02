@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.StZqBDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.StZqB">
+    <result column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="BGTM" jdbcType="TIMESTAMP" property="bgtm" />
+    <result column="PTNO" jdbcType="DECIMAL" property="ptno" />
+    <result column="ZR" jdbcType="DECIMAL" property="zr" />
+    <result column="Q1" jdbcType="DECIMAL" property="q1" />
+    <result column="Q2" jdbcType="DECIMAL" property="q2" />
+    <result column="Q3" jdbcType="DECIMAL" property="q3" />
+    <result column="Q4" jdbcType="DECIMAL" property="q4" />
+    <result column="Q5" jdbcType="DECIMAL" property="q5" />
+    <result column="Q6" jdbcType="DECIMAL" property="q6" />
+    <result column="CURRQ" jdbcType="DECIMAL" property="currq" />
+  </resultMap>
+  <insert id="insert" parameterType="com.itclj.database.entity.StZqB">
+    insert into ST_ZQ_B (STATIONID, BGTM, PTNO, 
+      ZR, Q1, Q2, Q3, 
+      Q4, Q5, Q6, CURRQ
+      )
+    values (#{stationid,jdbcType=CHAR}, #{bgtm,jdbcType=TIMESTAMP}, #{ptno,jdbcType=DECIMAL}, 
+      #{zr,jdbcType=DECIMAL}, #{q1,jdbcType=DECIMAL}, #{q2,jdbcType=DECIMAL}, #{q3,jdbcType=DECIMAL}, 
+      #{q4,jdbcType=DECIMAL}, #{q5,jdbcType=DECIMAL}, #{q6,jdbcType=DECIMAL}, #{currq,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.StZqB">
+    insert into ST_ZQ_B
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        STATIONID,
+      </if>
+      <if test="bgtm != null">
+        BGTM,
+      </if>
+      <if test="ptno != null">
+        PTNO,
+      </if>
+      <if test="zr != null">
+        ZR,
+      </if>
+      <if test="q1 != null">
+        Q1,
+      </if>
+      <if test="q2 != null">
+        Q2,
+      </if>
+      <if test="q3 != null">
+        Q3,
+      </if>
+      <if test="q4 != null">
+        Q4,
+      </if>
+      <if test="q5 != null">
+        Q5,
+      </if>
+      <if test="q6 != null">
+        Q6,
+      </if>
+      <if test="currq != null">
+        CURRQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        #{stationid,jdbcType=CHAR},
+      </if>
+      <if test="bgtm != null">
+        #{bgtm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptno != null">
+        #{ptno,jdbcType=DECIMAL},
+      </if>
+      <if test="zr != null">
+        #{zr,jdbcType=DECIMAL},
+      </if>
+      <if test="q1 != null">
+        #{q1,jdbcType=DECIMAL},
+      </if>
+      <if test="q2 != null">
+        #{q2,jdbcType=DECIMAL},
+      </if>
+      <if test="q3 != null">
+        #{q3,jdbcType=DECIMAL},
+      </if>
+      <if test="q4 != null">
+        #{q4,jdbcType=DECIMAL},
+      </if>
+      <if test="q5 != null">
+        #{q5,jdbcType=DECIMAL},
+      </if>
+      <if test="q6 != null">
+        #{q6,jdbcType=DECIMAL},
+      </if>
+      <if test="currq != null">
+        #{currq,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

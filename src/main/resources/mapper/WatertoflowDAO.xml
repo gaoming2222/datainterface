@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.WatertoflowDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Watertoflow">
+    <result column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="WATER" jdbcType="DECIMAL" property="water" />
+    <result column="FLOW" jdbcType="DECIMAL" property="flow" />
+  </resultMap>
+  <insert id="insert" parameterType="com.itclj.database.entity.Watertoflow">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into WATERTOFLOW (WATER, FLOW)
+    values (#{water,jdbcType=DECIMAL}, #{flow,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Watertoflow">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into WATERTOFLOW
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="water != null">
+        WATER,
+      </if>
+      <if test="flow != null">
+        FLOW,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="water != null">
+        #{water,jdbcType=DECIMAL},
+      </if>
+      <if test="flow != null">
+        #{flow,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>
