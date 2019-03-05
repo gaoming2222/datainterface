@@ -39,7 +39,7 @@ public class HydlstationController {
 		Map<String,Object> param = new HashMap<>();
 		List<HydlStation> hydlStationList = new ArrayList<HydlStation>();
 		String jsonStr  =(String) request.getParameter("hydlstation");
-		logger.info("查询水情站信息，接收参数ff为：" + jsonStr);
+		logger.info("查询水情站信息，接收参fff数ff为：" + jsonStr);
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("subcenterId", "");
 		}else {
