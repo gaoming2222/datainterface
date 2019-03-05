@@ -33,22 +33,25 @@ public class HydlstationController {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/hydlstation/getHydlStation", method = RequestMethod.POST)
 	@ResponseBody
-	public List<HydlStation> getSubcenterData(HttpServletRequest request) {
+	public String getSubcenterData(HttpServletRequest request) {
 		Map<String,Object> param = new HashMap<>();
 		List<HydlStation> hydlStationList = new ArrayList<HydlStation>();
 		String jsonStr  =(String) request.getParameter("hydlstation");
-		logger.info("查询水情站信息，接收参fff数ff为：" + jsonStr);
+		Map tMap = JSON.parseObject(jsonStr,Map.class); 
+		logger.info("查询水情站信息，接收参数为：" + jsonStr);
 		if(jsonStr == null || jsonStr.trim() == "") {
-			param.put("subcenterId", "");
+			param.put("stationid", "");
 		}else {
-			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			HydlStation hydlStation = JSON.parseObject(jsonStr, new TypeReference<HydlStation>() {});
-			param.put("subcenterId", hydlStation.getStationid());
+			
+			param.put("stationid",(String)tMap.get("stationid"));
+			
 		}
 		hydlStationList = hydlstationService.getHydlstationList(param);
-		return hydlStationList;
+		String s = JSON.toJSONString(hydlStationList);
+		return s;
 	}
 	
 	/**

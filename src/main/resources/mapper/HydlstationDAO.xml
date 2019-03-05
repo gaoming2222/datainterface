@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itclj.database.mapper.HydlstationDAO">
   <resultMap id="BaseResultMap" type="com.itclj.database.entity.HydlStation">
-    <id column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
     <result column="SUBCENTERID" jdbcType="DECIMAL" property="subcenterid" />
     <result column="CNAME" jdbcType="VARCHAR" property="cname" />
     <result column="CTYPE" jdbcType="CHAR" property="ctype" />
@@ -64,35 +64,23 @@
   
   <!-- 批量插入 -->
   <insert id="insertHydlstationList" parameterType="java.util.List">
-    	insert into HYDLSTATION
-    	<include refid="Base_Column_List" />
-    	<foreach collection ="list" item="item" index= "index" separator ="union all">
-                (
-                select
-                #{item.stationid},
-                #{item.subcenterid},
-                #{item.cname},
-                #{item.ctype},
-                #{item.wbase},
-                #{item.wmax},
-                #{item.wmin},
-                #{item.wchange},
-                #{item.raccuracy},
-                #{item.rchange},
-                #{item.gsm},
-                #{item.gprs},
-                #{item.bdsatellite},
-                #{item.bdmember},
-                #{item.voltagemin},
-                #{item.maintran},
-                #{item.subtran},
-                #{item.dataprotocol},
-                #{item.watersensor},
-                #{item.rainsensor},
-                #{item.reportinterval}
-                from dual
-                )
-        </foreach >
+    	insert into HYDLSTATION (STATIONID, SUBCENTERID, CNAME, CTYPE, 
+      WBASE, WMAX, WMIN, WCHANGE,
+      RACCURACY, RCHANGE, GSM, GPRS, 
+      BDSATELLITE, BDMEMBER, VOLTAGEMIN, MAINTRAN, SUBTRAN,
+      DATAPROTOCOL, WATERSENSOR, RAINSENSOR, REPORTINTERVAL)
+      <foreach collection ="list" item="item" index= "index" separator ="union all">
+     (
+     	select
+     	#{item.stationid}, #{item.subcenterid}, #{item.cname}, #{item.ctype}, 
+      	#{item.wbase}, #{item.wmax}, #{item.wmin}, #{item.wchange}, 
+     	#{item.raccuracy}, #{item.rchange}, #{item.gsm}, #{item.gprs}, 
+      	#{item.bdsatellite}, #{item.bdmember}, #{item.voltagemin}, 
+      	#{item.maintran}, #{item.subtran}, #{item.dataprotocol}, 
+      	#{item.watersensor}, #{item.rainsensor}, #{item.reportinterval}
+      	from dual
+      )
+      </foreach >
     </insert>
   
   <!-- 单条插入 -->

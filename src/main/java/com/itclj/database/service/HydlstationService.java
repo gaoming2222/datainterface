@@ -36,7 +36,7 @@ public class HydlstationService {
 			logger.error("查询水情站信息失败" + e.getMessage());
 			return null;
 		}
-		logger.info("查询水情站信息完成" + retList.size());
+		logger.info("查询水情站信息完成");
 		return retList;
 	}
 	/**
@@ -45,7 +45,7 @@ public class HydlstationService {
 	 * @return
 	 */
 	public int insertHydlStation(List<HydlStation> hydlStationList) {
-		logger.info("开始插入水情站信息" + hydlStationList.size());
+		logger.info("开始插入水情站信息" + hydlStationList);
 		int result = 0;
 		try {
 			result = hydlstationDAO.insertHydlstationList(hydlStationList);

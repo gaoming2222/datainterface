@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itclj.database.mapper.SoilstationDAO">
   <resultMap id="BaseResultMap" type="com.itclj.database.entity.Soilstation">
-    <id column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="STATIONID" jdbcType="CHAR" property="stationid" />
     <result column="SUBCENTERID" jdbcType="DECIMAL" property="subcenterid" />
     <result column="CNAME" jdbcType="VARCHAR" property="cname" />
     <result column="CTYPE" jdbcType="CHAR" property="ctype" />
@@ -52,7 +52,7 @@
     C60, D60, M60, N60, VOLTAGEMIN, GSM, GPRS, BDSATELLITE, BDMEMBER, MAINTRAN, SUBTRAN, 
     DATAPROTOCOL, REPORTINTERVAL
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from SOILSTATION
@@ -75,7 +75,7 @@
     <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
       Oracle
     </selectKey>
-    insert into SOILSTATION (SUBCENTERID, CNAME, CTYPE, 
+    insert into SOILSTATION (STATIONID, SUBCENTERID, CNAME, CTYPE, 
       A10, B10, C10, D10, 
       M10, N10, A20, B20, 
       C20, D20, M20, N20, 
@@ -87,7 +87,7 @@
       GSM, GPRS, BDSATELLITE, 
       BDMEMBER, MAINTRAN, SUBTRAN, 
       DATAPROTOCOL, REPORTINTERVAL)
-    values (#{subcenterid,jdbcType=DECIMAL}, #{cname,jdbcType=VARCHAR}, #{ctype,jdbcType=CHAR}, 
+    values (#{stationid,jdbcType=CHAR}, #{subcenterid,jdbcType=DECIMAL}, #{cname,jdbcType=VARCHAR}, #{ctype,jdbcType=CHAR}, 
       #{a10,jdbcType=DECIMAL}, #{b10,jdbcType=DECIMAL}, #{c10,jdbcType=DECIMAL}, #{d10,jdbcType=DECIMAL}, 
       #{m10,jdbcType=DECIMAL}, #{n10,jdbcType=DECIMAL}, #{a20,jdbcType=DECIMAL}, #{b20,jdbcType=DECIMAL}, 
       #{c20,jdbcType=DECIMAL}, #{d20,jdbcType=DECIMAL}, #{m20,jdbcType=DECIMAL}, #{n20,jdbcType=DECIMAL}, 
@@ -106,6 +106,9 @@
     </selectKey>
     insert into SOILSTATION
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        STATIONID,
+      </if>
       <if test="subcenterid != null">
         SUBCENTERID,
       </if>
@@ -234,6 +237,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        #{stationid,jdbcType=DECIMAL},
+      </if>
       <if test="subcenterid != null">
         #{subcenterid,jdbcType=DECIMAL},
       </if>
@@ -365,6 +371,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Soilstation">
     update SOILSTATION
     <set>
+      <if test="stationid != null">
+        STATIONID = #{stationid,jdbcType=DECIMAL},
+      </if>
       <if test="subcenterid != null">
         SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
       </if>
@@ -496,7 +505,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Soilstation">
     update SOILSTATION
-    set SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
+    set STATIONID = #{stationid,jdbcType=DECIMAL},
+      SUBCENTERID = #{subcenterid,jdbcType=DECIMAL},
       CNAME = #{cname,jdbcType=VARCHAR},
       CTYPE = #{ctype,jdbcType=CHAR},
       A10 = #{a10,jdbcType=DECIMAL},

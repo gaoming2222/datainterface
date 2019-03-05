@@ -3,99 +3,103 @@ package com.itclj.database.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * SOILSTATION
  * @author 
  */
 public class Soilstation implements Serializable {
+	@JSONField(name = "StationID")
     private String stationid;
-
+	@JSONField(name = "SubCenterID")
     private Long subcenterid;
-
+	@JSONField(name = "StationName")
     private String cname;
-
+	@JSONField(name = "StationType")
     private String ctype;
-
+	@JSONField(name="A10")
     private BigDecimal a10;
-
+	@JSONField(name="B10")
     private BigDecimal b10;
-
+	@JSONField(name="C10")
     private BigDecimal c10;
-
+	@JSONField(name="D10")
     private BigDecimal d10;
-
+	@JSONField(name="M10")
     private BigDecimal m10;
-
+	@JSONField(name="N10")
     private BigDecimal n10;
-
+	@JSONField(name="A20")
     private BigDecimal a20;
-
+	@JSONField(name="B20")
     private BigDecimal b20;
-
+	@JSONField(name="C20")
     private BigDecimal c20;
-
+	@JSONField(name="D20")
     private BigDecimal d20;
-
+	@JSONField(name="M20")
     private BigDecimal m20;
-
+	@JSONField(name="N20")
     private BigDecimal n20;
-
+	@JSONField(name="A30")
     private BigDecimal a30;
-
+	@JSONField(name="B30")
     private BigDecimal b30;
-
+	@JSONField(name="C30")
     private BigDecimal c30;
-
+	@JSONField(name="D30")
     private BigDecimal d30;
-
+	@JSONField(name="M30")
     private BigDecimal m30;
-
+	@JSONField(name="N30")
     private BigDecimal n30;
-
+	@JSONField(name="A40")
     private BigDecimal a40;
-
+	@JSONField(name="B40")
     private BigDecimal b40;
-
+	@JSONField(name="C40")
     private BigDecimal c40;
-
+	@JSONField(name="D40")
     private BigDecimal d40;
-
+	@JSONField(name="M40")
     private BigDecimal m40;
-
+	@JSONField(name="N40")
     private BigDecimal n40;
-
+	@JSONField(name="A60")
     private BigDecimal a60;
-
+	@JSONField(name="B60")
     private BigDecimal b60;
-
+	@JSONField(name="C60")
     private BigDecimal c60;
-
+	@JSONField(name="D60")
     private BigDecimal d60;
-
+	@JSONField(name="M60")
     private BigDecimal m60;
-
+	@JSONField(name="N60")
     private BigDecimal n60;
-
+	@JSONField(name="VoltageMin")
     private BigDecimal voltagemin;
-
+	@JSONField(name="GSM")
     private String gsm;
-
+	@JSONField(name="GPRS")
     private String gprs;
-
+	@JSONField(name="BDSatellite")
     private String bdsatellite;
-
+	@JSONField(name="BDMemberSatellite")
     private String bdmember;
-
+	@JSONField(name="Maintran")
     private String maintran;
-
+	@JSONField(name="Subtran")
     private String subtran;
-
+	@JSONField(name="Datapotocol")
     private String dataprotocol;
-
+	@JSONField(name="Reportinterval")
     private String reportinterval;
 
     private static final long serialVersionUID = 1L;
-
+    
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -103,7 +107,8 @@ public class Soilstation implements Serializable {
     public void setStationid(String stationid) {
         this.stationid = stationid;
     }
-
+    
+	@JSONField(name="SubCenterID")
     public Long getSubcenterid() {
         return subcenterid;
     }
@@ -111,7 +116,8 @@ public class Soilstation implements Serializable {
     public void setSubcenterid(Long subcenterid) {
         this.subcenterid = subcenterid;
     }
-
+    
+	@JSONField(name="StationName")
     public String getCname() {
         return cname;
     }
@@ -119,6 +125,7 @@ public class Soilstation implements Serializable {
     public void setCname(String cname) {
         this.cname = cname;
     }
+	@JSONField(name="StationType")
 
     public String getCtype() {
         return ctype;
@@ -127,7 +134,7 @@ public class Soilstation implements Serializable {
     public void setCtype(String ctype) {
         this.ctype = ctype;
     }
-
+	@JSONField(name="A10")
     public BigDecimal getA10() {
         return a10;
     }
@@ -135,7 +142,7 @@ public class Soilstation implements Serializable {
     public void setA10(BigDecimal a10) {
         this.a10 = a10;
     }
-
+	@JSONField(name = "B10")
     public BigDecimal getB10() {
         return b10;
     }
@@ -143,7 +150,7 @@ public class Soilstation implements Serializable {
     public void setB10(BigDecimal b10) {
         this.b10 = b10;
     }
-
+	@JSONField(name = "C10")
     public BigDecimal getC10() {
         return c10;
     }
@@ -151,7 +158,7 @@ public class Soilstation implements Serializable {
     public void setC10(BigDecimal c10) {
         this.c10 = c10;
     }
-
+	@JSONField(name = "D10")
     public BigDecimal getD10() {
         return d10;
     }
@@ -159,7 +166,7 @@ public class Soilstation implements Serializable {
     public void setD10(BigDecimal d10) {
         this.d10 = d10;
     }
-
+	@JSONField(name = "M10")
     public BigDecimal getM10() {
         return m10;
     }
@@ -167,7 +174,7 @@ public class Soilstation implements Serializable {
     public void setM10(BigDecimal m10) {
         this.m10 = m10;
     }
-
+	@JSONField(name = "N10")
     public BigDecimal getN10() {
         return n10;
     }
@@ -175,7 +182,7 @@ public class Soilstation implements Serializable {
     public void setN10(BigDecimal n10) {
         this.n10 = n10;
     }
-
+	@JSONField(name = "A20")
     public BigDecimal getA20() {
         return a20;
     }
@@ -183,7 +190,7 @@ public class Soilstation implements Serializable {
     public void setA20(BigDecimal a20) {
         this.a20 = a20;
     }
-
+	@JSONField(name = "B20")
     public BigDecimal getB20() {
         return b20;
     }
@@ -191,7 +198,7 @@ public class Soilstation implements Serializable {
     public void setB20(BigDecimal b20) {
         this.b20 = b20;
     }
-
+	@JSONField(name = "C20")
     public BigDecimal getC20() {
         return c20;
     }
@@ -199,7 +206,7 @@ public class Soilstation implements Serializable {
     public void setC20(BigDecimal c20) {
         this.c20 = c20;
     }
-
+	@JSONField(name = "D20")
     public BigDecimal getD20() {
         return d20;
     }
@@ -207,7 +214,7 @@ public class Soilstation implements Serializable {
     public void setD20(BigDecimal d20) {
         this.d20 = d20;
     }
-
+	@JSONField(name = "M20")
     public BigDecimal getM20() {
         return m20;
     }
@@ -215,7 +222,7 @@ public class Soilstation implements Serializable {
     public void setM20(BigDecimal m20) {
         this.m20 = m20;
     }
-
+	@JSONField(name = "N20")
     public BigDecimal getN20() {
         return n20;
     }
@@ -223,7 +230,7 @@ public class Soilstation implements Serializable {
     public void setN20(BigDecimal n20) {
         this.n20 = n20;
     }
-
+	@JSONField(name = "A30")
     public BigDecimal getA30() {
         return a30;
     }
@@ -231,7 +238,7 @@ public class Soilstation implements Serializable {
     public void setA30(BigDecimal a30) {
         this.a30 = a30;
     }
-
+	@JSONField(name = "B30")
     public BigDecimal getB30() {
         return b30;
     }
@@ -239,7 +246,7 @@ public class Soilstation implements Serializable {
     public void setB30(BigDecimal b30) {
         this.b30 = b30;
     }
-
+	@JSONField(name = "C30")
     public BigDecimal getC30() {
         return c30;
     }
@@ -247,7 +254,7 @@ public class Soilstation implements Serializable {
     public void setC30(BigDecimal c30) {
         this.c30 = c30;
     }
-
+	@JSONField(name = "D30")
     public BigDecimal getD30() {
         return d30;
     }
@@ -255,7 +262,7 @@ public class Soilstation implements Serializable {
     public void setD30(BigDecimal d30) {
         this.d30 = d30;
     }
-
+	@JSONField(name = "M30")
     public BigDecimal getM30() {
         return m30;
     }
@@ -263,7 +270,7 @@ public class Soilstation implements Serializable {
     public void setM30(BigDecimal m30) {
         this.m30 = m30;
     }
-
+	@JSONField(name = "N30")
     public BigDecimal getN30() {
         return n30;
     }
@@ -271,7 +278,7 @@ public class Soilstation implements Serializable {
     public void setN30(BigDecimal n30) {
         this.n30 = n30;
     }
-
+	@JSONField(name = "A40")
     public BigDecimal getA40() {
         return a40;
     }
@@ -279,7 +286,7 @@ public class Soilstation implements Serializable {
     public void setA40(BigDecimal a40) {
         this.a40 = a40;
     }
-
+	@JSONField(name = "B40")
     public BigDecimal getB40() {
         return b40;
     }
@@ -287,7 +294,7 @@ public class Soilstation implements Serializable {
     public void setB40(BigDecimal b40) {
         this.b40 = b40;
     }
-
+	@JSONField(name = "C40")
     public BigDecimal getC40() {
         return c40;
     }
@@ -295,7 +302,7 @@ public class Soilstation implements Serializable {
     public void setC40(BigDecimal c40) {
         this.c40 = c40;
     }
-
+	@JSONField(name = "D40")
     public BigDecimal getD40() {
         return d40;
     }
@@ -303,7 +310,7 @@ public class Soilstation implements Serializable {
     public void setD40(BigDecimal d40) {
         this.d40 = d40;
     }
-
+	@JSONField(name = "M40")
     public BigDecimal getM40() {
         return m40;
     }
@@ -311,7 +318,7 @@ public class Soilstation implements Serializable {
     public void setM40(BigDecimal m40) {
         this.m40 = m40;
     }
-
+	@JSONField(name = "N40")
     public BigDecimal getN40() {
         return n40;
     }
@@ -319,7 +326,7 @@ public class Soilstation implements Serializable {
     public void setN40(BigDecimal n40) {
         this.n40 = n40;
     }
-
+	@JSONField(name = "A60")
     public BigDecimal getA60() {
         return a60;
     }
@@ -327,7 +334,7 @@ public class Soilstation implements Serializable {
     public void setA60(BigDecimal a60) {
         this.a60 = a60;
     }
-
+	@JSONField(name = "B60")
     public BigDecimal getB60() {
         return b60;
     }
@@ -335,7 +342,7 @@ public class Soilstation implements Serializable {
     public void setB60(BigDecimal b60) {
         this.b60 = b60;
     }
-
+	@JSONField(name = "C60")
     public BigDecimal getC60() {
         return c60;
     }
@@ -343,7 +350,7 @@ public class Soilstation implements Serializable {
     public void setC60(BigDecimal c60) {
         this.c60 = c60;
     }
-
+	@JSONField(name = "D60")
     public BigDecimal getD60() {
         return d60;
     }
@@ -351,7 +358,7 @@ public class Soilstation implements Serializable {
     public void setD60(BigDecimal d60) {
         this.d60 = d60;
     }
-
+	@JSONField(name = "M60")
     public BigDecimal getM60() {
         return m60;
     }
@@ -359,7 +366,7 @@ public class Soilstation implements Serializable {
     public void setM60(BigDecimal m60) {
         this.m60 = m60;
     }
-
+    @JSONField(name = "N60")
     public BigDecimal getN60() {
         return n60;
     }
@@ -367,7 +374,7 @@ public class Soilstation implements Serializable {
     public void setN60(BigDecimal n60) {
         this.n60 = n60;
     }
-
+	@JSONField(name = "VoltageMin")
     public BigDecimal getVoltagemin() {
         return voltagemin;
     }
@@ -375,7 +382,7 @@ public class Soilstation implements Serializable {
     public void setVoltagemin(BigDecimal voltagemin) {
         this.voltagemin = voltagemin;
     }
-
+	@JSONField(name = "GSM")
     public String getGsm() {
         return gsm;
     }
@@ -383,7 +390,7 @@ public class Soilstation implements Serializable {
     public void setGsm(String gsm) {
         this.gsm = gsm;
     }
-
+	@JSONField(name = "GPRS")
     public String getGprs() {
         return gprs;
     }
@@ -391,7 +398,7 @@ public class Soilstation implements Serializable {
     public void setGprs(String gprs) {
         this.gprs = gprs;
     }
-
+	@JSONField(name = "BDSatellite")
     public String getBdsatellite() {
         return bdsatellite;
     }
@@ -399,7 +406,7 @@ public class Soilstation implements Serializable {
     public void setBdsatellite(String bdsatellite) {
         this.bdsatellite = bdsatellite;
     }
-
+	@JSONField(name = "BDMemberSatellite")
     public String getBdmember() {
         return bdmember;
     }
@@ -407,7 +414,7 @@ public class Soilstation implements Serializable {
     public void setBdmember(String bdmember) {
         this.bdmember = bdmember;
     }
-
+	@JSONField(name = "Maintran")
     public String getMaintran() {
         return maintran;
     }
@@ -415,7 +422,7 @@ public class Soilstation implements Serializable {
     public void setMaintran(String maintran) {
         this.maintran = maintran;
     }
-
+	@JSONField(name = "Subtran")
     public String getSubtran() {
         return subtran;
     }
@@ -423,7 +430,7 @@ public class Soilstation implements Serializable {
     public void setSubtran(String subtran) {
         this.subtran = subtran;
     }
-
+	@JSONField(name = "Datapotocol")
     public String getDataprotocol() {
         return dataprotocol;
     }
@@ -431,7 +438,7 @@ public class Soilstation implements Serializable {
     public void setDataprotocol(String dataprotocol) {
         this.dataprotocol = dataprotocol;
     }
-
+	@JSONField(name = "Reportinterval")
     public String getReportinterval() {
         return reportinterval;
     }

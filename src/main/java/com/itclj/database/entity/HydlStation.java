@@ -1,57 +1,60 @@
 package com.itclj.database.entity;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * HYDLSTATION
  * @author 
  */
-public class HydlStation implements Serializable {
+public class HydlStation  {
+	@JSONField(name="StationID")
     private String stationid;
-
+	@JSONField(name="SubCenterID")
     private Long subcenterid;
-
+	@JSONField(name="StationName")
     private String cname;
-
+	@JSONField(name="StationType")
     private String ctype;
-
+	@JSONField(name="DWaterBase")
     private BigDecimal wbase;
-
+	@JSONField(name="DWaterMax")
     private BigDecimal wmax;
-
+	@JSONField(name="DWaterMin")
     private BigDecimal wmin;
-
+	@JSONField(name="DWaterChange")
     private BigDecimal wchange;
-
+	@JSONField(name="DRainAccuracy")
     private BigDecimal raccuracy;
-
+	@JSONField(name="DRainChange")
     private BigDecimal rchange;
-
+	@JSONField(name="GSM")
     private String gsm;
-
+	@JSONField(name="GPRS")
     private String gprs;
-
+	@JSONField(name="BDSatellite")
     private String bdsatellite;
-
+	@JSONField(name="BDMemberSatellite")
     private String bdmember;
-
+	@JSONField(name="DVoltageMin")
     private BigDecimal voltagemin;
-
+	@JSONField(name="Maintran")
     private String maintran;
-
+	@JSONField(name="Subtran")
     private String subtran;
-
+	@JSONField(name="Datapotocol")
     private String dataprotocol;
-
+	@JSONField(name="Watersensor")
     private String watersensor;
-
+	@JSONField(name="Rainsensor")
     private String rainsensor;
-
+	@JSONField(name="Reportinterval")
     private String reportinterval;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -59,7 +62,7 @@ public class HydlStation implements Serializable {
     public void setStationid(String stationid) {
         this.stationid = stationid;
     }
-
+	@JSONField(name="SubCenterID")
     public Long getSubcenterid() {
         return subcenterid;
     }
@@ -67,7 +70,7 @@ public class HydlStation implements Serializable {
     public void setSubcenterid(Long subcenterid) {
         this.subcenterid = subcenterid;
     }
-
+	@JSONField(name="StationName")
     public String getCname() {
         return cname;
     }
@@ -75,7 +78,7 @@ public class HydlStation implements Serializable {
     public void setCname(String cname) {
         this.cname = cname;
     }
-
+	@JSONField(name="StationType")
     public String getCtype() {
         return ctype;
     }
@@ -83,7 +86,7 @@ public class HydlStation implements Serializable {
     public void setCtype(String ctype) {
         this.ctype = ctype;
     }
-
+	@JSONField(name="DWaterBase")
     public BigDecimal getWbase() {
         return wbase;
     }
@@ -91,7 +94,7 @@ public class HydlStation implements Serializable {
     public void setWbase(BigDecimal wbase) {
         this.wbase = wbase;
     }
-
+	@JSONField(name="DWaterMax")
     public BigDecimal getWmax() {
         return wmax;
     }
@@ -99,7 +102,7 @@ public class HydlStation implements Serializable {
     public void setWmax(BigDecimal wmax) {
         this.wmax = wmax;
     }
-
+	@JSONField(name="DWaterMin")
     public BigDecimal getWmin() {
         return wmin;
     }
@@ -107,7 +110,7 @@ public class HydlStation implements Serializable {
     public void setWmin(BigDecimal wmin) {
         this.wmin = wmin;
     }
-
+	@JSONField(name="DWaterChange")
     public BigDecimal getWchange() {
         return wchange;
     }
@@ -115,7 +118,7 @@ public class HydlStation implements Serializable {
     public void setWchange(BigDecimal wchange) {
         this.wchange = wchange;
     }
-
+	@JSONField(name="DRainAccuracy")
     public BigDecimal getRaccuracy() {
         return raccuracy;
     }
@@ -123,7 +126,7 @@ public class HydlStation implements Serializable {
     public void setRaccuracy(BigDecimal raccuracy) {
         this.raccuracy = raccuracy;
     }
-
+	@JSONField(name="DRainChange")
     public BigDecimal getRchange() {
         return rchange;
     }
@@ -131,7 +134,7 @@ public class HydlStation implements Serializable {
     public void setRchange(BigDecimal rchange) {
         this.rchange = rchange;
     }
-
+	@JSONField(name="GSM")
     public String getGsm() {
         return gsm;
     }
@@ -139,7 +142,7 @@ public class HydlStation implements Serializable {
     public void setGsm(String gsm) {
         this.gsm = gsm;
     }
-
+	@JSONField(name="GPRS")
     public String getGprs() {
         return gprs;
     }
@@ -147,7 +150,7 @@ public class HydlStation implements Serializable {
     public void setGprs(String gprs) {
         this.gprs = gprs;
     }
-
+	@JSONField(name="BDSatellite")
     public String getBdsatellite() {
         return bdsatellite;
     }
@@ -155,7 +158,7 @@ public class HydlStation implements Serializable {
     public void setBdsatellite(String bdsatellite) {
         this.bdsatellite = bdsatellite;
     }
-
+	@JSONField(name="BDMemberSatellite")
     public String getBdmember() {
         return bdmember;
     }
@@ -163,7 +166,7 @@ public class HydlStation implements Serializable {
     public void setBdmember(String bdmember) {
         this.bdmember = bdmember;
     }
-
+	@JSONField(name="DVoltageMin")
     public BigDecimal getVoltagemin() {
         return voltagemin;
     }
@@ -171,7 +174,7 @@ public class HydlStation implements Serializable {
     public void setVoltagemin(BigDecimal voltagemin) {
         this.voltagemin = voltagemin;
     }
-
+	@JSONField(name="Maintran")
     public String getMaintran() {
         return maintran;
     }
@@ -179,7 +182,7 @@ public class HydlStation implements Serializable {
     public void setMaintran(String maintran) {
         this.maintran = maintran;
     }
-
+	@JSONField(name="Subtran")
     public String getSubtran() {
         return subtran;
     }
@@ -187,7 +190,7 @@ public class HydlStation implements Serializable {
     public void setSubtran(String subtran) {
         this.subtran = subtran;
     }
-
+	@JSONField(name="Datapotocol")
     public String getDataprotocol() {
         return dataprotocol;
     }
@@ -195,7 +198,7 @@ public class HydlStation implements Serializable {
     public void setDataprotocol(String dataprotocol) {
         this.dataprotocol = dataprotocol;
     }
-
+	@JSONField(name="Watersensor")
     public String getWatersensor() {
         return watersensor;
     }
@@ -203,7 +206,7 @@ public class HydlStation implements Serializable {
     public void setWatersensor(String watersensor) {
         this.watersensor = watersensor;
     }
-
+	@JSONField(name="Rainsensor")
     public String getRainsensor() {
         return rainsensor;
     }
@@ -211,7 +214,7 @@ public class HydlStation implements Serializable {
     public void setRainsensor(String rainsensor) {
         this.rainsensor = rainsensor;
     }
-
+	@JSONField(name="Reportinterval")
     public String getReportinterval() {
         return reportinterval;
     }
