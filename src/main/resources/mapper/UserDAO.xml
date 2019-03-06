@@ -9,10 +9,15 @@
   </resultMap>
   <!-- 插入新用户 -->
   <insert id="insert" parameterType="com.itclj.database.entity.User">
-    insert into USER_ (UID_, `NAME`, `PASSWORD`, 
+    insert into USER_ (NAME, PASSWORD, 
       ADMINISTRATOR)
-    values (#{uid,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{administrator,jdbcType=DECIMAL})
+      			(
+           		select
+                #{name},
+                #{password},
+                #{administrator}
+                from dual
+                )
   </insert>
   <insert id="insertSelective" parameterType="com.itclj.database.entity.User">
     insert into USER_
@@ -60,7 +65,7 @@
         ADMINISTRATOR = #{administrator,jdbcType=DECIMAL},
       </if>
     </set>
-    where UID = #{stationid,jdbcType=VARCHAR}
+    where UID_ = #{UID_}
   </update>
 
 
@@ -68,8 +73,8 @@
     <delete id="deleteUser" parameterType="User">
     	delete from USER_
     	where  1=1
-       <if test="stationid != null and stationid != ''">
-       and UID_ = #{uid}
+       <if test="UID_ != null and UID_ != ''">
+       and UID_ = #{UID_}
        </if>
     </delete>
 

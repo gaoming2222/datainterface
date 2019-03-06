@@ -64,8 +64,9 @@ public class SubcenterController {
 			param.put("subcenterId",(String)tMap.get("subcenterId"));
 		}
 		subcenterList = subcenterService.getASubcenterList(param);
-		String s = JSON.toJSONString(subcenterList);
-		return s;
+		//将结果返回成首字母大写的Json字符串
+		String result = JSON.toJSONString(subcenterList);
+		return result;
 	}
 	/**
 	 * 批量插入分中心信息

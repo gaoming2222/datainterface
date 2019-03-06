@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class Subcenter {
-	//@JsonProperty(value = "SubCenterId")
+	
 	private String SubCenterID;
-	//@JsonProperty(value = "SubCenterName")
+	
 	private String  SubCenterName;
-	//@JsonProperty(value = "Comment")
-	@JSONField(name="SubCenterID")
+	
+	
 	private String Comment;
 	
 	@JSONField(name="SubCenterID")

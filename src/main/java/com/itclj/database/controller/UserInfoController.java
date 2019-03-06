@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.itclj.database.entity.Subcenter;
 import com.itclj.database.entity.User;
 import com.itclj.database.service.UserService;
 
@@ -35,12 +36,14 @@ public class UserInfoController {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/user/getUser", method = RequestMethod.POST)
 	@ResponseBody
-	public List<User> getUserInfo(HttpServletRequest request) {
+	public String getUserInfo(HttpServletRequest request) {
 		Map<String,Object> param = new HashMap<>();
 		List<User> userList = new ArrayList<User>();
 		String jsonStr  =(String) request.getParameter("user");
+		Map tMap = JSON.parseObject(jsonStr,Map.class); 
 		logger.info("查询用户数据参数为" + jsonStr);
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("uid", "");
@@ -48,15 +51,15 @@ public class UserInfoController {
 			param.put("password", "");
 			param.put("administrator", "");
 		}else {
-			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			User user = JSON.parseObject(jsonStr, new TypeReference<User>() {});
-			param.put("uid", user.getUser());
-			param.put("name", user.getName());
-			param.put("password", user.getPassword());
-			param.put("administrator", null);
+			param.put("uid", (String)tMap.get("uid"));
+			param.put("name", (String)tMap.get("uid"));
+			param.put("password", (String)tMap.get("uid"));
+			param.put("administrator", (String)tMap.get("uid"));
 		}
 		userList = userService.getUserList(param);
-		return userList;
+		//将结果返回成首字母大写的Json字符串
+		String result = JSON.toJSONString(userList);
+		return result;
 	}
 	/**
 	 * 批量插入用户数据
@@ -70,6 +73,7 @@ public class UserInfoController {
 		List<User> userList = new ArrayList<User>();
 		String jsonStr  =(String) request.getParameter("user");
 		logger.info("插入用户数据，参数为" + jsonStr);
+		//List<Map<String, Object>> aa = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Map<String, Object>>>() {});
 		userList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<User>>() {});
 		result = userService.insertUser(userList);
 		return result;
