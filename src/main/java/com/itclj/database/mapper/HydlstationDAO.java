@@ -17,8 +17,6 @@ public interface HydlstationDAO {
 
     public int insertSelective(HydlStation record);
 
-    public List<HydlStation> selectByPrimaryKey(Map<String,Object> param);
-
     public int updateByPrimaryKeySelective(HydlStation record);
 
     public int updateByPrimaryKey(HydlStation record);

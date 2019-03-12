@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itclj.database.mapper.HydlstationDAO">
+
   <resultMap id="BaseResultMap" type="com.itclj.database.entity.HydlStation">
     <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
     <result column="SUBCENTERID" jdbcType="DECIMAL" property="subcenterid" />
@@ -21,7 +22,7 @@
     <result column="SUBTRAN" jdbcType="VARCHAR" property="subtran" />
     <result column="DATAPROTOCOL" jdbcType="VARCHAR" property="dataprotocol" />
     <result column="WATERSENSOR" jdbcType="CHAR" property="watersensor" />
-    <result column="RAINSENSOR" jdbcType="CHAR" property="rainsensor" />
+    <result column="RAINSENSOR" jdbcType="VARCHAR" property="rainsensor" />
     <result column="REPORTINTERVAL" jdbcType="VARCHAR" property="reportinterval" />
   </resultMap>
   
@@ -32,25 +33,38 @@
     RAINSENSOR, REPORTINTERVAL
   </sql>
   
-  <!-- 根据条件查询水情站点 -->
-  <select id="selectByPrimaryKey"  resultType="HydlStation">
+  <!-- 查询水情站点 -->
+  <select id="selectHydlstationList"  parameterType="java.util.Map" resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
-    from HYDLSTATION
+    nvl(t.stationid,chr(32)) as stationid,
+    nvl(t.subcenterid,'') as subcenterid,
+    nvl(t.cname,chr(32)) as cname,
+    nvl(t.ctype,chr(32)) as ctype,
+    t.wbase,
+    t.wmax,
+    t.wmin,
+    t.wchange,
+    nvl(t.raccuracy,'') as raccuracy,
+    nvl(t.rchange,'') as rchange,
+    nvl(t.gsm,chr(32)) as gsm,
+    nvl(t.gprs,chr(32)) as gprs,
+    nvl(t.bdsatellite,chr(32)) as bdsatellite,
+    nvl(t.bdmember,chr(32)) as bdmember,
+    nvl(t.voltagemin,'') as voltagemin,
+    nvl(t.maintran,chr(32)) as maintran,
+    nvl(t.subtran,chr(32)) as subtran,
+    nvl(t.dataprotocol,chr(32)) as dataprotocol,
+    nvl(t.watersensor,chr(32)) as watersensor,
+    nvl(t.rainsensor,chr(32)) as rainsensor,
+    nvl(t.reportinterval,chr(32)) as reportinterval
+    
+    from HYDLSTATION t
     where
     1=1
     <if test="stationid != null and stationid != ''">
      AND STATIONID = #{stationid,jdbcType=VARCHAR}
     </if>
-    <if test="subcenterid != null and subcenterid != ''">
-     AND SUBCENTERID = #{subcenterid,jdbcType=VARCHAR}
-    </if>
-    <if test="ctype != null and ctype != ''">
-     AND CTYPE = #{ctype,jdbcType=VARCHAR}
-    </if>
-    <if test="MAINTRAN != null and maintran != ''">
-     AND MAINTRAN = #{maintran,jdbcType=VARCHAR}
-    </if>
+    
   </select>
   
   <!-- 根据主键删除水情站点 物理删除 -->
@@ -64,7 +78,8 @@
   
   <!-- 批量插入 -->
   <insert id="insertHydlstationList" parameterType="java.util.List">
-    	insert into HYDLSTATION (STATIONID, SUBCENTERID, CNAME, CTYPE, 
+    	insert into HYDLSTATION 
+    	(STATIONID, SUBCENTERID, CNAME, CTYPE, 
       WBASE, WMAX, WMIN, WCHANGE,
       RACCURACY, RCHANGE, GSM, GPRS, 
       BDSATELLITE, BDMEMBER, VOLTAGEMIN, MAINTRAN, SUBTRAN,
@@ -72,12 +87,14 @@
       <foreach collection ="list" item="item" index= "index" separator ="union all">
      (
      	select
-     	#{item.stationid}, #{item.subcenterid}, #{item.cname}, #{item.ctype}, 
-      	#{item.wbase}, #{item.wmax}, #{item.wmin}, #{item.wchange}, 
-     	#{item.raccuracy}, #{item.rchange}, #{item.gsm}, #{item.gprs}, 
-      	#{item.bdsatellite}, #{item.bdmember}, #{item.voltagemin}, 
-      	#{item.maintran}, #{item.subtran}, #{item.dataprotocol}, 
-      	#{item.watersensor}, #{item.rainsensor}, #{item.reportinterval}
+     	#{item.stationid,jdbcType=VARCHAR}, #{item.subcenterid,jdbcType=DECIMAL}, 
+     	#{item.cname,jdbcType=VARCHAR}, #{item.ctype,jdbcType=CHAR}, 
+      	#{item.wbase,jdbcType=DECIMAL}, #{item.wmax,jdbcType=DECIMAL}, #{item.wmin,jdbcType=DECIMAL}, 
+      	#{item.wchange,jdbcType=DECIMAL}, #{item.raccuracy,jdbcType=DECIMAL}, 
+      	#{item.rchange,jdbcType=DECIMAL}, #{item.gsm,jdbcType=VARCHAR}, #{item.gprs,jdbcType=VARCHAR}, 
+      	#{item.bdsatellite,jdbcType=VARCHAR}, #{item.bdmember,jdbcType=VARCHAR}, #{item.voltagemin,jdbcType=DECIMAL}, 
+      	#{item.maintran,jdbcType=VARCHAR}, #{item.subtran,jdbcType=VARCHAR}, #{item.dataprotocol,jdbcType=VARCHAR}, 
+      	#{item.watersensor,jdbcType=CHAR}, #{item.rainsensor,jdbcType=VARCHAR}, #{item.reportinterval,jdbcType=VARCHAR}
       	from dual
       )
       </foreach >
@@ -336,66 +353,69 @@
     		<foreach collection="list" item="item" index="index" separator=";">
     			update HYDLSTATION
     			<set>
+    				<if test="item.subcenterid != null and item.subcenterid != ''">
+       			 	SUBCENTERID = #{item.subcenterid},
+     				 </if>
     				<if test="item.cname !=null and item.cname != ''">
     				CNAME = #{item.cname},
     				</if>
     				<if test="item.ctype !=null and item.ctype != ''">
-    				CTYPE = #{item.ctype}
+    				CTYPE = #{item.ctype},
     				</if>
     				<if test="item.wbase !=null and item.wbase != ''">
-    				WBASE = #{item.wbase}
+    				WBASE = #{item.wbase},
     				</if>
     				<if test="item.wmax !=null and item.wmax != ''">
-    				WMAX = #{item.wmax}
+    				WMAX = #{item.wmax},
     				</if>
     				<if test="item.wmin !=null and item.wmin != ''">
-    				WMIN = #{item.wmin}
+    				WMIN = #{item.wmin},
     				</if>
     				<if test="item.wchange !=null and item.wchange != ''">
-    				WCHANGE = #{item.wchange}
+    				WCHANGE = #{item.wchange},
     				</if>
     				<if test="item.raccuracy !=null and item.raccuracy != ''">
-    				RACCURACY = #{item.raccuracy}
+    				RACCURACY = #{item.raccuracy},
     				</if>
     				<if test="item.rchange !=null and item.rchange != ''">
-    				RCHANGE = #{item.rchange}
+    				RCHANGE = #{item.rchange},
     				</if>
     				<if test="item.gsm !=null and item.gsm != ''">
-    				GSM = #{item.gsm}
+    				GSM = #{item.gsm},
     				</if>
     				<if test="item.gprs !=null and item.gprs != ''">
-    				GPRS = #{item.gprs}
+    				GPRS = #{item.gprs},
     				</if>
     				<if test="item.bdsatellite !=null and item.bdsatellite != ''">
-    				BDSATELLITE = #{item.bdsatellite}
+    				BDSATELLITE = #{item.bdsatellite},
     				</if>
     				<if test="item.bdmember !=null and item.bdmember != ''">
-    				BDMEMBER = #{item.bdmember}
+    				BDMEMBER = #{item.bdmember},
     				</if>
     				<if test="item.voltagemin !=null and item.voltagemin != ''">
-    				VOLTAGEMIN = #{item.voltagemin}
+    				VOLTAGEMIN = #{item.voltagemin},
     				</if>
     				<if test="item.maintran !=null and item.maintran != ''">
-    				MAINTRAN = #{item.maintran}
+    				MAINTRAN = #{item.maintran},
     				</if>
     				<if test="item.subtran !=null and item.subtran != ''">
-    				SUBTRAN = #{item.subtran}
+    				SUBTRAN = #{item.subtran},
     				</if>
     				<if test="item.dataprotocol !=null and item.dataprotocol != ''">
-    				DATAPROTOCOL = #{item.dataprotocol}
+    				DATAPROTOCOL = #{item.dataprotocol},
     				</if>
     				<if test="item.watersensor !=null and item.watersensor != ''">
-    				WATERSENSOR = #{item.watersensor}
+    				WATERSENSOR = #{item.watersensor},
     				</if>
     				<if test="item.rainsensor !=null and item.rainsensor != ''">
-    				RAINSENSOR = #{item.rainsensor}
+    				RAINSENSOR = #{item.rainsensor},
     				</if>
     				<if test="item.reportinterval !=null and item.reportinterval != ''">
     				REPORTINTERVAL = #{item.reportinterval}
     				</if>
     			</set>
     			 where 
-    			subcenterid=#{item.subcenterid}
+    			stationid = #{item.stationid}
     		</foreach>
     	;end;
     </update>

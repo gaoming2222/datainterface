@@ -87,19 +87,23 @@ public class SoilstationService {
 	 * @return
 	 */
 	public int deleteSoilstation(List<Soilstation> soilstationList) {
-		logger.info("开始删除墒情站信息" + soilstationList.size());
+		logger.info("开始删除墒情站信息" + soilstationList);
 		int result = 0;
+		int flag = 0;
+		String [] soilstationIds = new String[soilstationList.size()];
 		try {
 			for (Soilstation soilstation : soilstationList) {
-				result = result + soilstationDAO.deleteByPrimaryKey(soilstation.getStationid());
+				soilstationIds[flag] = soilstation.getStationid();
+				flag++;
 			}
+			result = result + soilstationDAO.deleteByPrimaryKey(soilstationIds);
 		}catch (Exception e) {
 			logger.error("删除墒情站信息失败" + e.getMessage());
 			return -1;
 		}
 		
 		logger.info("删除墒情站信息完成" + result);
-	return result;
+		return result;
 	}
 
 }

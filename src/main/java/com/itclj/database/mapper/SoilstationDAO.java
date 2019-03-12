@@ -6,17 +6,17 @@ import java.util.Map;
 import com.itclj.database.entity.Soilstation;
 
 public interface SoilstationDAO {
-    int deleteByPrimaryKey(String stationid);
+	public int deleteByPrimaryKey(String[] stationids);
 
-    int insert(Soilstation record);
+	public int insert(Soilstation record);
     
     public int insertSoilstationList(List<Soilstation> records);
 
-    int insertSelective(Soilstation record);
+    public int insertSelective(Soilstation record);
 
     public List<Soilstation> selectByPrimaryKey(Map<String, Object> param);
 
-    int updateByPrimaryKeySelective(Soilstation record);
+    public int updateByPrimaryKeySelective(Soilstation record);
 
-    int updateByPrimaryKey(Soilstation record);
+    public int updateByPrimaryKey(Soilstation record);
 }

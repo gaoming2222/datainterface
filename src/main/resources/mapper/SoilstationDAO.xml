@@ -54,23 +54,73 @@
   </sql>
   <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
     select 
-    <include refid="Base_Column_List" />
-    from SOILSTATION
+    nvl(t.stationid,chr(32)) as stationid,
+    nvl(t.subcenterid,'') as subcenterid,    
+    nvl(t.cname,chr(32)) as cname,
+    nvl(t.ctype,chr(32)) as ctype,
+    t.a10,    
+    t.b10,
+    t.c10,
+    t.d10,
+    t.m10,
+    t.n10,
+    t.a20,
+    t.b20,
+    t.c20,
+    t.d20,
+    t.m20,
+    t.n20,
+    t.a30,
+    t.b30,
+    t.c30,
+    t.d30,
+    t.m30,
+    t.n30,
+    t.a40,
+    t.b40,
+    t.c40,
+    t.d40,
+    t.m40,
+    t.n40,
+    t.a60,
+    t.b60,
+    t.c60,
+    t.d60,
+    t.m60,
+    t.n60,
+    t.voltagemin,
+    nvl(t.gsm,chr(32)) as gsm,
+    nvl(t.gprs,chr(32)) as gprs,
+    nvl(t.bdsatellite,chr(32)) as bdsatellite,
+    nvl(t.bdmember,chr(32)) as bdmember,
+    nvl(t.maintran,chr(32)) as maintran,
+    nvl(t.subtran,chr(32)) as subtran,
+    nvl(t.dataprotocol,chr(32)) as dataprotocol,
+    nvl(t.reportinterval,chr(32)) as reportinterval
+    
+    from SOILSTATION t
     where 1=1
     <if test="stationid != null and stationid != ''">
-     AND STATIONID = #{stationid,jdbcType=VARCHAR}
+     AND STATIONID = #{stationid,jdbcType=CHAR}
     </if>
     <if test="subcenterid != null and subcenterid != ''">
-     AND SUBCENTERID = #{subcenterid,jdbcType=VARCHAR}
+     AND SUBCENTERID = #{subcenterid,jdbcType=DECIMAL}
     </if>
     <if test="MAINTRAN != null and maintran != ''">
      AND MAINTRAN = #{maintran,jdbcType=VARCHAR}
     </if>
   </select>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from SOILSTATION
-    where STATIONID = #{stationid,jdbcType=CHAR}
+    where STATIONID in
+    <foreach collection="array" item="stationid" open="(" separator="," close=")">
+    	#{stationid}
+    </foreach>
   </delete>
+  
   <insert id="insert" parameterType="com.itclj.database.entity.Soilstation">
     <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
       Oracle

@@ -31,7 +31,7 @@ public class HydlstationService {
 		List<HydlStation> retList = new ArrayList<HydlStation>();
 		logger.info("开始查询水情站信息" + param);
 		try {
-			retList = hydlstationDAO.selectByPrimaryKey(param);
+			retList = hydlstationDAO.selectHydlstationList(param);
 		}catch(Exception e) {
 			logger.error("查询水情站信息失败" + e.getMessage());
 			return null;
@@ -63,7 +63,7 @@ public class HydlstationService {
 	 * @return
 	 */
 	public int updateHydlStation(List<HydlStation> hydlStationList) {
-		logger.info("开始更新水情站信息" + hydlStationList.size());
+		logger.info("开始更新水情站信息" + hydlStationList);
 		int result = 0;
 		try {
 			result = result + hydlstationDAO.updateHydlstationList(hydlStationList);
@@ -80,7 +80,7 @@ public class HydlstationService {
 	 * @return
 	 */
 	public int deleteHydlStation(List<HydlStation>  hydlStationList) {
-		logger.info("开始删除水情站信息" + hydlStationList.size());
+		logger.info("开始删除水情站信息" + hydlStationList);
 		int result = 0;
 		int flag = 0;
 		String [] hydlStationIds = new String[hydlStationList.size()];

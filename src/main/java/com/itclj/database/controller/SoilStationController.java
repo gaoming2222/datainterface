@@ -47,9 +47,7 @@ public class SoilStationController {
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("stationid", "");
 		}else {
-			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			//Soilstation soilstation = JSON.parseObject(jsonStr, new TypeReference<Soilstation>() {});
-			//param.put("stationid", soilstation.getStationid());
+
 			param.put("stationid",(String)tMap.get("stationid"));
 
 		}
