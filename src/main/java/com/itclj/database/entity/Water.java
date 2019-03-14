@@ -2,31 +2,41 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * WATER
  * @author 
  */
 public class Water implements Serializable {
+	@JSONField(name="StationID")
     private String stationid;
 
-    private Date datatime;
+	@JSONField(name="TimeCollect")
+    private String datatime;
 
+	@JSONField(name="TimeRecieved")
+    private String recvdatatime;
+
+	@JSONField(name="WaterStage")
     private BigDecimal waterstage;
 
+	@JSONField(name="WaterFlow")
     private BigDecimal waterflow;
 
-    private String transtype;
-
+	@JSONField(name="MessageType")
     private String messagetype;
 
-    private Date recvdatatime;
+	@JSONField(name="ChannelType")
+    private String transtype;
 
+	@JSONField(name="state")
     private Long state;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -35,14 +45,25 @@ public class Water implements Serializable {
         this.stationid = stationid;
     }
 
-    public Date getDatatime() {
+	@JSONField(name="TimeCollect")
+    public String getDatatime() {
         return datatime;
     }
 
-    public void setDatatime(Date datatime) {
+    public void setDatatime(String datatime) {
         this.datatime = datatime;
     }
 
+	@JSONField(name="TimeRecieved")
+    public String getRecvdatatime() {
+        return recvdatatime;
+    }
+
+    public void setRecvdatatime(String recvdatatime) {
+        this.recvdatatime = recvdatatime;
+    }
+
+	@JSONField(name="WaterStage")
     public BigDecimal getWaterstage() {
         return waterstage;
     }
@@ -51,6 +72,7 @@ public class Water implements Serializable {
         this.waterstage = waterstage;
     }
 
+	@JSONField(name="WaterFlow")
     public BigDecimal getWaterflow() {
         return waterflow;
     }
@@ -59,14 +81,7 @@ public class Water implements Serializable {
         this.waterflow = waterflow;
     }
 
-    public String getTranstype() {
-        return transtype;
-    }
-
-    public void setTranstype(String transtype) {
-        this.transtype = transtype;
-    }
-
+	@JSONField(name="MessageType")
     public String getMessagetype() {
         return messagetype;
     }
@@ -75,14 +90,16 @@ public class Water implements Serializable {
         this.messagetype = messagetype;
     }
 
-    public Date getRecvdatatime() {
-        return recvdatatime;
+	@JSONField(name="ChannelType")
+    public String getTranstype() {
+        return transtype;
     }
 
-    public void setRecvdatatime(Date recvdatatime) {
-        this.recvdatatime = recvdatatime;
+    public void setTranstype(String transtype) {
+        this.transtype = transtype;
     }
 
+	@JSONField(name="state")
     public Long getState() {
         return state;
     }

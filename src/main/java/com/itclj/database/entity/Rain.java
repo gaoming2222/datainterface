@@ -2,35 +2,48 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * RAIN
  * @author 
  */
 public class Rain implements Serializable {
+	
+	@JSONField(name="StationID")
     private String stationid;
 
+	@JSONField(name="TimeCollect")
     private String datatime;
 
+	@JSONField(name="PeriodRain")
     private BigDecimal periodrain;
 
+	@JSONField(name="DifferneceRain")
     private BigDecimal differencerain;
 
+	@JSONField(name="TotalRain")
     private BigDecimal totalrain;
 
+	@JSONField(name="DayRain")
     private BigDecimal dayrain;
 
+	@JSONField(name="ChannelType")
     private String transtype;
 
+	@JSONField(name="MessageType")
     private String messagetype;
 
+	@JSONField(name="TimeRecieved")
     private String recvdatatime;
 
+	@JSONField(name="BState")
     private Long state;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -39,6 +52,7 @@ public class Rain implements Serializable {
         this.stationid = stationid;
     }
 
+	@JSONField(name="TimeCollect")
     public String getDatatime() {
         return datatime;
     }
@@ -47,6 +61,7 @@ public class Rain implements Serializable {
         this.datatime = datatime;
     }
 
+	@JSONField(name="PeriodRain")
     public BigDecimal getPeriodrain() {
         return periodrain;
     }
@@ -55,6 +70,7 @@ public class Rain implements Serializable {
         this.periodrain = periodrain;
     }
 
+	@JSONField(name="DifferneceRain")
     public BigDecimal getDifferencerain() {
         return differencerain;
     }
@@ -63,6 +79,7 @@ public class Rain implements Serializable {
         this.differencerain = differencerain;
     }
 
+	@JSONField(name="TotalRain")
     public BigDecimal getTotalrain() {
         return totalrain;
     }
@@ -71,6 +88,7 @@ public class Rain implements Serializable {
         this.totalrain = totalrain;
     }
 
+	@JSONField(name="DayRain")
     public BigDecimal getDayrain() {
         return dayrain;
     }
@@ -79,6 +97,7 @@ public class Rain implements Serializable {
         this.dayrain = dayrain;
     }
 
+	@JSONField(name="ChannelType")
     public String getTranstype() {
         return transtype;
     }
@@ -87,6 +106,7 @@ public class Rain implements Serializable {
         this.transtype = transtype;
     }
 
+	@JSONField(name="MessageType")
     public String getMessagetype() {
         return messagetype;
     }
@@ -95,6 +115,7 @@ public class Rain implements Serializable {
         this.messagetype = messagetype;
     }
 
+	@JSONField(name="TimeRecieved")
     public String getRecvdatatime() {
         return recvdatatime;
     }
@@ -103,6 +124,7 @@ public class Rain implements Serializable {
         this.recvdatatime = recvdatatime;
     }
 
+	@JSONField(name="BState")
     public Long getState() {
         return state;
     }

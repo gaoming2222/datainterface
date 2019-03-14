@@ -9,13 +9,13 @@ import com.itclj.database.entity.Rain;
 public interface RainDAO {
     int insert(Rain record);
 
-    int insertRainList(List<Rain> records);
+    public int insertRainList(List<Rain> records);
     
-    List<Rain> getRainList(Map<String,Object> param);
+    public List<Rain> getRainList(Map<String,Object> param);
     
-    int updateRainList(List<Rain> records);
+    public int updateRainList(List<Rain> records);
     
-    int deleteRain(Rain record);
+    public int deleteRain(Rain record);
     
-    int insertSelective(Rain record);
+    public int insertSelective(Rain record);
 }

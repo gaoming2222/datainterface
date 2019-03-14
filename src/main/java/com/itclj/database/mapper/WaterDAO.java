@@ -5,15 +5,15 @@ import java.util.Map;
 import com.itclj.database.entity.Water;
 
 public interface WaterDAO {
-    int insert(Water record);
+	public int insert(Water record);
 
-    int insertSelective(Water record);
+	public int insertSelective(Water record);
     
-    int insertWaterList(List<Water> records);
+	public int insertWaterList(List<Water> records);
     
-    int updateWaterList(List<Water> records);
+	public int updateWaterList(List<Water> records);
     
-    List<Water> getWaterList(Map<String,Object> param);
+	public List<Water> getWaterList(Map<String,Object> param);
     
-    int deleteWater(Water record);
+	public int deleteWater(Water record);
 }

@@ -7,15 +7,15 @@ import com.itclj.database.entity.Soildata;
 
 
 public interface SoildataDAO {
-    int insert(Soildata record);
+	public int insert(Soildata record);
 
-    int insertSelective(Soildata record);
+    public int insertSelective(Soildata record);
     
-    int insertSoilList(List<Soildata> records);
+    public int insertSoilList(List<Soildata> records);
     
-    int updateSoilList(List<Soildata> records);
+    public int updateSoilList(List<Soildata> records);
     
-    int deleteSoil(Soildata record);
+    public int deleteSoil(Soildata record);
     
-    int getSoilList(Map<String,Object> param);
+    public List<Soildata> getSoilList(Map<String,Object> param);
 }

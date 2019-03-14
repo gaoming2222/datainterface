@@ -2,49 +2,68 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * SOILDATA
  * @author 
  */
 public class Soildata implements Serializable {
+	@JSONField(name="StationID")
     private String stationid;
 
-    private Date datatime;
+	@JSONField(name="DataTime")
+    private String datatime;
 
+	@JSONField(name="DVoltage")
     private BigDecimal voltage;
 
+	@JSONField(name="Voltage10")
     private BigDecimal voltage10;
 
+	@JSONField(name="Moisture10")
     private BigDecimal moisture10;
 
+	@JSONField(name="Voltage20")
     private BigDecimal voltage20;
 
+	@JSONField(name="Moisture20")
     private BigDecimal moisture20;
 
+	@JSONField(name="Voltage30")
     private BigDecimal voltage30;
 
-    private BigDecimal moistrue30;
+	@JSONField(name="Moisture30")
+    private BigDecimal moisture30;
 
+	@JSONField(name="Voltage40")
     private BigDecimal voltage40;
 
-    private BigDecimal moistrue40;
+	@JSONField(name="Moisture40")
+    private BigDecimal moisture40;
 
+	@JSONField(name="Voltage60")
     private BigDecimal voltage60;
 
-    private BigDecimal moistrue60;
+	@JSONField(name="Moisture60")
+    private BigDecimal moisture60;
 
+	@JSONField(name="ChannelType")
     private String transtype;
 
+	@JSONField(name="MessageType")
     private String messagetype;
 
-    private Date recvdatatime;
+	@JSONField(name="reciveTime")
+    private String recvdatatime;
 
+	@JSONField(name="state")
     private Long state;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -53,14 +72,16 @@ public class Soildata implements Serializable {
         this.stationid = stationid;
     }
 
-    public Date getDatatime() {
+	@JSONField(name="DataTime")
+    public String getDatatime() {
         return datatime;
     }
 
-    public void setDatatime(Date datatime) {
+    public void setDatatime(String datatime) {
         this.datatime = datatime;
     }
 
+	@JSONField(name="DVoltage")
     public BigDecimal getVoltage() {
         return voltage;
     }
@@ -69,6 +90,7 @@ public class Soildata implements Serializable {
         this.voltage = voltage;
     }
 
+	@JSONField(name="Voltage10")
     public BigDecimal getVoltage10() {
         return voltage10;
     }
@@ -77,6 +99,7 @@ public class Soildata implements Serializable {
         this.voltage10 = voltage10;
     }
 
+	@JSONField(name="Moisture10")
     public BigDecimal getMoisture10() {
         return moisture10;
     }
@@ -85,6 +108,7 @@ public class Soildata implements Serializable {
         this.moisture10 = moisture10;
     }
 
+	@JSONField(name="Voltage20")
     public BigDecimal getVoltage20() {
         return voltage20;
     }
@@ -93,6 +117,7 @@ public class Soildata implements Serializable {
         this.voltage20 = voltage20;
     }
 
+	@JSONField(name="Moisture20")
     public BigDecimal getMoisture20() {
         return moisture20;
     }
@@ -101,6 +126,7 @@ public class Soildata implements Serializable {
         this.moisture20 = moisture20;
     }
 
+	@JSONField(name="Voltage30")
     public BigDecimal getVoltage30() {
         return voltage30;
     }
@@ -109,14 +135,16 @@ public class Soildata implements Serializable {
         this.voltage30 = voltage30;
     }
 
-    public BigDecimal getMoistrue30() {
-        return moistrue30;
+	@JSONField(name="Moisture30")
+    public BigDecimal getMoisture30() {
+        return moisture30;
     }
 
-    public void setMoistrue30(BigDecimal moistrue30) {
-        this.moistrue30 = moistrue30;
+    public void setMoisture30(BigDecimal moisture30) {
+        this.moisture30 = moisture30;
     }
 
+	@JSONField(name="Voltage40")
     public BigDecimal getVoltage40() {
         return voltage40;
     }
@@ -125,14 +153,16 @@ public class Soildata implements Serializable {
         this.voltage40 = voltage40;
     }
 
-    public BigDecimal getMoistrue40() {
-        return moistrue40;
+	@JSONField(name="Moisture40")
+    public BigDecimal getMoisture40() {
+        return moisture40;
     }
 
-    public void setMoistrue40(BigDecimal moistrue40) {
-        this.moistrue40 = moistrue40;
+    public void setMoisture40(BigDecimal moisture40) {
+        this.moisture40 = moisture40;
     }
 
+	@JSONField(name="Voltage60")
     public BigDecimal getVoltage60() {
         return voltage60;
     }
@@ -141,14 +171,16 @@ public class Soildata implements Serializable {
         this.voltage60 = voltage60;
     }
 
-    public BigDecimal getMoistrue60() {
-        return moistrue60;
+	@JSONField(name="Moisture60")
+    public BigDecimal getMoisture60() {
+        return moisture60;
     }
 
-    public void setMoistrue60(BigDecimal moistrue60) {
-        this.moistrue60 = moistrue60;
+    public void setMoisture60(BigDecimal moisture60) {
+        this.moisture60 = moisture60;
     }
 
+	@JSONField(name="ChannelType")
     public String getTranstype() {
         return transtype;
     }
@@ -157,6 +189,7 @@ public class Soildata implements Serializable {
         this.transtype = transtype;
     }
 
+	@JSONField(name="MessageType")
     public String getMessagetype() {
         return messagetype;
     }
@@ -165,14 +198,16 @@ public class Soildata implements Serializable {
         this.messagetype = messagetype;
     }
 
-    public Date getRecvdatatime() {
+	@JSONField(name="reciveTime")
+    public String getRecvdatatime() {
         return recvdatatime;
     }
 
-    public void setRecvdatatime(Date recvdatatime) {
+    public void setRecvdatatime(String recvdatatime) {
         this.recvdatatime = recvdatatime;
     }
 
+	@JSONField(name="state")
     public Long getState() {
         return state;
     }
@@ -201,11 +236,11 @@ public class Soildata implements Serializable {
             && (this.getVoltage20() == null ? other.getVoltage20() == null : this.getVoltage20().equals(other.getVoltage20()))
             && (this.getMoisture20() == null ? other.getMoisture20() == null : this.getMoisture20().equals(other.getMoisture20()))
             && (this.getVoltage30() == null ? other.getVoltage30() == null : this.getVoltage30().equals(other.getVoltage30()))
-            && (this.getMoistrue30() == null ? other.getMoistrue30() == null : this.getMoistrue30().equals(other.getMoistrue30()))
+            && (this.getMoisture30() == null ? other.getMoisture30() == null : this.getMoisture30().equals(other.getMoisture30()))
             && (this.getVoltage40() == null ? other.getVoltage40() == null : this.getVoltage40().equals(other.getVoltage40()))
-            && (this.getMoistrue40() == null ? other.getMoistrue40() == null : this.getMoistrue40().equals(other.getMoistrue40()))
+            && (this.getMoisture40() == null ? other.getMoisture40() == null : this.getMoisture40().equals(other.getMoisture40()))
             && (this.getVoltage60() == null ? other.getVoltage60() == null : this.getVoltage60().equals(other.getVoltage60()))
-            && (this.getMoistrue60() == null ? other.getMoistrue60() == null : this.getMoistrue60().equals(other.getMoistrue60()))
+            && (this.getMoisture60() == null ? other.getMoisture60() == null : this.getMoisture60().equals(other.getMoisture60()))
             && (this.getTranstype() == null ? other.getTranstype() == null : this.getTranstype().equals(other.getTranstype()))
             && (this.getMessagetype() == null ? other.getMessagetype() == null : this.getMessagetype().equals(other.getMessagetype()))
             && (this.getRecvdatatime() == null ? other.getRecvdatatime() == null : this.getRecvdatatime().equals(other.getRecvdatatime()))
@@ -224,11 +259,11 @@ public class Soildata implements Serializable {
         result = prime * result + ((getVoltage20() == null) ? 0 : getVoltage20().hashCode());
         result = prime * result + ((getMoisture20() == null) ? 0 : getMoisture20().hashCode());
         result = prime * result + ((getVoltage30() == null) ? 0 : getVoltage30().hashCode());
-        result = prime * result + ((getMoistrue30() == null) ? 0 : getMoistrue30().hashCode());
+        result = prime * result + ((getMoisture30() == null) ? 0 : getMoisture30().hashCode());
         result = prime * result + ((getVoltage40() == null) ? 0 : getVoltage40().hashCode());
-        result = prime * result + ((getMoistrue40() == null) ? 0 : getMoistrue40().hashCode());
+        result = prime * result + ((getMoisture40() == null) ? 0 : getMoisture40().hashCode());
         result = prime * result + ((getVoltage60() == null) ? 0 : getVoltage60().hashCode());
-        result = prime * result + ((getMoistrue60() == null) ? 0 : getMoistrue60().hashCode());
+        result = prime * result + ((getMoisture60() == null) ? 0 : getMoisture60().hashCode());
         result = prime * result + ((getTranstype() == null) ? 0 : getTranstype().hashCode());
         result = prime * result + ((getMessagetype() == null) ? 0 : getMessagetype().hashCode());
         result = prime * result + ((getRecvdatatime() == null) ? 0 : getRecvdatatime().hashCode());
@@ -250,11 +285,11 @@ public class Soildata implements Serializable {
         sb.append(", voltage20=").append(voltage20);
         sb.append(", moisture20=").append(moisture20);
         sb.append(", voltage30=").append(voltage30);
-        sb.append(", moistrue30=").append(moistrue30);
+        sb.append(", moistrue30=").append(moisture30);
         sb.append(", voltage40=").append(voltage40);
-        sb.append(", moistrue40=").append(moistrue40);
+        sb.append(", moistrue40=").append(moisture40);
         sb.append(", voltage60=").append(voltage60);
-        sb.append(", moistrue60=").append(moistrue60);
+        sb.append(", moistrue60=").append(moisture60);
         sb.append(", transtype=").append(transtype);
         sb.append(", messagetype=").append(messagetype);
         sb.append(", recvdatatime=").append(recvdatatime);

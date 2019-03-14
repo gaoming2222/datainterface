@@ -103,14 +103,14 @@
                 select
                 #{item.stationid},
                 to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss'),
-                #{item.periodrain},
-                #{item.differencerain},
-                #{item.totalrain},
-                #{item.dayrain},
-                #{item.transtype},
-                #{item.messagetype},
+                #{item.periodrain,jdbcType=DECIMAL},
+                #{item.differencerain,jdbcType=DECIMAL},
+                #{item.totalrain,jdbcType=DECIMAL},
+                #{item.dayrain,jdbcType=DECIMAL},
+                #{item.transtype,jdbcType=CHAR},
+                #{item.messagetype,jdbcType=CHAR},
                 to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
-                #{item.state}
+                #{item.state,jdbcType=DECIMAL}
                 from dual
                 )
         </foreach >
@@ -134,22 +134,28 @@
     				<if test="item.dayrain !=null and item.dayrain != ''">
     				DAYRAIN = #{item.dayrain},
     				</if>
+    				<if test="item.transtype !=null and item.transtype != ''">
+    				TRANSTYPE = #{item.transtype},
+    				</if>
     				<if test="item.messagetype !=null and item.messagetype != ''">
     				MESSAGETYPE = #{item.messagetype},
+    				</if>
+    				<if test="item.recvdatatime !=null and item.recvdatatime != ''">
+    				RECVDATATIME = to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
     				</if>
     				<if test="item.state !=null and item.state != ''">
     				STATE = #{item.state}
     				</if>
     			</set>
     			 where 
-    			STATIONID=#{item.stationid}
+    			STATIONID= #{item.stationid}
     			AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
     		</foreach>
     	;end;
     </update>
     
     <!-- 查询 -->
-    <select id="getRainList" resultType="Rain" >
+    <select id="getRainList" parameterType="java.util.Map" resultMap="BaseResultMap" >
        select 
        t.STATIONID,
        t.DATATIME,
@@ -171,7 +177,7 @@
        and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
        </if>
        <if test="strttime != null and strttime != ''">
-       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       and DATATIME  >= to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
        </if>
        <if test="endtime != null and endtime != ''">
        and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
@@ -187,7 +193,7 @@
        and STATIONID = #{stationid}
        </if>
        <if test="datatime != null and datatime != ''">
-       AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+       AND DATATIME = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
        </if>
     </delete>
     

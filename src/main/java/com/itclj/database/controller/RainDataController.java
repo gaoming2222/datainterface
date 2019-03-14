@@ -25,7 +25,7 @@ import com.itclj.database.service.RainService;
 @MapperScan("com.itclj.database.mapper")
 public class RainDataController {
 	
-	private static Logger logger = Logger.getLogger(SubcenterController.class);
+	private static Logger logger = Logger.getLogger(RainDataController.class);
 	
 	@Autowired
 	private RainService rainService;
@@ -40,7 +40,7 @@ public class RainDataController {
 	@SuppressWarnings({"rawtypes" })
 	@RequestMapping(value = "/rain/getRain", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Rain> getRainData(HttpServletRequest request) throws ParseException {
+	public String getRainData(HttpServletRequest request) throws ParseException {
 		Map<String,Object> param = new HashMap<>();
 		List<Rain> rainList = new ArrayList<Rain>();
 		String jsonStr  =(String) request.getParameter("rain");
@@ -49,7 +49,7 @@ public class RainDataController {
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("stationid", "");
 			param.put("datatime", "");
-			param.put("strttime", null);                      
+			param.put("strttime", null);
 			param.put("endtime", null);
 		}else {
 			param.put("stationid", (String)tMap.get("stationid"));
@@ -58,7 +58,8 @@ public class RainDataController {
 			param.put("endtime", (String)tMap.get("endtime"));
 		}
 		rainList = rainService.getRainList(param);
-		return rainList;
+		String result =JSON.toJSONString(rainList);
+		return result;
 	}
 	
 	/**

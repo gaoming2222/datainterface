@@ -104,6 +104,12 @@
     				<if test="item.messagetype !=null and item.messagetype != ''">
     				MESSAGETYPE = #{item.messagetype},
     				</if>
+    				<if test="item.transtype !=null and item.transtype != ''">
+    				TRANSTYPE = #{item.transtype},
+    				</if>
+    				<if test="item.recvdatatime !=null and item.recvdatatime != ''">
+    				RECVDATATIME = to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
+    				</if>
     				<if test="item.state !=null and item.state != ''">
     				STATE = #{item.state}
     				</if>
@@ -116,7 +122,7 @@
     </update>
     
     <!-- 查询 -->
-    <select id="getVoltageList" resultType="Voltage" >
+    <select id="getVoltageList" parameterType="java.util.Map" resultMap="BaseResultMap" >
        select 
        t.STATIONID,
        t.DATATIME,
@@ -151,7 +157,7 @@
        and STATIONID = #{stationid}
        </if>
        <if test="datatime != null and datatime != ''">
-       AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+       AND DATATIME = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
        </if>
     </delete>
     

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.itclj.database.entity.Rain;
 import com.itclj.database.entity.Water;
 import com.itclj.database.service.WaterService;
 
@@ -37,12 +36,14 @@ public class WaterDataController {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/water/getWater", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Water> getWaterData(HttpServletRequest request) {
+	public String getWaterData(HttpServletRequest request) {
 		Map<String,Object> param = new HashMap<>();
 		List<Water> waterList = new ArrayList<Water>();
 		String jsonStr  =(String) request.getParameter("water");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);
 		logger.info("查询水位数据参数为" + jsonStr);
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("stationid", "");
@@ -51,14 +52,14 @@ public class WaterDataController {
 			param.put("endtime", null);
 		}else {
 			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			Rain rain = JSON.parseObject(jsonStr, new TypeReference<Rain>() {});
-			param.put("stationid", rain.getStationid());
-			param.put("datatime", rain.getDatatime());
-			param.put("strttime", null);
-			param.put("endtime", null);
+			param.put("stationid", (String)tMap.get("stationid"));
+			param.put("datatime", (String)tMap.get("datatime"));
+			param.put("strttime", (String)tMap.get("strttime"));
+			param.put("endtime", (String)tMap.get("endtime"));
 		}
 		waterList = waterService.getWaterList(param);
-		return waterList;
+		String s = JSON.toJSONString(waterList);
+		return s;
 	}
 	/**
 	 * 批量插入水位数据
@@ -67,7 +68,7 @@ public class WaterDataController {
 	 */
 	@RequestMapping(value = "/water/insertWater", method = RequestMethod.POST)
 	@ResponseBody
-	public int  insertWaterData(HttpServletRequest request) {
+	public int insertWaterData(HttpServletRequest request) {
 		int result = 0;
 		List<Water> waterList = new ArrayList<Water>();
 		String jsonStr  =(String) request.getParameter("water");

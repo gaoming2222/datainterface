@@ -23,7 +23,7 @@ import com.itclj.database.service.VoltageService;
 @MapperScan("com.itclj.database.mapper")
 public class VoltageDataController {
 	
-	private static Logger logger = Logger.getLogger(SubcenterController.class);
+	private static Logger logger = Logger.getLogger(VoltageDataController.class);
 	
 	@Autowired
 	private VoltageService voltageService;
@@ -33,12 +33,14 @@ public class VoltageDataController {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/voltage/getVoltage", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Voltage> getVoltageData(HttpServletRequest request) {
+	public String getVoltageData(HttpServletRequest request) {
 		Map<String,Object> param = new HashMap<>();
 		List<Voltage> voltageList = new ArrayList<Voltage>();
 		String jsonStr  =(String) request.getParameter("voltage");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);
 		logger.info("查询电压数据参数为" + jsonStr);
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("stationid", "");
@@ -47,14 +49,14 @@ public class VoltageDataController {
 			param.put("endtime", null);
 		}else {
 			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			Voltage voltage = JSON.parseObject(jsonStr, new TypeReference<Voltage>() {});
-			param.put("stationid", voltage.getStationid());
-			param.put("datatime", voltage.getDatatime());
-			param.put("strttime", null);
-			param.put("endtime", null);
+			param.put("stationid", (String)tMap.get("stationid"));
+			param.put("datatime", (String)tMap.get("datatime"));
+			param.put("strttime", (String)tMap.get("strttime"));
+			param.put("endtime", (String)tMap.get("endtime"));
 		}
 		voltageList = voltageService.getVoltageList(param);
-		return voltageList;
+		String result = JSON.toJSONString(voltageList);
+		return result;
 	}
 	/**
 	 * 批量插入电压数据
@@ -90,7 +92,7 @@ public class VoltageDataController {
 	}
 	
 	/**
-	 * 删除电压信息
+	 * 更新电压信息
 	 * @param request
 	 * @return
 	 */

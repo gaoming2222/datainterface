@@ -37,7 +37,7 @@ public class WaterService {
 		return retList;
 	}
 	/**
-	 * 
+	 * 批量更新水位数据
 	 * @param waterList
 	 * @return
 	 */

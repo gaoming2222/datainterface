@@ -2,29 +2,38 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * VOLTAGE
  * @author 
  */
 public class Voltage implements Serializable {
+	@JSONField(name="StationID")
     private String stationid;
 
-    private Date datatime;
+	@JSONField(name="TimeCollect")
+    private String datatime;
 
+	@JSONField(name="Voltage")
     private BigDecimal data;
 
+	@JSONField(name="TimeRecieved")
+    private String recvdatatime;
+
+	@JSONField(name="MessageType")
+    private String messagetype;
+	
+	@JSONField(name="ChannelType")
     private String transtype;
 
-    private String messagetype;
-
-    private Date recvdatatime;
-
+	@JSONField(name="state")
     private Long state;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="StationID")
     public String getStationid() {
         return stationid;
     }
@@ -33,14 +42,16 @@ public class Voltage implements Serializable {
         this.stationid = stationid;
     }
 
-    public Date getDatatime() {
+	@JSONField(name="TimeCollect")
+    public String getDatatime() {
         return datatime;
     }
 
-    public void setDatatime(Date datatime) {
+    public void setDatatime(String datatime) {
         this.datatime = datatime;
     }
 
+	@JSONField(name="Voltage")
     public BigDecimal getData() {
         return data;
     }
@@ -48,15 +59,17 @@ public class Voltage implements Serializable {
     public void setData(BigDecimal data) {
         this.data = data;
     }
-
-    public String getTranstype() {
-        return transtype;
+    
+	@JSONField(name="TimeRecieved")
+    public String getRecvdatatime() {
+        return recvdatatime;
     }
 
-    public void setTranstype(String transtype) {
-        this.transtype = transtype;
+    public void setRecvdatatime(String recvdatatime) {
+        this.recvdatatime = recvdatatime;
     }
 
+	@JSONField(name="MessageType")
     public String getMessagetype() {
         return messagetype;
     }
@@ -65,14 +78,16 @@ public class Voltage implements Serializable {
         this.messagetype = messagetype;
     }
 
-    public Date getRecvdatatime() {
-        return recvdatatime;
+	@JSONField(name="ChannelType")
+    public String getTranstype() {
+        return transtype;
     }
 
-    public void setRecvdatatime(Date recvdatatime) {
-        this.recvdatatime = recvdatatime;
+    public void setTranstype(String transtype) {
+        this.transtype = transtype;
     }
 
+	@JSONField(name="state")
     public Long getState() {
         return state;
     }

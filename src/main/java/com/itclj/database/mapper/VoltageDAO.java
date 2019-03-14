@@ -6,15 +6,15 @@ import java.util.Map;
 import com.itclj.database.entity.Voltage;
 
 public interface VoltageDAO {
-    int insert(Voltage record);
+	public int insert(Voltage record);
 
-    int insertSelective(Voltage record);
+	public int insertSelective(Voltage record);
     
-    int insertVoltageList(List<Voltage> records);
+	public int insertVoltageList(List<Voltage> records);
     
-    int updateVolatgeList(List<Voltage> records);
+	public int updateVolatgeList(List<Voltage> records);
     
-    int deleteVoltage(Voltage voltage);
+	public int deleteVoltage(Voltage voltage);
     
-    List<Voltage> getVoltageList(Map<String,Object> param);
+	public List<Voltage> getVoltageList(Map<String,Object> param);
 }

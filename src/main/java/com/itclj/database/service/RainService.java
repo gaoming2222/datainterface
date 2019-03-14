@@ -61,7 +61,7 @@ public class RainService {
 	 * @return
 	 */
 	public int deleteRain(List<Rain> rainList) {
-		logger.info("开始删除雨量数据" + rainList);
+		logger.info("开始删除雨量数据" + rainList.size());
 		int result = 0;
 		try {
 			for (Rain rain : rainList) {

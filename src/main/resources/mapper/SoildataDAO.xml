@@ -10,11 +10,11 @@
     <result column="VOLTAGE20" jdbcType="DECIMAL" property="voltage20" />
     <result column="MOISTURE20" jdbcType="DECIMAL" property="moisture20" />
     <result column="VOLTAGE30" jdbcType="DECIMAL" property="voltage30" />
-    <result column="MOISTRUE30" jdbcType="DECIMAL" property="moistrue30" />
+    <result column="MOISTURE30" jdbcType="DECIMAL" property="moisture30" />
     <result column="VOLTAGE40" jdbcType="DECIMAL" property="voltage40" />
-    <result column="MOISTRUE40" jdbcType="DECIMAL" property="moistrue40" />
+    <result column="MOISTURE40" jdbcType="DECIMAL" property="moisture40" />
     <result column="VOLTAGE60" jdbcType="DECIMAL" property="voltage60" />
-    <result column="MOISTRUE60" jdbcType="DECIMAL" property="moistrue60" />
+    <result column="MOISTURE60" jdbcType="DECIMAL" property="moisture60" />
     <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
     <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
     <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
@@ -200,7 +200,7 @@
     				VOLTAGE30 = #{item.voltage30},
     				</if>
     				<if test="item.moisture30 !=null and item.moisture30 != ''">
-    				MOISTURE30 = #{item.moisture30},
+    				MOISTRUE30 = #{item.moisture30},
     				</if>
     				<if test="item.voltage40 !=null and item.voltage40 != ''">
     				VOLTAGE40 = #{item.voltage40},
@@ -214,8 +214,14 @@
     				<if test="item.moisture60 !=null and item.moisture60 != ''">
     				MOISTURE60 = #{item.moisture60},
     				</if>
+    				<if test="item.transtype !=null and item.transtype != ''">
+    				TRANSTYPE = #{item.transtype},
+    				</if>
     				<if test="item.messagetype !=null and item.messagetype != ''">
     				MESSAGETYPE = #{item.messagetype},
+    				</if>
+    				<if test="item.recvdatatime !=null and item.recvdatatime != ''">
+    				RECVDATATIME = to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
     				</if>
     				<if test="item.state !=null and item.state != ''">
     				STATE = #{item.state}
@@ -236,14 +242,14 @@
        and STATIONID = #{stationid}
        </if>
        <if test="datatime != null and datatime != ''">
-       AND DATATIME = to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss')
+       AND DATATIME = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
        </if>
   </delete>
 
 
   <!-- 根据条件查询 -->
   <!-- 查询 -->
-    <select id="getSoilList" resultType="Soildata" >
+    <select id="getSoilList" parameterType="java.util.Map" resultMap="BaseResultMap">
        select 
        t.STATIONID,
        t.DATATIME,
@@ -257,10 +263,10 @@
        t.VOLTAGE40,
        t.MOISTURE40,
        t.VOLTAGE60,
-       t.MOISTURE60,
+	   t.MOISTURE60,
        t.TRANSTYPE,
        t.MESSAGETYPE,
-       t.RECVDATATIME，
+       t.RECVDATATIME,
        t.STATE
        from SOILDATA t
        where
