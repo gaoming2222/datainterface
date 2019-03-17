@@ -46,7 +46,7 @@ public class SeriaoPortController {
 		if(jsonStr == null || jsonStr.trim() == "") {
 			param.put("portnumber", "");
 		}else {
-			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
+			
 			Serialport serialport = JSON.parseObject(jsonStr, new TypeReference<Serialport>() {});
 			param.put("portnumber", serialport.getPortnumber());
 		}

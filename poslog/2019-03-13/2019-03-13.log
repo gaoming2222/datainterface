@@ -1,0 +1,1107 @@
+2019-03-13 14:07:01 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:07:01 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 14:07:01 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 14:07:01 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:07:01 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 14:07:01 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:07:01 -查询水情站信息，接收参数为：null
+2019-03-13 14:07:01 -开始查询水情站信息{stationid=}
+2019-03-13 14:07:01 -Creating a new SqlSession
+2019-03-13 14:07:01 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cc2b516] was not registered for synchronization because synchronization is not active
+2019-03-13 14:07:01 -Fetching JDBC Connection from DataSource
+2019-03-13 14:07:01 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:07:01 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 14:07:01 -==> Parameters: 
+2019-03-13 14:07:01 -<==      Total: 3
+2019-03-13 14:07:01 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6cc2b516]
+2019-03-13 14:07:01 -Returning JDBC Connection to DataSource
+2019-03-13 14:07:01 -查询水情站信息完成
+2019-03-13 14:07:01 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:07:01 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:07:01 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:07:01 -Closing JPA EntityManager
+2019-03-13 14:07:01 -Successfully completed request
+2019-03-13 14:07:01 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:12:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:12:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 14:12:14 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 14:12:14 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:12:14 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 14:12:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:12:14 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 14:12:14 -开始查询分中心信息{subcenterId=}
+2019-03-13 14:12:14 -Creating a new SqlSession
+2019-03-13 14:12:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@115b4103] was not registered for synchronization because synchronization is not active
+2019-03-13 14:12:14 -Fetching JDBC Connection from DataSource
+2019-03-13 14:12:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:12:14 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 14:12:14 -==> Parameters: 
+2019-03-13 14:12:14 -<==      Total: 5
+2019-03-13 14:12:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@115b4103]
+2019-03-13 14:12:14 -Returning JDBC Connection to DataSource
+2019-03-13 14:12:14 -完成分中心信息查询
+2019-03-13 14:12:14 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:12:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:12:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:12:14 -Closing JPA EntityManager
+2019-03-13 14:12:14 -Successfully completed request
+2019-03-13 14:12:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:15:36 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:15:36 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 14:15:36 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 14:15:36 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:15:36 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 14:15:36 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:15:36 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 14:15:36 -开始查询分中心信息{subcenterId=}
+2019-03-13 14:15:36 -Creating a new SqlSession
+2019-03-13 14:15:36 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa3d5d8] was not registered for synchronization because synchronization is not active
+2019-03-13 14:15:36 -Fetching JDBC Connection from DataSource
+2019-03-13 14:15:36 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:15:36 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 14:15:36 -==> Parameters: 
+2019-03-13 14:15:36 -<==      Total: 5
+2019-03-13 14:15:36 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6aa3d5d8]
+2019-03-13 14:15:36 -Returning JDBC Connection to DataSource
+2019-03-13 14:15:36 -完成分中心信息查询
+2019-03-13 14:15:36 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:15:36 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:15:36 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:15:36 -Closing JPA EntityManager
+2019-03-13 14:15:36 -Successfully completed request
+2019-03-13 14:15:36 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:15:36 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:15:36 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 14:15:36 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 14:15:36 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:15:36 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 14:15:36 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:15:36 -查询墒情站信息，接收参数为：null
+2019-03-13 14:15:36 -开始查询墒情站信息{stationid=}
+2019-03-13 14:15:36 -Creating a new SqlSession
+2019-03-13 14:15:36 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6bf694ab] was not registered for synchronization because synchronization is not active
+2019-03-13 14:15:36 -Fetching JDBC Connection from DataSource
+2019-03-13 14:15:36 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:15:36 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 14:15:36 -==> Parameters: 
+2019-03-13 14:15:36 -<==      Total: 7
+2019-03-13 14:15:36 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6bf694ab]
+2019-03-13 14:15:36 -Returning JDBC Connection to DataSource
+2019-03-13 14:15:36 -查询墒情站信息完成
+2019-03-13 14:15:36 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:15:36 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:15:36 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:15:36 -Closing JPA EntityManager
+2019-03-13 14:15:36 -Successfully completed request
+2019-03-13 14:15:36 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 14:16:05 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 14:16:05 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:16:05 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 14:16:05 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -查询水情站信息，接收参数为：null
+2019-03-13 14:16:05 -开始查询水情站信息{stationid=}
+2019-03-13 14:16:05 -Creating a new SqlSession
+2019-03-13 14:16:05 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29c9e7b7] was not registered for synchronization because synchronization is not active
+2019-03-13 14:16:05 -Fetching JDBC Connection from DataSource
+2019-03-13 14:16:05 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:16:05 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 14:16:05 -==> Parameters: 
+2019-03-13 14:16:05 -<==      Total: 3
+2019-03-13 14:16:05 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29c9e7b7]
+2019-03-13 14:16:05 -Returning JDBC Connection to DataSource
+2019-03-13 14:16:05 -查询水情站信息完成
+2019-03-13 14:16:05 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:16:05 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:16:05 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -Closing JPA EntityManager
+2019-03-13 14:16:05 -Successfully completed request
+2019-03-13 14:16:05 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 14:16:05 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 14:16:05 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:16:05 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 14:16:05 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -查询墒情站信息，接收参数为：null
+2019-03-13 14:16:05 -开始查询墒情站信息{stationid=}
+2019-03-13 14:16:05 -Creating a new SqlSession
+2019-03-13 14:16:05 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11ceeeaa] was not registered for synchronization because synchronization is not active
+2019-03-13 14:16:05 -Fetching JDBC Connection from DataSource
+2019-03-13 14:16:05 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:16:05 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 14:16:05 -==> Parameters: 
+2019-03-13 14:16:05 -<==      Total: 7
+2019-03-13 14:16:05 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11ceeeaa]
+2019-03-13 14:16:05 -Returning JDBC Connection to DataSource
+2019-03-13 14:16:05 -查询墒情站信息完成
+2019-03-13 14:16:05 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:16:05 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:16:05 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -Closing JPA EntityManager
+2019-03-13 14:16:05 -Successfully completed request
+2019-03-13 14:16:05 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 14:16:05 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 14:16:05 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:16:05 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 14:16:05 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -查询水情站信息，接收参数为：null
+2019-03-13 14:16:05 -开始查询水情站信息{stationid=}
+2019-03-13 14:16:05 -Creating a new SqlSession
+2019-03-13 14:16:05 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40c67ce0] was not registered for synchronization because synchronization is not active
+2019-03-13 14:16:05 -Fetching JDBC Connection from DataSource
+2019-03-13 14:16:05 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:16:05 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 14:16:05 -==> Parameters: 
+2019-03-13 14:16:05 -<==      Total: 3
+2019-03-13 14:16:05 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40c67ce0]
+2019-03-13 14:16:05 -Returning JDBC Connection to DataSource
+2019-03-13 14:16:05 -查询水情站信息完成
+2019-03-13 14:16:05 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:16:05 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:16:05 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -Closing JPA EntityManager
+2019-03-13 14:16:05 -Successfully completed request
+2019-03-13 14:16:05 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:16:05 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 14:16:05 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 14:16:05 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:16:05 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 14:16:05 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -查询墒情站信息，接收参数为：null
+2019-03-13 14:16:05 -开始查询墒情站信息{stationid=}
+2019-03-13 14:16:05 -Creating a new SqlSession
+2019-03-13 14:16:05 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@518cd258] was not registered for synchronization because synchronization is not active
+2019-03-13 14:16:05 -Fetching JDBC Connection from DataSource
+2019-03-13 14:16:05 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:16:05 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 14:16:05 -==> Parameters: 
+2019-03-13 14:16:05 -<==      Total: 7
+2019-03-13 14:16:05 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@518cd258]
+2019-03-13 14:16:05 -Returning JDBC Connection to DataSource
+2019-03-13 14:16:05 -查询墒情站信息完成
+2019-03-13 14:16:05 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:16:05 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:16:05 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:16:05 -Closing JPA EntityManager
+2019-03-13 14:16:05 -Successfully completed request
+2019-03-13 14:16:05 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:43:51 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:43:51 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 14:43:51 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 14:43:51 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:43:51 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 14:43:51 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:43:51 -查询水情站信息，接收参数为：null
+2019-03-13 14:43:51 -开始查询水情站信息{stationid=}
+2019-03-13 14:43:51 -Creating a new SqlSession
+2019-03-13 14:43:51 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@503c7020] was not registered for synchronization because synchronization is not active
+2019-03-13 14:43:51 -Fetching JDBC Connection from DataSource
+2019-03-13 14:43:51 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:43:51 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 14:43:51 -==> Parameters: 
+2019-03-13 14:43:51 -<==      Total: 3
+2019-03-13 14:43:51 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@503c7020]
+2019-03-13 14:43:51 -Returning JDBC Connection to DataSource
+2019-03-13 14:43:51 -查询水情站信息完成
+2019-03-13 14:43:51 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:43:51 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:43:51 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:43:51 -Closing JPA EntityManager
+2019-03-13 14:43:51 -Successfully completed request
+2019-03-13 14:43:51 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:43:52 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:43:52 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 14:43:52 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 14:43:52 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:43:52 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 14:43:52 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:43:52 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 14:43:52 -开始查询分中心信息{subcenterId=}
+2019-03-13 14:43:52 -Creating a new SqlSession
+2019-03-13 14:43:52 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5574b118] was not registered for synchronization because synchronization is not active
+2019-03-13 14:43:52 -Fetching JDBC Connection from DataSource
+2019-03-13 14:43:52 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:43:52 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 14:43:52 -==> Parameters: 
+2019-03-13 14:43:52 -<==      Total: 5
+2019-03-13 14:43:52 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5574b118]
+2019-03-13 14:43:52 -Returning JDBC Connection to DataSource
+2019-03-13 14:43:52 -完成分中心信息查询
+2019-03-13 14:43:52 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:43:52 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:43:52 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:43:52 -Closing JPA EntityManager
+2019-03-13 14:43:52 -Successfully completed request
+2019-03-13 14:43:52 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:47:28 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 14:47:28 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 14:47:28 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 14:47:28 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 14:47:28 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 14:47:28 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:47:28 -查询水情站信息，接收参数为：null
+2019-03-13 14:47:28 -开始查询水情站信息{stationid=}
+2019-03-13 14:47:28 -Creating a new SqlSession
+2019-03-13 14:47:28 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@309e0ea4] was not registered for synchronization because synchronization is not active
+2019-03-13 14:47:28 -Fetching JDBC Connection from DataSource
+2019-03-13 14:47:28 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 14:47:28 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 14:47:28 -==> Parameters: 
+2019-03-13 14:47:28 -<==      Total: 3
+2019-03-13 14:47:28 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@309e0ea4]
+2019-03-13 14:47:28 -Returning JDBC Connection to DataSource
+2019-03-13 14:47:28 -查询水情站信息完成
+2019-03-13 14:47:28 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 14:47:28 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 14:47:28 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 14:47:28 -Closing JPA EntityManager
+2019-03-13 14:47:28 -Successfully completed request
+2019-03-13 14:47:28 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 18:59:22 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 18:59:22 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 18:59:22 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 18:59:22 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 18:59:22 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 18:59:22 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 18:59:22 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 18:59:22 -开始查询分中心信息{subcenterId=}
+2019-03-13 18:59:22 -Creating a new SqlSession
+2019-03-13 18:59:22 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e5f125e] was not registered for synchronization because synchronization is not active
+2019-03-13 18:59:22 -Fetching JDBC Connection from DataSource
+2019-03-13 18:59:22 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 18:59:22 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 18:59:22 -==> Parameters: 
+2019-03-13 18:59:22 -<==      Total: 5
+2019-03-13 18:59:22 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4e5f125e]
+2019-03-13 18:59:22 -Returning JDBC Connection to DataSource
+2019-03-13 18:59:22 -完成分中心信息查询
+2019-03-13 18:59:22 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 18:59:22 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 18:59:22 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 18:59:22 -Closing JPA EntityManager
+2019-03-13 18:59:22 -Successfully completed request
+2019-03-13 18:59:22 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:27 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:27 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:12:27 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:12:27 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:12:27 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:12:27 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:27 -查询水情站信息，接收参数为：null
+2019-03-13 20:12:27 -开始查询水情站信息{stationid=}
+2019-03-13 20:12:27 -Creating a new SqlSession
+2019-03-13 20:12:27 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68397b2] was not registered for synchronization because synchronization is not active
+2019-03-13 20:12:27 -Fetching JDBC Connection from DataSource
+2019-03-13 20:12:27 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:12:27 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:12:27 -==> Parameters: 
+2019-03-13 20:12:27 -<==      Total: 3
+2019-03-13 20:12:27 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@68397b2]
+2019-03-13 20:12:27 -Returning JDBC Connection to DataSource
+2019-03-13 20:12:27 -查询水情站信息完成
+2019-03-13 20:12:27 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:12:27 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:12:27 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:27 -Closing JPA EntityManager
+2019-03-13 20:12:27 -Successfully completed request
+2019-03-13 20:12:27 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:27 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:27 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:12:27 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:12:27 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:12:27 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:12:27 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:27 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:12:27 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:12:27 -Creating a new SqlSession
+2019-03-13 20:12:27 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d241b2b] was not registered for synchronization because synchronization is not active
+2019-03-13 20:12:27 -Fetching JDBC Connection from DataSource
+2019-03-13 20:12:27 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:12:27 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:12:27 -==> Parameters: 
+2019-03-13 20:12:28 -<==      Total: 5
+2019-03-13 20:12:28 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d241b2b]
+2019-03-13 20:12:28 -Returning JDBC Connection to DataSource
+2019-03-13 20:12:28 -完成分中心信息查询
+2019-03-13 20:12:28 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:12:28 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:12:28 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:28 -Closing JPA EntityManager
+2019-03-13 20:12:28 -Successfully completed request
+2019-03-13 20:12:28 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:28 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:28 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:12:28 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:12:28 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:12:28 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:12:28 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:28 -查询分中心信息参数为{"portNum":""}
+2019-03-13 20:12:28 -开始查询分中心信息{subcenterId=null}
+2019-03-13 20:12:28 -Creating a new SqlSession
+2019-03-13 20:12:28 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b267825] was not registered for synchronization because synchronization is not active
+2019-03-13 20:12:28 -Fetching JDBC Connection from DataSource
+2019-03-13 20:12:28 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:12:28 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:12:28 -==> Parameters: 
+2019-03-13 20:12:28 -<==      Total: 5
+2019-03-13 20:12:28 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6b267825]
+2019-03-13 20:12:28 -Returning JDBC Connection to DataSource
+2019-03-13 20:12:28 -完成分中心信息查询
+2019-03-13 20:12:28 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:12:28 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:12:28 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:28 -Closing JPA EntityManager
+2019-03-13 20:12:28 -Successfully completed request
+2019-03-13 20:12:28 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:29 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:29 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:12:29 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:12:29 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:12:29 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:12:29 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:29 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:12:29 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:12:29 -Creating a new SqlSession
+2019-03-13 20:12:29 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3938fb6f] was not registered for synchronization because synchronization is not active
+2019-03-13 20:12:29 -Fetching JDBC Connection from DataSource
+2019-03-13 20:12:29 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:12:29 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:12:29 -==> Parameters: 
+2019-03-13 20:12:29 -<==      Total: 5
+2019-03-13 20:12:29 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3938fb6f]
+2019-03-13 20:12:29 -Returning JDBC Connection to DataSource
+2019-03-13 20:12:29 -完成分中心信息查询
+2019-03-13 20:12:29 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:12:29 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:12:29 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:29 -Closing JPA EntityManager
+2019-03-13 20:12:29 -Successfully completed request
+2019-03-13 20:12:29 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:29 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:12:29 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:12:29 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:12:29 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:12:29 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:12:29 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:29 -查询墒情站信息，接收参数为：null
+2019-03-13 20:12:29 -开始查询墒情站信息{stationid=}
+2019-03-13 20:12:29 -Creating a new SqlSession
+2019-03-13 20:12:29 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@90dedad] was not registered for synchronization because synchronization is not active
+2019-03-13 20:12:29 -Fetching JDBC Connection from DataSource
+2019-03-13 20:12:29 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:12:29 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:12:29 -==> Parameters: 
+2019-03-13 20:12:29 -<==      Total: 7
+2019-03-13 20:12:29 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@90dedad]
+2019-03-13 20:12:29 -Returning JDBC Connection to DataSource
+2019-03-13 20:12:29 -查询墒情站信息完成
+2019-03-13 20:12:29 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:12:29 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:12:29 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:12:29 -Closing JPA EntityManager
+2019-03-13 20:12:29 -Successfully completed request
+2019-03-13 20:12:29 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:13:10 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:13:10 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:10 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:13:10 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -查询水情站信息，接收参数为：null
+2019-03-13 20:13:10 -开始查询水情站信息{stationid=}
+2019-03-13 20:13:10 -Creating a new SqlSession
+2019-03-13 20:13:10 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e705903] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:10 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:10 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:10 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:13:10 -==> Parameters: 
+2019-03-13 20:13:10 -<==      Total: 3
+2019-03-13 20:13:10 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3e705903]
+2019-03-13 20:13:10 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:10 -查询水情站信息完成
+2019-03-13 20:13:10 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:10 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:10 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -Closing JPA EntityManager
+2019-03-13 20:13:10 -Successfully completed request
+2019-03-13 20:13:10 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:13:10 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:13:10 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:10 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:13:10 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:13:10 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:13:10 -Creating a new SqlSession
+2019-03-13 20:13:10 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71f0aaf] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:10 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:10 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:10 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:13:10 -==> Parameters: 
+2019-03-13 20:13:10 -<==      Total: 5
+2019-03-13 20:13:10 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@71f0aaf]
+2019-03-13 20:13:10 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:10 -完成分中心信息查询
+2019-03-13 20:13:10 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:10 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:10 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -Closing JPA EntityManager
+2019-03-13 20:13:10 -Successfully completed request
+2019-03-13 20:13:10 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:10 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:13:10 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:13:10 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:10 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:13:10 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -查询分中心信息参数为{"portNum":""}
+2019-03-13 20:13:10 -开始查询分中心信息{subcenterId=null}
+2019-03-13 20:13:10 -Creating a new SqlSession
+2019-03-13 20:13:10 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ac4c505] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:10 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:10 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:10 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:13:10 -==> Parameters: 
+2019-03-13 20:13:10 -<==      Total: 5
+2019-03-13 20:13:10 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2ac4c505]
+2019-03-13 20:13:10 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:10 -完成分中心信息查询
+2019-03-13 20:13:10 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:10 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:10 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:10 -Closing JPA EntityManager
+2019-03-13 20:13:10 -Successfully completed request
+2019-03-13 20:13:10 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:12 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:12 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:13:12 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:13:12 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:12 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:13:12 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:12 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:13:12 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:13:12 -Creating a new SqlSession
+2019-03-13 20:13:12 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69493da7] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:12 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:12 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:12 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:13:12 -==> Parameters: 
+2019-03-13 20:13:12 -<==      Total: 5
+2019-03-13 20:13:12 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@69493da7]
+2019-03-13 20:13:12 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:12 -完成分中心信息查询
+2019-03-13 20:13:12 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:12 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:12 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:12 -Closing JPA EntityManager
+2019-03-13 20:13:12 -Successfully completed request
+2019-03-13 20:13:12 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:12 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:12 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:13:12 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:13:12 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:12 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:13:12 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:12 -查询墒情站信息，接收参数为：null
+2019-03-13 20:13:12 -开始查询墒情站信息{stationid=}
+2019-03-13 20:13:12 -Creating a new SqlSession
+2019-03-13 20:13:12 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@523edf73] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:12 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:12 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:12 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:13:12 -==> Parameters: 
+2019-03-13 20:13:12 -<==      Total: 7
+2019-03-13 20:13:12 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@523edf73]
+2019-03-13 20:13:12 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:12 -查询墒情站信息完成
+2019-03-13 20:13:12 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:12 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:12 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:12 -Closing JPA EntityManager
+2019-03-13 20:13:12 -Successfully completed request
+2019-03-13 20:13:12 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:13:14 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:13:14 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:14 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:13:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -查询水情站信息，接收参数为：null
+2019-03-13 20:13:14 -开始查询水情站信息{stationid=}
+2019-03-13 20:13:14 -Creating a new SqlSession
+2019-03-13 20:13:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79fd98b6] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:14 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:13:14 -==> Parameters: 
+2019-03-13 20:13:14 -<==      Total: 3
+2019-03-13 20:13:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79fd98b6]
+2019-03-13 20:13:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:14 -查询水情站信息完成
+2019-03-13 20:13:14 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -Closing JPA EntityManager
+2019-03-13 20:13:14 -Successfully completed request
+2019-03-13 20:13:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:13:14 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:13:14 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:14 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:13:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -查询墒情站信息，接收参数为：null
+2019-03-13 20:13:14 -开始查询墒情站信息{stationid=}
+2019-03-13 20:13:14 -Creating a new SqlSession
+2019-03-13 20:13:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44f2e92d] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:14 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:13:14 -==> Parameters: 
+2019-03-13 20:13:14 -<==      Total: 7
+2019-03-13 20:13:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@44f2e92d]
+2019-03-13 20:13:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:14 -查询墒情站信息完成
+2019-03-13 20:13:14 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -Closing JPA EntityManager
+2019-03-13 20:13:14 -Successfully completed request
+2019-03-13 20:13:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:13:14 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:13:14 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:14 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:13:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -查询水情站信息，接收参数为：null
+2019-03-13 20:13:14 -开始查询水情站信息{stationid=}
+2019-03-13 20:13:14 -Creating a new SqlSession
+2019-03-13 20:13:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc42bc] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:14 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:13:14 -==> Parameters: 
+2019-03-13 20:13:14 -<==      Total: 3
+2019-03-13 20:13:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7dc42bc]
+2019-03-13 20:13:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:14 -查询水情站信息完成
+2019-03-13 20:13:14 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -Closing JPA EntityManager
+2019-03-13 20:13:14 -Successfully completed request
+2019-03-13 20:13:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:13:14 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:13:14 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:14 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:13:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -查询墒情站信息，接收参数为：null
+2019-03-13 20:13:14 -开始查询墒情站信息{stationid=}
+2019-03-13 20:13:14 -Creating a new SqlSession
+2019-03-13 20:13:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43667fec] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:14 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:13:14 -==> Parameters: 
+2019-03-13 20:13:14 -<==      Total: 7
+2019-03-13 20:13:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@43667fec]
+2019-03-13 20:13:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:14 -查询墒情站信息完成
+2019-03-13 20:13:14 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:14 -Closing JPA EntityManager
+2019-03-13 20:13:14 -Successfully completed request
+2019-03-13 20:13:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:29 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:13:29 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:13:29 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:13:29 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:13:29 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:13:29 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:29 -查询墒情站信息，接收参数为：null
+2019-03-13 20:13:29 -开始查询墒情站信息{stationid=}
+2019-03-13 20:13:29 -Creating a new SqlSession
+2019-03-13 20:13:29 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f7b80b3] was not registered for synchronization because synchronization is not active
+2019-03-13 20:13:29 -Fetching JDBC Connection from DataSource
+2019-03-13 20:13:29 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:13:29 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:13:29 -==> Parameters: 
+2019-03-13 20:13:29 -<==      Total: 7
+2019-03-13 20:13:29 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f7b80b3]
+2019-03-13 20:13:29 -Returning JDBC Connection to DataSource
+2019-03-13 20:13:29 -查询墒情站信息完成
+2019-03-13 20:13:29 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:13:29 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:13:29 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:13:29 -Closing JPA EntityManager
+2019-03-13 20:13:29 -Successfully completed request
+2019-03-13 20:13:29 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:30:53 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:30:53 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:30:53 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:30:53 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:30:53 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:30:53 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:30:53 -查询水情站信息，接收参数为：null
+2019-03-13 20:30:53 -开始查询水情站信息{stationid=}
+2019-03-13 20:30:53 -Creating a new SqlSession
+2019-03-13 20:30:53 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c3c80f6] was not registered for synchronization because synchronization is not active
+2019-03-13 20:30:53 -Fetching JDBC Connection from DataSource
+2019-03-13 20:30:53 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:30:53 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:30:53 -==> Parameters: 
+2019-03-13 20:30:53 -<==      Total: 3
+2019-03-13 20:30:53 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c3c80f6]
+2019-03-13 20:30:53 -Returning JDBC Connection to DataSource
+2019-03-13 20:30:53 -查询水情站信息完成
+2019-03-13 20:30:53 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:30:53 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:30:53 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:30:53 -Closing JPA EntityManager
+2019-03-13 20:30:53 -Successfully completed request
+2019-03-13 20:30:53 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:30:53 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:30:53 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:30:53 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:30:53 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:30:53 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:30:53 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:30:53 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:30:53 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:30:53 -Creating a new SqlSession
+2019-03-13 20:30:53 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1fe95dd6] was not registered for synchronization because synchronization is not active
+2019-03-13 20:30:53 -Fetching JDBC Connection from DataSource
+2019-03-13 20:30:53 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:30:53 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:30:53 -==> Parameters: 
+2019-03-13 20:30:53 -<==      Total: 5
+2019-03-13 20:30:53 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1fe95dd6]
+2019-03-13 20:30:53 -Returning JDBC Connection to DataSource
+2019-03-13 20:30:53 -完成分中心信息查询
+2019-03-13 20:30:53 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:30:53 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:30:53 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:30:53 -Closing JPA EntityManager
+2019-03-13 20:30:53 -Successfully completed request
+2019-03-13 20:30:53 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:31:05 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:31:05 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/serialport/getSerialport]
+2019-03-13 20:31:05 -Looking up handler method for path /serialport/getSerialport
+2019-03-13 20:31:05 -Returning handler method [public java.util.List<com.itclj.database.entity.Serialport> com.itclj.database.controller.SeriaoPortController.getSerialportData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:31:05 -Returning cached instance of singleton bean 'seriaoPortController'
+2019-03-13 20:31:05 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:32:51 -查询串口信息，接收参数为：{"portNumber":""}
+2019-03-13 20:32:51 -开始查询串口信息{portnumber=null}
+2019-03-13 20:32:51 -Creating a new SqlSession
+2019-03-13 20:32:51 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@146d46f6] was not registered for synchronization because synchronization is not active
+2019-03-13 20:32:51 -Fetching JDBC Connection from DataSource
+2019-03-13 20:32:51 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:32:51 -==>  Preparing: select PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`, DATAPROTOCOL from SERIALPORT 1=1 
+2019-03-13 20:32:51 -==> Parameters: 
+2019-03-13 20:32:51 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@146d46f6]
+2019-03-13 20:32:51 -Returning JDBC Connection to DataSource
+2019-03-13 20:32:51 -Adding [systemProperties] PropertySource with lowest search precedence
+2019-03-13 20:32:51 -Adding [systemEnvironment] PropertySource with lowest search precedence
+2019-03-13 20:32:51 -Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+2019-03-13 20:32:51 -Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-03-13 20:32:51 -Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+2019-03-13 20:32:51 -Found beans DTD [http://www.springframework.org/dtd/spring-beans-2.0.dtd] in classpath: spring-beans-2.0.dtd
+2019-03-13 20:32:51 -Loading bean definitions
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'DB2'
+2019-03-13 20:32:51 -Creating instance of bean 'DB2'
+2019-03-13 20:32:51 -Eagerly caching bean 'DB2' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'DB2'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'Derby'
+2019-03-13 20:32:51 -Creating instance of bean 'Derby'
+2019-03-13 20:32:51 -Eagerly caching bean 'Derby' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'Derby'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'H2'
+2019-03-13 20:32:51 -Creating instance of bean 'H2'
+2019-03-13 20:32:51 -Eagerly caching bean 'H2' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'H2'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'HSQL'
+2019-03-13 20:32:51 -Creating instance of bean 'HSQL'
+2019-03-13 20:32:51 -Eagerly caching bean 'HSQL' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'HSQL'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'Informix'
+2019-03-13 20:32:51 -Creating instance of bean 'Informix'
+2019-03-13 20:32:51 -Eagerly caching bean 'Informix' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'Informix'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'MS-SQL'
+2019-03-13 20:32:51 -Creating instance of bean 'MS-SQL'
+2019-03-13 20:32:51 -Eagerly caching bean 'MS-SQL' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'MS-SQL'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'MySQL'
+2019-03-13 20:32:51 -Creating instance of bean 'MySQL'
+2019-03-13 20:32:51 -Eagerly caching bean 'MySQL' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'MySQL'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'Oracle'
+2019-03-13 20:32:51 -Creating instance of bean 'Oracle'
+2019-03-13 20:32:51 -Eagerly caching bean 'Oracle' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'Oracle'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'PostgreSQL'
+2019-03-13 20:32:51 -Creating instance of bean 'PostgreSQL'
+2019-03-13 20:32:51 -Eagerly caching bean 'PostgreSQL' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'PostgreSQL'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'Sybase'
+2019-03-13 20:32:51 -Creating instance of bean 'Sybase'
+2019-03-13 20:32:51 -Eagerly caching bean 'Sybase' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'Sybase'
+2019-03-13 20:32:51 -Creating shared instance of singleton bean 'Hana'
+2019-03-13 20:32:51 -Creating instance of bean 'Hana'
+2019-03-13 20:32:51 -Eagerly caching bean 'Hana' to allow for resolving potential circular references
+2019-03-13 20:32:51 -Finished creating instance of bean 'Hana'
+2019-03-13 20:32:51 -SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2019-03-13 20:32:51 -Looking up default SQLErrorCodes for DataSource [org.apache.tomcat.jdbc.pool.DataSource@60cb1ed6]
+2019-03-13 20:32:51 -Fetching JDBC Connection from DataSource
+2019-03-13 20:32:51 -Returning JDBC Connection to DataSource
+2019-03-13 20:32:51 -SQL error codes for 'Oracle' found
+2019-03-13 20:32:51 -Caching SQL error codes for DataSource [org.apache.tomcat.jdbc.pool.DataSource@60cb1ed6]: database product name is 'Oracle'
+2019-03-13 20:32:51 -Unable to translate SQLException with Error code '911', will now try the fallback translator
+2019-03-13 20:32:51 -查询串口信息失败
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+### The error may exist in file [C:\Users\yuan8\Desktop\spring-boot-druid-demo\target\classes\mapper\SerialportDAO.xml]
+### The error may involve com.itclj.database.mapper.SerialportDAO.selectByPrimaryKey-Inline
+### The error occurred while setting parameters
+### SQL: select            PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`,      DATAPROTOCOL         from SERIALPORT     1=1
+### Cause: java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+2019-03-13 20:32:51 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:32:51 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:32:51 -Closing JPA EntityManager
+2019-03-13 20:32:51 -Successfully completed request
+2019-03-13 20:32:51 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:34:14 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:34:14 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:14 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:34:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:14 -查询水情站信息，接收参数为：null
+2019-03-13 20:34:14 -开始查询水情站信息{stationid=}
+2019-03-13 20:34:14 -Creating a new SqlSession
+2019-03-13 20:34:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@34f15d4a] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:14 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:34:14 -==> Parameters: 
+2019-03-13 20:34:14 -<==      Total: 3
+2019-03-13 20:34:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@34f15d4a]
+2019-03-13 20:34:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:14 -查询水情站信息完成
+2019-03-13 20:34:14 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:14 -Closing JPA EntityManager
+2019-03-13 20:34:14 -Successfully completed request
+2019-03-13 20:34:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:14 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:14 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:34:14 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:34:14 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:14 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:34:14 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:14 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:34:14 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:34:14 -Creating a new SqlSession
+2019-03-13 20:34:14 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61a5bb11] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:14 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:14 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:14 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:34:14 -==> Parameters: 
+2019-03-13 20:34:14 -<==      Total: 5
+2019-03-13 20:34:14 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@61a5bb11]
+2019-03-13 20:34:14 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:14 -完成分中心信息查询
+2019-03-13 20:34:14 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:14 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:14 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:14 -Closing JPA EntityManager
+2019-03-13 20:34:14 -Successfully completed request
+2019-03-13 20:34:14 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:19 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:19 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/serialport/getSerialport]
+2019-03-13 20:34:19 -Looking up handler method for path /serialport/getSerialport
+2019-03-13 20:34:19 -Returning handler method [public java.util.List<com.itclj.database.entity.Serialport> com.itclj.database.controller.SeriaoPortController.getSerialportData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:19 -Returning cached instance of singleton bean 'seriaoPortController'
+2019-03-13 20:34:19 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:21 -查询串口信息，接收参数为：{"portNumber":""}
+2019-03-13 20:34:21 -开始查询串口信息{portnumber=null}
+2019-03-13 20:34:21 -Creating a new SqlSession
+2019-03-13 20:34:21 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d225c59] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:21 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:21 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:21 -==>  Preparing: select PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`, DATAPROTOCOL from SERIALPORT 1=1 
+2019-03-13 20:34:21 -==> Parameters: 
+2019-03-13 20:34:21 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d225c59]
+2019-03-13 20:34:21 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:21 -Unable to translate SQLException with Error code '911', will now try the fallback translator
+2019-03-13 20:34:21 -查询串口信息失败
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+### The error may exist in file [C:\Users\yuan8\Desktop\spring-boot-druid-demo\target\classes\mapper\SerialportDAO.xml]
+### The error may involve com.itclj.database.mapper.SerialportDAO.selectByPrimaryKey-Inline
+### The error occurred while setting parameters
+### SQL: select            PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`,      DATAPROTOCOL         from SERIALPORT     1=1
+### Cause: java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: ORA-00911: 无效字符
+
+2019-03-13 20:34:21 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:21 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:21 -Closing JPA EntityManager
+2019-03-13 20:34:21 -Successfully completed request
+2019-03-13 20:34:21 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:39 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:39 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:34:39 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:34:39 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:39 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:34:39 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:39 -查询水情站信息，接收参数为：null
+2019-03-13 20:34:39 -开始查询水情站信息{stationid=}
+2019-03-13 20:34:39 -Creating a new SqlSession
+2019-03-13 20:34:39 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e77ec09] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:39 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:39 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:39 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:34:39 -==> Parameters: 
+2019-03-13 20:34:39 -<==      Total: 3
+2019-03-13 20:34:39 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@e77ec09]
+2019-03-13 20:34:39 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:39 -查询水情站信息完成
+2019-03-13 20:34:39 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:39 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:39 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:39 -Closing JPA EntityManager
+2019-03-13 20:34:39 -Successfully completed request
+2019-03-13 20:34:39 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:39 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:39 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:34:39 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:34:39 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:39 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:34:39 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:39 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:34:39 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:34:39 -Creating a new SqlSession
+2019-03-13 20:34:39 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28dba236] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:39 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:39 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:39 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:34:39 -==> Parameters: 
+2019-03-13 20:34:39 -<==      Total: 5
+2019-03-13 20:34:39 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28dba236]
+2019-03-13 20:34:39 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:39 -完成分中心信息查询
+2019-03-13 20:34:39 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:39 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:39 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:39 -Closing JPA EntityManager
+2019-03-13 20:34:39 -Successfully completed request
+2019-03-13 20:34:39 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:42 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:42 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/subcenter/getSubcenter]
+2019-03-13 20:34:42 -Looking up handler method for path /subcenter/getSubcenter
+2019-03-13 20:34:42 -Returning handler method [public java.lang.String com.itclj.database.controller.SubcenterController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:42 -Returning cached instance of singleton bean 'subcenterController'
+2019-03-13 20:34:42 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:42 -查询分中心信息参数为{"subcenterId":""}
+2019-03-13 20:34:42 -开始查询分中心信息{subcenterId=}
+2019-03-13 20:34:42 -Creating a new SqlSession
+2019-03-13 20:34:42 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1227c2c4] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:42 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:42 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:42 -==>  Preparing: select t.subcenterid, t.subcentername, t.comment_ from SUBCENTER t where 1=1 order by t.subcenterid 
+2019-03-13 20:34:42 -==> Parameters: 
+2019-03-13 20:34:42 -<==      Total: 5
+2019-03-13 20:34:42 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1227c2c4]
+2019-03-13 20:34:42 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:42 -完成分中心信息查询
+2019-03-13 20:34:42 -Written [[{"Comment":"武汉分中心Oracle","SubCenterID":"1","SubCenterName":"武汉分中心oracle"},{"Comment":"测试racle","SubCenterID":"1044","SubCenterName":"测试1"},{"Comment":"测试oral2","SubCenterID":"1046","SubCenterName":"测试2"},{"SubCenterID":"1067","SubCenterName":"pure1"},{"SubCenterID":"1068","SubCenterName":"pure2"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:42 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:42 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:42 -Closing JPA EntityManager
+2019-03-13 20:34:42 -Successfully completed request
+2019-03-13 20:34:42 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:42 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:42 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:34:42 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:34:42 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:42 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:34:42 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:42 -查询墒情站信息，接收参数为：null
+2019-03-13 20:34:42 -开始查询墒情站信息{stationid=}
+2019-03-13 20:34:42 -Creating a new SqlSession
+2019-03-13 20:34:42 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d1bd202] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:42 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:42 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:42 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:34:42 -==> Parameters: 
+2019-03-13 20:34:42 -<==      Total: 7
+2019-03-13 20:34:42 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5d1bd202]
+2019-03-13 20:34:42 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:42 -查询墒情站信息完成
+2019-03-13 20:34:42 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:42 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:42 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:42 -Closing JPA EntityManager
+2019-03-13 20:34:42 -Successfully completed request
+2019-03-13 20:34:42 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:34:43 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:34:43 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:43 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:34:43 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -查询水情站信息，接收参数为：null
+2019-03-13 20:34:43 -开始查询水情站信息{stationid=}
+2019-03-13 20:34:43 -Creating a new SqlSession
+2019-03-13 20:34:43 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d69c8fa] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:43 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:43 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:43 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:34:43 -==> Parameters: 
+2019-03-13 20:34:43 -<==      Total: 3
+2019-03-13 20:34:43 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@d69c8fa]
+2019-03-13 20:34:43 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:43 -查询水情站信息完成
+2019-03-13 20:34:43 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:43 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:43 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -Closing JPA EntityManager
+2019-03-13 20:34:43 -Successfully completed request
+2019-03-13 20:34:43 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:34:43 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:34:43 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:43 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:34:43 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -查询墒情站信息，接收参数为：null
+2019-03-13 20:34:43 -开始查询墒情站信息{stationid=}
+2019-03-13 20:34:43 -Creating a new SqlSession
+2019-03-13 20:34:43 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40558bdb] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:43 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:43 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:43 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:34:43 -==> Parameters: 
+2019-03-13 20:34:43 -<==      Total: 7
+2019-03-13 20:34:43 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@40558bdb]
+2019-03-13 20:34:43 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:43 -查询墒情站信息完成
+2019-03-13 20:34:43 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:43 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:43 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -Closing JPA EntityManager
+2019-03-13 20:34:43 -Successfully completed request
+2019-03-13 20:34:43 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/hydlstation/getHydlStation]
+2019-03-13 20:34:43 -Looking up handler method for path /hydlstation/getHydlStation
+2019-03-13 20:34:43 -Returning handler method [public java.lang.String com.itclj.database.controller.HydlstationController.getSubcenterData(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:43 -Returning cached instance of singleton bean 'hydlstationController'
+2019-03-13 20:34:43 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -查询水情站信息，接收参数为：null
+2019-03-13 20:34:43 -开始查询水情站信息{stationid=}
+2019-03-13 20:34:43 -Creating a new SqlSession
+2019-03-13 20:34:43 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35c7ac8f] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:43 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:43 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:43 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.wbase, t.wmax, t.wmin, t.wchange, nvl(t.raccuracy,'') as raccuracy, nvl(t.rchange,'') as rchange, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.voltagemin,'') as voltagemin, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.watersensor,chr(32)) as watersensor, nvl(t.rainsensor,chr(32)) as rainsensor, nvl(t.reportinterval,chr(32)) as reportinterval from HYDLSTATION t where 1=1 
+2019-03-13 20:34:43 -==> Parameters: 
+2019-03-13 20:34:43 -<==      Total: 3
+2019-03-13 20:34:43 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@35c7ac8f]
+2019-03-13 20:34:43 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:43 -查询水情站信息完成
+2019-03-13 20:34:43 -Written [[{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001001","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1001","StationName":"test","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"11223344","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"1234","StationName":"测站1234","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "},{"BDMemberSatellite":" ","BDSatellite":" ","DRainAccuracy":0.5,"DRainChange":80,"DVoltageMin":11,"Datapotocol":"YNXY","GPRS":"10001000","GSM":" ","Maintran":"SX-GPRS","Rainsensor":"0 ","Reportinterval":"24","StationID":"3004","StationName":"测站1","StationType":"0 ","SubCenterID":1,"Subtran":"无","Watersensor":"4 "}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:43 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:43 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -Closing JPA EntityManager
+2019-03-13 20:34:43 -Successfully completed request
+2019-03-13 20:34:43 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:43 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:34:43 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:34:43 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:43 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:34:43 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -查询墒情站信息，接收参数为：null
+2019-03-13 20:34:43 -开始查询墒情站信息{stationid=}
+2019-03-13 20:34:43 -Creating a new SqlSession
+2019-03-13 20:34:43 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@394a75c3] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:43 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:43 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:43 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:34:43 -==> Parameters: 
+2019-03-13 20:34:43 -<==      Total: 7
+2019-03-13 20:34:43 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@394a75c3]
+2019-03-13 20:34:43 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:43 -查询墒情站信息完成
+2019-03-13 20:34:43 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:43 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:43 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:43 -Closing JPA EntityManager
+2019-03-13 20:34:43 -Successfully completed request
+2019-03-13 20:34:43 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:51 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:51 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/user/getUser]
+2019-03-13 20:34:51 -Looking up handler method for path /user/getUser
+2019-03-13 20:34:51 -Returning handler method [public java.lang.String com.itclj.database.controller.UserInfoController.getUserInfo(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:51 -Returning cached instance of singleton bean 'userInfoController'
+2019-03-13 20:34:51 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:51 -查询用户数据参数为{"uid":""}
+2019-03-13 20:34:51 -开始查询用户信息{uid=, password=, administrator=, name=}
+2019-03-13 20:34:51 -Creating a new SqlSession
+2019-03-13 20:34:51 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@da6e66] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:51 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:51 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:51 -==>  Preparing: select t.UID_, t.NAME, t.PASSWORD, t.ADMINISTRATOR from USER_ t where 1=1 order by t.UID_ 
+2019-03-13 20:34:51 -==> Parameters: 
+2019-03-13 20:34:51 -<==      Total: 3
+2019-03-13 20:34:51 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@da6e66]
+2019-03-13 20:34:51 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:51 -查询用户信息完成
+2019-03-13 20:34:51 -Written [[{"Administrator":"false","Password":"ffff","UserID":"22","UserName":"66"},{"Administrator":"false","Password":"ffffffffff","UserID":"23","UserName":"gggggffff"},{"Administrator":"true","Password":"gm216306","UserID":"24","UserName":"gaom"}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:51 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:51 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:51 -Closing JPA EntityManager
+2019-03-13 20:34:51 -Successfully completed request
+2019-03-13 20:34:51 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:58 -Bound request context to thread: org.apache.catalina.connector.RequestFacade@155bb91c
+2019-03-13 20:34:58 -DispatcherServlet with name 'dispatcherServlet' processing POST request for [/soilstation/getSoilstation]
+2019-03-13 20:34:58 -Looking up handler method for path /soilstation/getSoilstation
+2019-03-13 20:34:58 -Returning handler method [public java.lang.String com.itclj.database.controller.SoilStationController.getSoilstation(javax.servlet.http.HttpServletRequest)]
+2019-03-13 20:34:58 -Returning cached instance of singleton bean 'soilStationController'
+2019-03-13 20:34:58 -Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:58 -查询墒情站信息，接收参数为：null
+2019-03-13 20:34:58 -开始查询墒情站信息{stationid=}
+2019-03-13 20:34:58 -Creating a new SqlSession
+2019-03-13 20:34:58 -SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6972f7cf] was not registered for synchronization because synchronization is not active
+2019-03-13 20:34:58 -Fetching JDBC Connection from DataSource
+2019-03-13 20:34:58 -JDBC Connection [ProxyConnection[PooledConnection[oracle.jdbc.driver.T4CConnection@6cc64028]]] will not be managed by Spring
+2019-03-13 20:34:58 -==>  Preparing: select nvl(t.stationid,chr(32)) as stationid, nvl(t.subcenterid,'') as subcenterid, nvl(t.cname,chr(32)) as cname, nvl(t.ctype,chr(32)) as ctype, t.a10, t.b10, t.c10, t.d10, t.m10, t.n10, t.a20, t.b20, t.c20, t.d20, t.m20, t.n20, t.a30, t.b30, t.c30, t.d30, t.m30, t.n30, t.a40, t.b40, t.c40, t.d40, t.m40, t.n40, t.a60, t.b60, t.c60, t.d60, t.m60, t.n60, t.voltagemin, nvl(t.gsm,chr(32)) as gsm, nvl(t.gprs,chr(32)) as gprs, nvl(t.bdsatellite,chr(32)) as bdsatellite, nvl(t.bdmember,chr(32)) as bdmember, nvl(t.maintran,chr(32)) as maintran, nvl(t.subtran,chr(32)) as subtran, nvl(t.dataprotocol,chr(32)) as dataprotocol, nvl(t.reportinterval,chr(32)) as reportinterval from SOILSTATION t where 1=1 
+2019-03-13 20:34:58 -==> Parameters: 
+2019-03-13 20:34:58 -<==      Total: 7
+2019-03-13 20:34:58 -Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6972f7cf]
+2019-03-13 20:34:58 -Returning JDBC Connection to DataSource
+2019-03-13 20:34:58 -查询墒情站信息完成
+2019-03-13 20:34:58 -Written [[{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000002","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0002","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000003","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0003","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00000008","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"0008","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00321702","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1702","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00121504","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1504","StationName":"121504","StationType":"3 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":" ","GPRS":"00341511","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"Transparen","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1511","StationName":" ","StationType":"1 ","SubCenterID":1,"Subtran":"SX-GPRS","VoltageMin":11},{"A10":1,"A20":1,"A30":1,"A40":1,"A60":1,"B10":2,"B20":2,"B30":2,"B40":2,"B60":2,"BDMemberSatellite":" ","BDSatellite":" ","C10":3,"C20":3,"C30":3,"C40":3,"C60":3,"D10":4,"D20":4,"D30":4,"D40":4,"D60":4,"Datapotocol":"GY","GPRS":"00101518","GSM":" ","M10":1,"M20":1,"M30":1,"M40":1,"M60":1,"Maintran":"SX-GPRS","N10":2,"N20":2,"N30":2,"N40":2,"N60":2,"Reportinterval":"24","StationID":"1518","StationName":"101518","StationType":"3 ","SubCenterID":1,"Subtran":"无","VoltageMin":11}]] as "text/plain" using [org.springframework.http.converter.StringHttpMessageConverter@45d38165]
+2019-03-13 20:34:58 -Null ModelAndView returned to DispatcherServlet with name 'dispatcherServlet': assuming HandlerAdapter completed request handling
+2019-03-13 20:34:58 -Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+2019-03-13 20:34:58 -Closing JPA EntityManager
+2019-03-13 20:34:58 -Successfully completed request
+2019-03-13 20:34:58 -Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@155bb91c

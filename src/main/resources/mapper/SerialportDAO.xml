@@ -19,6 +19,26 @@
     PORTNUMBER, TRANSTYPE, BAUDRATE, DATABIT, STOPBIT, PARITY, STREAM, `BREAK`, `OPEN`, 
     DATAPROTOCOL
   </sql>
+  <!-- 查询端口信息 -->
+  <select id="getSerialPort" parameterType="java.util.Map" resultMap="BaseResultMap" >
+       select 
+       t.PORTNUMBER,
+       t.TRANSTYPE,
+       t.BAUDRATE,
+       t.DATABIT,
+       t.STOPBIT,
+       t.PARITY,
+       t.STREAM,
+       t.BREAK,
+       t.OPEN,
+       t.DATAPROTOCOL
+       from SERIALPORT t
+       where
+       1=1
+       <if test="portNumber != null and portNumber != ''">
+       and PORTNUMBER = #{portNumber}
+       </if>
+    </select>
   <!-- 根据条件查询 当条件为空时则时查询全部-->
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 

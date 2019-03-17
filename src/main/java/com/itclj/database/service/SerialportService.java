@@ -30,10 +30,7 @@ public class SerialportService {
 		List<Serialport> retList = new ArrayList<Serialport>();
 		logger.info("开始查询串口信息" + param);
 		try {
-			
-			for(Object paramOne : param.values()){
-				retList.add(serialportDAO.selectByPrimaryKey((Long)paramOne));
-			}
+			retList = serialportDAO.getSerialPort(param);
 		}catch(Exception e) {
 			logger.error("查询串口信息失败" + e.getMessage());
 			return null;

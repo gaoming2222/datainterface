@@ -89,7 +89,7 @@
                 #{item.stationid},
                 to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss'),
                 #{item.waterstage},
-                #{item.waterflow},
+                #{item.waterflow,jdbcType=DECIMAL},
                 #{item.transtype},
                 #{item.messagetype},
                 to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss'),
