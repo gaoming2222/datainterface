@@ -2,25 +2,32 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * WARNINGINFO
  * @author 
  */
 public class Warninginfo implements Serializable {
+	@JSONField(name="WarningInfoID")
     private BigDecimal infoid;
 
+	@JSONField(name="StrStationId")
     private String stationid;
 
-    private Date datatime;
+	@JSONField(name="DataTime")
+    private String datatime;
 
+	@JSONField(name="InfoDetail")
     private String infodetail;
 
+	@JSONField(name="WarningInfoCodeType")
     private String errocode;
 
     private static final long serialVersionUID = 1L;
 
+	@JSONField(name="WarningInfoID")
     public BigDecimal getInfoid() {
         return infoid;
     }
@@ -29,6 +36,7 @@ public class Warninginfo implements Serializable {
         this.infoid = infoid;
     }
 
+	@JSONField(name="StrStationId")
     public String getStationid() {
         return stationid;
     }
@@ -37,14 +45,16 @@ public class Warninginfo implements Serializable {
         this.stationid = stationid;
     }
 
-    public Date getDatatime() {
+	@JSONField(name="DataTime")
+    public String getDatatime() {
         return datatime;
     }
 
-    public void setDatatime(Date datatime) {
+    public void setDatatime(String datatime) {
         this.datatime = datatime;
     }
 
+	@JSONField(name="InfoDetail")
     public String getInfodetail() {
         return infodetail;
     }
@@ -53,6 +63,7 @@ public class Warninginfo implements Serializable {
         this.infodetail = infodetail;
     }
 
+	@JSONField(name="WarningInfoCodeType")
     public String getErrocode() {
         return errocode;
     }

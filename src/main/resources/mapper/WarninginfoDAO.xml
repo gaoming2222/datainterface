@@ -12,6 +12,27 @@
     INFOID, STATIONID, DATATIME, INFODETAIL, ERROCODE
   </sql>
   
+  <!-- 查询 -->
+    <select id="getWarninginfo" parameterType="java.util.Map" resultMap="BaseResultMap" >
+       select 
+       t.INFOID,
+       t.STATIONID,
+       t.DATATIME,
+       t.INFODETAIL,
+       t.ERROCODE
+       from WARNINGINFO t
+       where
+       1=1
+       
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >= to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.INFOID
+    </select>
+    
   <!-- 根据条件查询告警日志 -->
   <select id="selectByPrimaryKey"  resultMap="BaseResultMap">
     select 

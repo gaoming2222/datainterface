@@ -1,6 +1,5 @@
 package com.itclj.database.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +22,16 @@ private static Logger logger = Logger.getLogger(WarninginfoService.class);
 	 * @param param
 	 * @return
 	 */
-	public List<Warninginfo> getWarninginfoList(Map<String,Object> param){
+	public List<Warninginfo> getWarninginfoList(Map<String,Object> param) {
 		List<Warninginfo> retList = new ArrayList<Warninginfo>();
-		logger.info("开始查询错误信息" + param);
+		logger.info("开始查询告警日志信息" + param);
 		try {
-			
-			for(Object paramOne : param.values()){
-				retList.add(warninginfoDAO.selectByPrimaryKey((BigDecimal)paramOne));
-			}
-		}catch(Exception e) {
-			logger.error("查询错误信息失败" + e.getMessage());
+			retList = warninginfoDAO.getWarninginfo(param);
+		}catch (Exception e) {
+			logger.error("查询告警日志信息出错" + e.getMessage());
 			return null;
 		}
-		logger.info("查询错误信息完成" + retList.size());
+		logger.info("完成告警日志信息查询");
 		return retList;
 	}
 	/**
@@ -44,8 +40,11 @@ private static Logger logger = Logger.getLogger(WarninginfoService.class);
 	 * @return
 	 */
 	public int insertWarninginfo(List<Warninginfo> warninginfoList) {
-		logger.info("开始插入错误信息" + warninginfoList.size());
+		logger.info("开始插入错误信息" + warninginfoList);
 		int result = 0;
+		if(warninginfoList == null || warninginfoList.size() == 0) {
+			return 0;
+		}
 		try {
 			for (Warninginfo warninginfo : warninginfoList) {
 				result = result + warninginfoDAO.insert(warninginfo);
