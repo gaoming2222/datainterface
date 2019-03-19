@@ -2,17 +2,21 @@ package com.itclj.database.mapper;
 
 import com.itclj.database.entity.Warninginfo;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 public interface WarninginfoDAO {
-    int deleteByPrimaryKey(BigDecimal infoid);
+	public int deleteByPrimaryKey(BigDecimal infoid);
 
-    int insert(Warninginfo record);
+	public int insert(Warninginfo record);
 
-    int insertSelective(Warninginfo record);
+	public int insertSelective(Warninginfo record);
+    
+	public List<Warninginfo> getWarninginfo(Map<String, Object> param);
 
-    Warninginfo selectByPrimaryKey(BigDecimal infoid);
+	public Warninginfo selectByPrimaryKey(BigDecimal infoid);
 
-    int updateByPrimaryKeySelective(Warninginfo record);
+	public int updateByPrimaryKeySelective(Warninginfo record);
 
-    int updateByPrimaryKey(Warninginfo record);
+	public int updateByPrimaryKey(Warninginfo record);
 }
