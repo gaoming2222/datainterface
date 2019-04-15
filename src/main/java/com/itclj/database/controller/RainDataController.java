@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.itclj.database.entity.Rain;
-
+import com.itclj.database.entity.RainBS;
 import com.itclj.database.service.RainService;
 
 @Controller
@@ -61,6 +61,39 @@ public class RainDataController {
 		String result =JSON.toJSONString(rainList);
 		return result;
 	}
+	
+	/**
+	 * 根据参数查询雨量数据BS
+	 * 站点ID 时间  雨量
+	 * @param request
+	 * @return
+	 * @throws ParseException 
+	 */
+	@SuppressWarnings({"rawtypes" })
+	@RequestMapping(value = "/rain/getRainBS", method = RequestMethod.POST)
+	@ResponseBody
+	public String getRainDataBS(HttpServletRequest request) throws ParseException {
+		Map<String,Object> param = new HashMap<>();
+		List<RainBS> rainList = new ArrayList<RainBS>();
+		String jsonStr  =(String) request.getParameter("rain");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);  
+		logger.info("查询雨量数据参数为" + jsonStr);
+		if(jsonStr == null || jsonStr.trim() == "") {
+			param.put("stationid", "");
+			param.put("datatime", "");
+			param.put("strttime", null);
+			param.put("endtime", null);
+		}else {
+			param.put("stationid", (String)tMap.get("stationid"));
+			param.put("datatime", (String)tMap.get("datatime"));
+			param.put("strttime", (String)tMap.get("strttime"));
+			param.put("endtime", (String)tMap.get("endtime"));
+		}
+		rainList = rainService.getRainListBS(param);
+		String result =JSON.toJSONString(rainList);
+		return result;
+	}
+	
 	
 	/**
 	 * 批量插入雨量数据

@@ -32,87 +32,76 @@ public class CurrentDataController {
 	private CurrentdataService currentdataService;
 	
 	/**
-	 * 查询站点当前数据
+	 * 查询站点实时数据信息
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/currentdata/getCurrentdata", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Currentdata> getCurrentdata(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
-		List<Currentdata> currentList = new ArrayList<Currentdata>();
-		String jsonStr  =(String) request.getParameter("currentdata");
-		logger.info("查询当前数据参数为" + jsonStr);
-		if(jsonStr == null || jsonStr.trim() == "") {
-			param.put("stationid", "");
-			param.put("datatime", "");
-			param.put("strttime", null);
-			param.put("endtime", null);
-		}else {
-			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
-			Currentdata currentdata = JSON.parseObject(jsonStr, new TypeReference<Currentdata>() {});
-			param.put("stationid", currentdata.getStationid());
-			param.put("datatime", currentdata.getDatatime());
-			param.put("strttime", null);
-			param.put("endtime", null);
+	public String getCurrentData(HttpServletRequest request){
+		Map<String, Object> param = new HashMap();
+		List<Currentdata> currentdataList = new ArrayList<Currentdata>();
+		String jsonStr = request.getParameter("currentdata");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);
+		logger.info("查询站点当前数据信息，接收的参数为" + jsonStr);
+		if(jsonStr == null || jsonStr.trim() ==""){
+			param.put("StationID", "");
+		}else{
+			param.put("StationID", (String)tMap.get("StationID"));
 		}
-		currentList = currentdataService.getCurrentDataByStationId(param);
-		return currentList;
-	}
-	/**
-	 * 批量插入当前数据
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value = "/currentdata/batchInsertCurrentdata", method = RequestMethod.POST)
-	@ResponseBody
-	public int  batchInsertCurrentdata(HttpServletRequest request) {
-		int result = 0;
-		List<Currentdata> currentList = new ArrayList<Currentdata>();
-		String jsonStr =(String) request.getParameter("currentdata");
-		logger.info("批量插入当前数据,参数为" + jsonStr);
-		currentList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Currentdata>>() {});
-		result = currentdataService.batchInsertCurrentdata(currentList);
+		currentdataList = currentdataService.getCurrentdataList(param);
+		String result = JSON.toJSONString(currentdataList);
 		return result;
 	}
+	
 	/**
-	 * 逐条插入当前数据
+	 * 批量插入实时数据
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/currentdata/insertCurrentdata", method = RequestMethod.POST)
 	@ResponseBody
-	public int  insertCurrentdata(HttpServletRequest request) {
+	public int insertCurrentData(HttpServletRequest request) {
 		int result = 0;
-		Currentdata currentdata = null;
-		String jsonStr =(String) request.getParameter("currentdata");
-		logger.info("逐条插入当前数据,参数为" + jsonStr);
-		currentdata = JSON.parseObject(jsonStr, new TypeReference<Currentdata>() {});
-		result = currentdataService.insertCurrentdata(currentdata);
+		List<Currentdata> currentdataList = new ArrayList<Currentdata>();
+		String jsonStr  =(String) request.getParameter("currentdata");
+		logger.info("插入实时数据，参数为" + jsonStr);
+		currentdataList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Currentdata>>() {});
+		result = currentdataService.insertCurrentdata(currentdataList);
 		return result;
 	}
 	/**
-	 * 逐条更新当前数据信息
+	 * 批量更新实时数据
 	 * @param request
 	 * @return
 	 */
 	@RequestMapping(value = "/currentdata/updateCurrentdata", method = RequestMethod.POST)
 	@ResponseBody
-	public int  updateCurrentdata(HttpServletRequest request) {
+	public int  updateCurrentData(HttpServletRequest request) {
 		int result = 0;
-		Currentdata currentdata = null;
+		List<Currentdata> currentdataList = new ArrayList<Currentdata>();
 		String jsonStr  =(String) request.getParameter("currentdata");
-		logger.info("更新当前数据信息，参数为" + jsonStr);
-		currentdata = JSON.parseObject(jsonStr, new TypeReference<Currentdata>() {});
-		result = currentdataService.updateCurrentdata(currentdata);
+		logger.info("更新实时数据信息，参数为" + jsonStr);
+		currentdataList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Currentdata>>() {});
+		result = currentdataService.updateCurrentdata(currentdataList);
 		return result;
 	}
-	
+	/**
+	 * 逐条删除实时数据
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/currentdata/deleteCurrentdata", method = RequestMethod.POST)
 	@ResponseBody
-	public int  deleteCurrentdata(HttpServletRequest request) {
-	
-		return -1;
+	public int deleteCurrentData(HttpServletRequest request) {
+		int result = 0;
+		List<Currentdata> currentdataList = new ArrayList<Currentdata>();
+		String jsonStr  =(String) request.getParameter("currentdata");
+		logger.info("删除实时数据信息，参数为" + jsonStr);
+		currentdataList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Currentdata>>() {});
+		result = currentdataService.deleteCurrentdata(currentdataList);
+		return result;
 	}
 
 }

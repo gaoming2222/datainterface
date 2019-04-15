@@ -12,6 +12,16 @@
     <result column="STATE" jdbcType="DECIMAL" property="state" />
   </resultMap>
   
+    <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.VoltageBS">
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="DATA" jdbcType="DECIMAL" property="data" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
   <!-- 单挑插入 -->
   <insert id="insert" parameterType="com.itclj.database.entity.Voltage">
     insert into VOLTAGE (STATIONID, DATATIME, `DATA`, 
@@ -148,6 +158,35 @@
        </if>
        order by t.STATIONID
     </select>
+    
+    <!-- 查询 -->
+    <select id="getVoltageListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS" >
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.DATA,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
+       t.RECVDATATIME，
+       t.STATE
+       from VOLTAGE t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID
+    </select>
+    
     
     <!-- 单挑删除 -->
     <delete id="deleteVoltage" parameterType="Voltage">

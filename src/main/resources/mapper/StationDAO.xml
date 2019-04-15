@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.StationDAO">
+
+<resultMap id="BaseResultMap" type="com.itclj.database.entity.Station">
+    <result column="STATIONID" jdbcType="CHAR" property="StationID" />
+    <result column="STATIONNAME" jdbcType="VARCHAR" property="StationName" />
+    <result column="STATIONTYPE" jdbcType="DECIMAL" property="StationType" />
+    <result column="SUBCENTERID" jdbcType="DECIMAL" property="SubCenterID" />
+    <result column="ORIGIN" jdbcType="VARCHAR" property="Origin" />
+    <result column="LONGITUDE" jdbcType="DECIMAL" property="Longitude" />
+    <result column="LATITUDE" jdbcType="DECIMAL" property="Latitude" />
+    <result column="ID" jdbcType="CHAR" property="ID" />
+    <result column="RAINMAX" jdbcType="DECIMAL" property="RainMax" />
+    <result column="WATERMAX" jdbcType="DECIMAL" property="WaterMax" />
+    <result column="WATERMIN" jdbcType="DECIMAL" property="WaterMin" />
+  </resultMap>
+  
+  <!-- 查询 -->
+    <select id="selectStationList" parameterType="java.util.Map" resultMap="BaseResultMap" >
+       select 
+       t.STATIONID,
+       t.STATIONNAME,
+       t.STATIONTYPE,
+       t.SUBCENTERID,
+       t.ORIGIN,
+       t.LONGITUDE,
+       t.LATITUDE,
+       t.ID,
+       t.RAINMAX,
+       t.WATERMAX,
+       t.WATERMIN
+       from STATION_BS t
+       where
+       1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID LIKE #{StationID}
+       </if>
+       <if test="ID != null and ID != ''">
+       and ID LIKE #{ID}
+       </if>
+       order by t.ID
+    </select>
+    
+    <!-- 插入新站点 B/S -->
+  <insert id="insert" parameterType="com.itclj.database.entity.Station">
+    insert into STATION_BS (StationID, StationName, StationType, SubCenterID, Origin, Longitude,
+      Latitude, ID, RainMax, WaterMax, WaterMin)
+      			(
+           		select
+           		#{StationID,jdbcType=CHAR},
+                #{StationName,jdbcType=VARCHAR},
+                #{StationType,jdbcType=DECIMAL},
+                #{SubCenterID,jdbcType=DECIMAL},
+                #{Origin,jdbcType=VARCHAR},
+                #{Longitude,jdbcType=VARCHAR},
+                #{Latitude,jdbcType=VARCHAR},
+                #{ID,jdbcType=CHAR},                
+                #{RainMax,jdbcType=DECIMAL},
+                #{WaterMax,jdbcType=DECIMAL},
+                #{WaterMin,jdbcType=DECIMAL}
+                from dual
+                )
+  </insert>
+  
+  <!-- 更新站点 B/S -->
+  <update id="updateStation" parameterType="Station">
+    update STATION_BS
+    <set>
+      <if test="StationID != null and StationID != ''">
+        StationID = #{StationID,jdbcType=CHAR},
+      </if>
+      <if test="ID != null and ID != ''">
+        ID = #{ID,jdbcType=CHAR},
+      </if>
+      <if test="StationName != null and StationName != ''">
+        StationName = #{StationName,jdbcType=VARCHAR},
+      </if>
+      <if test="StationType != null and StationType != ''">
+        StationType = #{StationType,jdbcType=DECIMAL},
+      </if>
+      <if test="SubCenterID != null and SubCenterID != ''">
+        SubCenterID = #{SubCenterID,jdbcType=DECIMAL},
+      </if>
+      <if test="RainMax != null and RainMax != ''">
+        RainMax = #{RainMax,jdbcType=DECIMAL},
+      </if>
+      <if test="WaterMax != null and WaterMax != ''">
+        WaterMax = #{WaterMax,jdbcType=DECIMAL},
+      </if>
+      <if test="WaterMin != null and WaterMin != ''">
+        WaterMin = #{WaterMin,jdbcType=DECIMAL},
+      </if>
+      <if test="Latitude != null and Latitude != ''">
+        Latitude = #{Latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="Longitude != null and Longitude != ''">
+        Longitude = #{Longitude,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATIONID = #{StationID}
+  </update>
+  
+  <!-- 删除站点 -->
+    <delete id="deleteStation" parameterType="Station">
+    	delete from STATION_BS
+    	where  1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID LIKE #{StationID}
+       </if>
+    </delete>
+    
+    
+</mapper>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+

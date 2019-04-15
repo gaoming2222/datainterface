@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.itclj.database.entity.Water;
+import com.itclj.database.entity.WaterBS;
 import com.itclj.database.service.WaterService;
 
 @Controller
@@ -58,6 +59,37 @@ public class WaterDataController {
 			param.put("endtime", (String)tMap.get("endtime"));
 		}
 		waterList = waterService.getWaterList(param);
+		String s = JSON.toJSONString(waterList);
+		return s;
+	}
+	
+	/**
+	 * 查询雨量数据 B/S
+	 * @param request
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@RequestMapping(value = "/water/getWaterBS", method = RequestMethod.POST)
+	@ResponseBody
+	public String getWaterDataBS(HttpServletRequest request) {
+		Map<String,Object> param = new HashMap<>();
+		List<WaterBS> waterList = new ArrayList<WaterBS>();
+		String jsonStr  =(String) request.getParameter("water");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);
+		logger.info("查询水位数据参数为" + jsonStr);
+		if(jsonStr == null || jsonStr.trim() == "") {
+			param.put("stationid", "");
+			param.put("datatime", "");
+			param.put("strttime", null);
+			param.put("endtime", null);
+		}else {
+			//List<Subcenter> subcenter = JSON.parseObject(jsonStr, new TypeReference<ArrayList<Subcenter>>() {});
+			param.put("stationid", (String)tMap.get("stationid"));
+			param.put("datatime", (String)tMap.get("datatime"));
+			param.put("strttime", (String)tMap.get("strttime"));
+			param.put("endtime", (String)tMap.get("endtime"));
+		}
+		waterList = waterService.getWaterListBS(param);
 		String s = JSON.toJSONString(waterList);
 		return s;
 	}

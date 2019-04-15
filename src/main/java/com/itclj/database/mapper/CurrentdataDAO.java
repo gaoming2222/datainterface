@@ -15,11 +15,18 @@ public interface CurrentdataDAO {
 
     int insertSelective(Currentdata record);
 
-    List<Currentdata> selectByPrimaryKey(Map<String,Object> param);
-
     int updateByPrimaryKeySelective(Currentdata record);
 
     int updateByPrimaryKey(Currentdata record);
+    
+    
 
-	
+    public List<Currentdata> getCurrentdataList(Map<String,Object> param);
+    
+    public int insertCurrentdata(List<Currentdata> records);
+
+	public int updateCurrentdata(List<Currentdata> records);
+
+	public int deleteCurrentdata(Currentdata record);
+
 }

@@ -2,143 +2,170 @@ package com.itclj.database.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
 
 /**
  * CURRENTDATA
  * @author 
  */
 public class Currentdata implements Serializable {
-    private String stationid;
+	@JSONField(name="CName")
+    private String CName;
 
-    private String cname;
+	@JSONField(name="StationID")
+    private String StationID;
 
-    private String ctype;
+	@JSONField(name="CType")
+    private String CType;
 
-    private BigDecimal yesterdayrain;
+	@JSONField(name="YesterdayRain")
+    private BigDecimal YesterdayRain;
 
-    private BigDecimal todayrain;
+	@JSONField(name="TodayRain")
+    private BigDecimal TodayRain;
 
-    private BigDecimal periodrain;
+	@JSONField(name="PeriodRain")
+    private BigDecimal PeriodRain;
 
-    private BigDecimal waterstage;
+	@JSONField(name="WaterStage")
+    private BigDecimal WaterStage;
 
-    private BigDecimal waterflow;
+	@JSONField(name="WaterFlow")
+    private BigDecimal WaterFlow;
 
-    private BigDecimal voltage;
+	@JSONField(name="Voltage")
+    private BigDecimal Voltage;
 
-    private String currentstate;
+	@JSONField(name="CurrentState")
+    private String CurrentState;
 
-    private String reporttype;
+	@JSONField(name="ReportType")
+    private String ReportType;
 
-    private String gprstype;
+	@JSONField(name="GPRSType")
+    private String GPRSType;
 
-    private Date datatime;
+	@JSONField(name="DataTime")
+    private String DataTime;
 
     private static final long serialVersionUID = 1L;
 
-    public String getStationid() {
-        return stationid;
+	@JSONField(name="CName")
+    public String getCName() {
+        return CName;
     }
 
-    public void setStationid(String stationid) {
-        this.stationid = stationid;
+    public void setCName(String CName) {
+        this.CName = CName;
+    }
+    
+	@JSONField(name="StationID")
+    public String getStationID() {
+        return StationID;
     }
 
-    public String getCname() {
-        return cname;
+    public void setStationID(String StationID) {
+        this.StationID = StationID;
     }
 
-    public void setCname(String cname) {
-        this.cname = cname;
+	@JSONField(name="CType")
+    public String getCType() {
+        return CType;
     }
 
-    public String getCtype() {
-        return ctype;
+    public void setCType(String CType) {
+        this.CType = CType;
     }
 
-    public void setCtype(String ctype) {
-        this.ctype = ctype;
+	@JSONField(name="YesterdayRain")
+    public BigDecimal getYesterdayRain() {
+        return YesterdayRain;
     }
 
-    public BigDecimal getYesterdayrain() {
-        return yesterdayrain;
+    public void setYesterdayRain(BigDecimal YesterdayRain) {
+        this.YesterdayRain = YesterdayRain;
     }
 
-    public void setYesterdayrain(BigDecimal yesterdayrain) {
-        this.yesterdayrain = yesterdayrain;
+	@JSONField(name="TodayRain")
+    public BigDecimal getTodayRain() {
+        return TodayRain;
     }
 
-    public BigDecimal getTodayrain() {
-        return todayrain;
+    public void setTodayRain(BigDecimal TodayRain) {
+        this.TodayRain = TodayRain;
     }
 
-    public void setTodayrain(BigDecimal todayrain) {
-        this.todayrain = todayrain;
+	@JSONField(name="PeriodRain")
+    public BigDecimal getPeriodRain() {
+        return PeriodRain;
     }
 
-    public BigDecimal getPeriodrain() {
-        return periodrain;
+    public void setPeriodRain(BigDecimal PeriodRain) {
+        this.PeriodRain = PeriodRain;
     }
 
-    public void setPeriodrain(BigDecimal periodrain) {
-        this.periodrain = periodrain;
+	@JSONField(name="WaterStage")
+    public BigDecimal getWaterStage() {
+        return WaterStage;
     }
 
-    public BigDecimal getWaterstage() {
-        return waterstage;
+    public void setWaterStage(BigDecimal WaterStage) {
+        this.WaterStage = WaterStage;
     }
 
-    public void setWaterstage(BigDecimal waterstage) {
-        this.waterstage = waterstage;
+	@JSONField(name="WaterFlow")
+    public BigDecimal getWaterFlow() {
+        return WaterFlow;
     }
 
-    public BigDecimal getWaterflow() {
-        return waterflow;
+    public void setWaterFlow(BigDecimal WaterFlow) {
+        this.WaterFlow = WaterFlow;
     }
 
-    public void setWaterflow(BigDecimal waterflow) {
-        this.waterflow = waterflow;
-    }
-
+	@JSONField(name="Voltage")
     public BigDecimal getVoltage() {
-        return voltage;
+        return Voltage;
     }
 
-    public void setVoltage(BigDecimal voltage) {
-        this.voltage = voltage;
+    public void setVoltage(BigDecimal Voltage) {
+        this.Voltage = Voltage;
     }
 
-    public String getCurrentstate() {
-        return currentstate;
+	@JSONField(name="CurrentState")
+    public String getCurrentState() {
+        return CurrentState;
     }
 
-    public void setCurrentstate(String currentstate) {
-        this.currentstate = currentstate;
+    public void setCurrentState(String CurrentState) {
+        this.CurrentState = CurrentState;
     }
 
-    public String getReporttype() {
-        return reporttype;
+	@JSONField(name="ReportType")
+    public String getReportType() {
+        return ReportType;
     }
 
-    public void setReporttype(String reporttype) {
-        this.reporttype = reporttype;
+    public void setReportType(String ReportType) {
+        this.ReportType = ReportType;
     }
 
-    public String getGprstype() {
-        return gprstype;
+	@JSONField(name="GPRSType")
+    public String getGPRSType() {
+        return GPRSType;
     }
 
-    public void setGprstype(String gprstype) {
-        this.gprstype = gprstype;
+    public void setGPRSType(String GPRSType) {
+        this.GPRSType = GPRSType;
     }
 
-    public Date getDatatime() {
-        return datatime;
+	@JSONField(name="DataTime")
+    public String getDataTime() {
+        return DataTime;
     }
 
-    public void setDatatime(Date datatime) {
-        this.datatime = datatime;
+    public void setDataTime(String DataTime) {
+        this.DataTime = DataTime;
     }
 
     @Override
@@ -153,38 +180,38 @@ public class Currentdata implements Serializable {
             return false;
         }
         Currentdata other = (Currentdata) that;
-        return (this.getStationid() == null ? other.getStationid() == null : this.getStationid().equals(other.getStationid()))
-            && (this.getCname() == null ? other.getCname() == null : this.getCname().equals(other.getCname()))
-            && (this.getCtype() == null ? other.getCtype() == null : this.getCtype().equals(other.getCtype()))
-            && (this.getYesterdayrain() == null ? other.getYesterdayrain() == null : this.getYesterdayrain().equals(other.getYesterdayrain()))
-            && (this.getTodayrain() == null ? other.getTodayrain() == null : this.getTodayrain().equals(other.getTodayrain()))
-            && (this.getPeriodrain() == null ? other.getPeriodrain() == null : this.getPeriodrain().equals(other.getPeriodrain()))
-            && (this.getWaterstage() == null ? other.getWaterstage() == null : this.getWaterstage().equals(other.getWaterstage()))
-            && (this.getWaterflow() == null ? other.getWaterflow() == null : this.getWaterflow().equals(other.getWaterflow()))
+        return (this.getCName() == null ? other.getCName() == null : this.getCName().equals(other.getCName()))
+            && (this.getStationID() == null ? other.getStationID() == null : this.getStationID().equals(other.getStationID()))
+            && (this.getCType() == null ? other.getCType() == null : this.getCType().equals(other.getCType()))
+            && (this.getYesterdayRain() == null ? other.getYesterdayRain() == null : this.getYesterdayRain().equals(other.getYesterdayRain()))
+            && (this.getTodayRain() == null ? other.getTodayRain() == null : this.getTodayRain().equals(other.getTodayRain()))
+            && (this.getPeriodRain() == null ? other.getPeriodRain() == null : this.getPeriodRain().equals(other.getPeriodRain()))
+            && (this.getWaterStage() == null ? other.getWaterStage() == null : this.getWaterStage().equals(other.getWaterStage()))
+            && (this.getWaterFlow() == null ? other.getWaterFlow() == null : this.getWaterFlow().equals(other.getWaterFlow()))
             && (this.getVoltage() == null ? other.getVoltage() == null : this.getVoltage().equals(other.getVoltage()))
-            && (this.getCurrentstate() == null ? other.getCurrentstate() == null : this.getCurrentstate().equals(other.getCurrentstate()))
-            && (this.getReporttype() == null ? other.getReporttype() == null : this.getReporttype().equals(other.getReporttype()))
-            && (this.getGprstype() == null ? other.getGprstype() == null : this.getGprstype().equals(other.getGprstype()))
-            && (this.getDatatime() == null ? other.getDatatime() == null : this.getDatatime().equals(other.getDatatime()));
+            && (this.getCurrentState() == null ? other.getCurrentState() == null : this.getCurrentState().equals(other.getCurrentState()))
+            && (this.getReportType() == null ? other.getReportType() == null : this.getReportType().equals(other.getReportType()))
+            && (this.getGPRSType() == null ? other.getGPRSType() == null : this.getGPRSType().equals(other.getGPRSType()))
+            && (this.getDataTime() == null ? other.getDataTime() == null : this.getDataTime().equals(other.getDataTime()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getStationid() == null) ? 0 : getStationid().hashCode());
-        result = prime * result + ((getCname() == null) ? 0 : getCname().hashCode());
-        result = prime * result + ((getCtype() == null) ? 0 : getCtype().hashCode());
-        result = prime * result + ((getYesterdayrain() == null) ? 0 : getYesterdayrain().hashCode());
-        result = prime * result + ((getTodayrain() == null) ? 0 : getTodayrain().hashCode());
-        result = prime * result + ((getPeriodrain() == null) ? 0 : getPeriodrain().hashCode());
-        result = prime * result + ((getWaterstage() == null) ? 0 : getWaterstage().hashCode());
-        result = prime * result + ((getWaterflow() == null) ? 0 : getWaterflow().hashCode());
+        result = prime * result + ((getStationID() == null) ? 0 : getStationID().hashCode());
+        result = prime * result + ((getCName() == null) ? 0 : getCName().hashCode());
+        result = prime * result + ((getCType() == null) ? 0 : getCType().hashCode());
+        result = prime * result + ((getYesterdayRain() == null) ? 0 : getYesterdayRain().hashCode());
+        result = prime * result + ((getTodayRain() == null) ? 0 : getTodayRain().hashCode());
+        result = prime * result + ((getPeriodRain() == null) ? 0 : getPeriodRain().hashCode());
+        result = prime * result + ((getWaterStage() == null) ? 0 : getWaterStage().hashCode());
+        result = prime * result + ((getWaterFlow() == null) ? 0 : getWaterFlow().hashCode());
         result = prime * result + ((getVoltage() == null) ? 0 : getVoltage().hashCode());
-        result = prime * result + ((getCurrentstate() == null) ? 0 : getCurrentstate().hashCode());
-        result = prime * result + ((getReporttype() == null) ? 0 : getReporttype().hashCode());
-        result = prime * result + ((getGprstype() == null) ? 0 : getGprstype().hashCode());
-        result = prime * result + ((getDatatime() == null) ? 0 : getDatatime().hashCode());
+        result = prime * result + ((getCurrentState() == null) ? 0 : getCurrentState().hashCode());
+        result = prime * result + ((getReportType() == null) ? 0 : getReportType().hashCode());
+        result = prime * result + ((getGPRSType() == null) ? 0 : getGPRSType().hashCode());
+        result = prime * result + ((getDataTime() == null) ? 0 : getDataTime().hashCode());
         return result;
     }
 
@@ -194,19 +221,19 @@ public class Currentdata implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", stationid=").append(stationid);
-        sb.append(", cname=").append(cname);
-        sb.append(", ctype=").append(ctype);
-        sb.append(", yesterdayrain=").append(yesterdayrain);
-        sb.append(", todayrain=").append(todayrain);
-        sb.append(", periodrain=").append(periodrain);
-        sb.append(", waterstage=").append(waterstage);
-        sb.append(", waterflow=").append(waterflow);
-        sb.append(", voltage=").append(voltage);
-        sb.append(", currentstate=").append(currentstate);
-        sb.append(", reporttype=").append(reporttype);
-        sb.append(", gprstype=").append(gprstype);
-        sb.append(", datatime=").append(datatime);
+        sb.append(", CName=").append(CName);
+        sb.append(", StationID=").append(StationID);
+        sb.append(", CType=").append(CType);
+        sb.append(", YesterdayRain=").append(YesterdayRain);
+        sb.append(", TodayRain=").append(TodayRain);
+        sb.append(", PeriodRain=").append(PeriodRain);
+        sb.append(", WaterStage=").append(WaterStage);
+        sb.append(", WaterFlow=").append(WaterFlow);
+        sb.append(", Voltage=").append(Voltage);
+        sb.append(", CurrentState=").append(CurrentState);
+        sb.append(", ReportType=").append(ReportType);
+        sb.append(", GPRSType=").append(GPRSType);
+        sb.append(", DataTime=").append(DataTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

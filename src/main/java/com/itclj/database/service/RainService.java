@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itclj.database.entity.Rain;
+import com.itclj.database.entity.RainBS;
 import com.itclj.database.mapper.RainDAO;
 
 /***
@@ -38,6 +39,26 @@ public class RainService {
 		logger.info("雨量数据查询完成");
 		return retList;
 	}
+	
+	/**
+	 * 根据参数 查询雨量信息BS
+	 * @param param
+	 * @return
+	 */
+	public List<RainBS> getRainListBS(Map<String,Object> param) {
+		List<RainBS> retList = new ArrayList<RainBS>();
+		logger.info("开始查询雨量数据" + param);
+		try {
+			retList = rainDAO.getRainListBS(param);
+		}catch (Exception e) {
+			logger.error("查询雨量数据出错" + e.getMessage());
+			return null;
+		}
+		logger.info("雨量数据查询完成");
+		return retList;
+	}
+	
+	
 	/**
 	 * 批量更新雨量数据
 	 * @param rainList

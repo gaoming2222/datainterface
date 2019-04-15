@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.itclj.database.entity.Soildata;
+import com.itclj.database.entity.SoildataBS;
 import com.itclj.database.service.SoildataService;
 
 @Controller
@@ -59,6 +60,38 @@ public class SoilDataController {
 		String result =JSON.toJSONString(soildataList);
 		return result;
 	}
+	
+	/**
+	 * 根据参数查询墒情数据
+	 * @param request
+	 * @return
+	 * @throws ParseException 
+	 */
+	@SuppressWarnings({"rawtypes" })
+	@RequestMapping(value = "/soildata/getSoildataBS", method = RequestMethod.POST)
+	@ResponseBody
+	public String getSoilDataBS(HttpServletRequest request) throws ParseException {
+		Map<String,Object> param = new HashMap<>();
+		List<SoildataBS> soildataList = new ArrayList<SoildataBS>();
+		String jsonStr  =(String) request.getParameter("soildata");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);  
+		logger.info("查询墒情数据参数为" + jsonStr);
+		if(jsonStr == null || jsonStr.trim() == "") {
+			param.put("stationid", "");
+			param.put("datatime", "");
+			param.put("strttime", null);
+			param.put("endtime", null);
+		}else {
+			param.put("stationid", (String)tMap.get("stationid"));
+			param.put("datatime", (String)tMap.get("datatime"));
+			param.put("strttime", (String)tMap.get("strttime"));
+			param.put("endtime", (String)tMap.get("endtime"));
+		}
+		soildataList = soildataService.getSoildataListBS(param);
+		String result =JSON.toJSONString(soildataList);
+		return result;
+	}
+	
 	
 	/**
 	 * 批量插入墒情数据

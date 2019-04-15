@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itclj.database.entity.Voltage;
+import com.itclj.database.entity.VoltageBS;
 import com.itclj.database.mapper.VoltageDAO;
 
 /**
@@ -39,6 +40,26 @@ public class VoltageService {
 		logger.info("查询电压信息完成");
 		return retList;
 	}
+	
+	/**
+	 * 查询电压数据BS
+	 * @param param
+	 * @return
+	 */
+	public List<VoltageBS> getVoltageListBS(Map<String,Object> param) {
+		List<VoltageBS> retList = new ArrayList<VoltageBS>();
+		logger.info("开始查询电压信息" + param);
+		try {
+			retList = voltageDAO.getVoltageListBS(param);
+		}catch (Exception e) {
+			logger.error("查询电压信息出错" + e.getMessage());
+			return null;
+		}
+		logger.info("查询电压信息完成");
+		return retList;
+	}
+	
+	
 	/**
 	 * 批量插入电压信息
 	 * @param voltagesList

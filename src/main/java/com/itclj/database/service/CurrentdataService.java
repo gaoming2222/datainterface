@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itclj.database.entity.Currentdata;
-
 import com.itclj.database.mapper.CurrentdataDAO;
 /**
  * date:2019-02-11
@@ -23,74 +22,75 @@ public class CurrentdataService {
 	private CurrentdataDAO currentdataDAO;
 	
 	/**
-	 * 根据站点ID查询单站数据信息
+	 * 查询实时数据信息
 	 * @param param
 	 * @return
 	 */
-	public List<Currentdata> getCurrentDataByStationId(Map<String,Object> param){
-		List<Currentdata> ret = new ArrayList<Currentdata>();
-		logger.info("开始查询实时数据信息" + param);
-		try {
-			ret = currentdataDAO.selectByPrimaryKey(param);
-		}catch(Exception e) {
-			logger.error("查询实时数据信息失败" + e.getMessage());
+	public List<Currentdata> getCurrentdataList(Map<String, Object> param){
+		List<Currentdata> retList = new ArrayList<Currentdata>();
+		logger.info("查询站点当前数据信息" + param);
+		try{
+			retList = currentdataDAO.getCurrentdataList(param);
+		}
+		catch(Exception e){
+			logger.error("查询站点当前数据信息失败" + e.getMessage());
 			return null;
 		}
-		logger.info("查询水情站信息完成" + ret);
-		return ret;
+		return retList;
 	}
 	
 	/**
-	 * 批量插入当前数据信息
-	 * @param currentdataList
+	 * 批量插入实时数据信息
+	 * @param param
 	 * @return
 	 */
-	public int batchInsertCurrentdata(List<Currentdata> currentdataList) {
+	public int insertCurrentdata(List<Currentdata> currentdataList) {
 		logger.info("开始插入实时数据信息" + currentdataList.size());
 		int result = 0;
 		try {
-			result = currentdataDAO.batchInsert(currentdataList);
+			result = currentdataDAO.insertCurrentdata(currentdataList);
 		}catch (Exception e) {
-			logger.error("插入实时数据信息失败" + e.getMessage());
+			logger.error("实时数据信息插入失败" + e.getMessage());
 			return -1;
 		}
 		logger.info("插入实时数据信息完成" + result);
 		return result;
 	}
-	
 	/**
-	 * 逐条插入当前数据信息
-	 * @param currentdata
+	 * 批量更新实时数据信息
+	 * @param param
 	 * @return
 	 */
-	public int insertCurrentdata(Currentdata currentdata) {
-		logger.info("开始插入实时数据信息" + currentdata);
+	public int updateCurrentdata(List<Currentdata> currentdataList) {
+		logger.info("开始更新实时数据信息" + currentdataList.size());
 		int result = 0;
 		try {
-			result = currentdataDAO.insert(currentdata);
+			result = result + currentdataDAO.updateCurrentdata(currentdataList);
 		}catch (Exception e) {
-			logger.error("插入实时数据信息失败" + e.getMessage());
-			return -1;
-		}
-		logger.info("插入实时数据信息完成" + result);
-		return result;
-	}
-	
-	/**
-	 * 更新当前数据信息
-	 * @param hydlStationList
-	 * @return
-	 */
-	public int updateCurrentdata(Currentdata currentdata) {
-		logger.info("开始更新实时数据信息" + currentdata);
-		int result = 0;
-		try {
-			result = result + currentdataDAO.updateByPrimaryKey(currentdata);
-		}catch (Exception e) {
-			logger.error("更新实时数据信息失败" + e.getMessage());
+			logger.error("实时数据信息更新失败" + e.getMessage());
 			return -1;
 		}
 		logger.info("更新实时数据信息完成" + result);
+		return result;
+	}
+	/**
+	 * 逐条删除实时数据
+	 * @param param
+	 * @return
+	 */
+	public int deleteCurrentdata(List<Currentdata> currentdataList) {
+		logger.info("开始删除实时数据数据" + currentdataList.size());
+		int result = 0;
+		try {
+			for (Currentdata currentdata : currentdataList) {
+				result = result + currentdataDAO.deleteCurrentdata(currentdata);
+			}
+		}catch (Exception e) {
+			logger.error("删除实时数据失败" + e.getMessage());
+			return -1;
+		}
+		
+		logger.info("删除实时数据完成" + result);
 		return result;
 	}
 	

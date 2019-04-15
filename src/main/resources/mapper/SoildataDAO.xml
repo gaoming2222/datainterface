@@ -20,6 +20,27 @@
     <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
     <result column="STATE" jdbcType="DECIMAL" property="state" />
   </resultMap>
+  
+  <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.SoildataBS">
+    <result column="STATIONID" jdbcType="CHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="VOLTAGE" jdbcType="DECIMAL" property="voltage" />
+    <result column="VOLTAGE10" jdbcType="DECIMAL" property="voltage10" />
+    <result column="MOISTURE10" jdbcType="DECIMAL" property="moisture10" />
+    <result column="VOLTAGE20" jdbcType="DECIMAL" property="voltage20" />
+    <result column="MOISTURE20" jdbcType="DECIMAL" property="moisture20" />
+    <result column="VOLTAGE30" jdbcType="DECIMAL" property="voltage30" />
+    <result column="MOISTURE30" jdbcType="DECIMAL" property="moisture30" />
+    <result column="VOLTAGE40" jdbcType="DECIMAL" property="voltage40" />
+    <result column="MOISTURE40" jdbcType="DECIMAL" property="moisture40" />
+    <result column="VOLTAGE60" jdbcType="DECIMAL" property="voltage60" />
+    <result column="MOISTURE60" jdbcType="DECIMAL" property="moisture60" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
   <insert id="insert" parameterType="com.itclj.database.entity.Soildata">
     insert into SOILDATA (STATIONID, DATATIME, VOLTAGE, 
       VOLTAGE10, MOISTURE10, VOLTAGE20, 
@@ -285,4 +306,43 @@
        </if>
        order by t.STATIONID
     </select>
+    
+    <!-- 查询 -->
+    <select id="getSoilListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS">
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.VOLTAGE,
+       t.VOLTAGE10,
+       t.MOISTURE10,
+       t.VOLTAGE20,
+       t.MOISTURE20,
+       t.VOLTAGE30,
+       t.MOISTURE30,
+       t.VOLTAGE40,
+       t.MOISTURE40,
+       t.VOLTAGE60,
+	   t.MOISTURE60,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
+       t.RECVDATATIME,
+       t.STATE
+       from SOILDATA t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID
+    </select>
+    
 </mapper>
