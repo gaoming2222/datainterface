@@ -39,7 +39,7 @@ public class CurrentDataController {
 	@RequestMapping(value = "/currentdata/getCurrentdata", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Currentdata> getCurrentdata(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Currentdata> currentList = new ArrayList<Currentdata>();
 		String jsonStr  =(String) request.getParameter("currentdata");
 		logger.info("查询当前数据参数为" + jsonStr);

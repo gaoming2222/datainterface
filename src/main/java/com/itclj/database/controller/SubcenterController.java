@@ -52,7 +52,7 @@ public class SubcenterController {
 	@RequestMapping(value = "/subcenter/getSubcenter", method = RequestMethod.POST)
 	@ResponseBody
 	public String getSubcenterData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Subcenter> subcenterList = new ArrayList<Subcenter>();
 		String jsonStr  =(String) request.getParameter("subcenter");
 		Map tMap = JSON.parseObject(jsonStr,Map.class); 

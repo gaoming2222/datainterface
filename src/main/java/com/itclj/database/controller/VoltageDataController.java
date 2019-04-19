@@ -37,7 +37,7 @@ public class VoltageDataController {
 	@RequestMapping(value = "/voltage/getVoltage", method = RequestMethod.POST)
 	@ResponseBody
 	public String getVoltageData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Voltage> voltageList = new ArrayList<Voltage>();
 		String jsonStr  =(String) request.getParameter("voltage");
 		Map tMap = JSON.parseObject(jsonStr,Map.class);

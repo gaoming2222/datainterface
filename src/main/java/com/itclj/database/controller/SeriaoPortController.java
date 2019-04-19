@@ -39,7 +39,7 @@ public class SeriaoPortController {
 	@RequestMapping(value = "/serialport/getSerialport", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Serialport> getSerialportData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Serialport> serialportList = new ArrayList<Serialport>();
 		String jsonStr  =(String) request.getParameter("serialport");
 		logger.info("查询串口信息，接收参数为：" + jsonStr);

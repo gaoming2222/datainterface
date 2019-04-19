@@ -69,13 +69,18 @@
   
   
   <insert id="insert" parameterType="com.itclj.database.entity.Warninginfo">
-    <selectKey keyProperty="infoid" order="AFTER" resultType="java.math.BigDecimal">
-      Oracle
-    </selectKey>
-    insert into WARNINGINFO (STATIONID, DATATIME, INFODETAIL, 
-      ERROCODE)
-    values (#{stationid,jdbcType=CHAR}, #{datatime,jdbcType=TIMESTAMP}, #{infodetail,jdbcType=VARCHAR}, 
-      #{errocode,jdbcType=CHAR})
+      insert into WARNINGINFO
+    	(STATIONID, DATATIME, INFODETAIL, ERROCODE)
+    	
+                (
+                select
+                #{stationid},
+                to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss'),
+                #{infodetail},
+                #{errocode}
+                from dual
+                )
+        
   </insert>
   <insert id="insertSelective" parameterType="com.itclj.database.entity.Warninginfo">
     <selectKey keyProperty="infoid" order="AFTER" resultType="java.math.BigDecimal">

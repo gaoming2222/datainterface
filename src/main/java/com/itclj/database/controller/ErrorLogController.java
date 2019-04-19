@@ -40,7 +40,7 @@ public class ErrorLogController {
 	@RequestMapping(value = "/errorlog/getErrorlog", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Errorlog> getErrorlogData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Errorlog> errorlogList = new ArrayList<Errorlog>();
 		String jsonStr  =(String) request.getParameter("errorlog");
 		logger.info("查询错误日志信息，接收参数为：" + jsonStr);

@@ -40,7 +40,7 @@ public class WaterDataController {
 	@RequestMapping(value = "/water/getWater", method = RequestMethod.POST)
 	@ResponseBody
 	public String getWaterData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Water> waterList = new ArrayList<Water>();
 		String jsonStr  =(String) request.getParameter("water");
 		Map tMap = JSON.parseObject(jsonStr,Map.class);

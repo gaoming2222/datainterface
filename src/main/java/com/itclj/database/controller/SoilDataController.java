@@ -39,7 +39,7 @@ public class SoilDataController {
 	@RequestMapping(value = "/soildata/getSoildata", method = RequestMethod.POST)
 	@ResponseBody
 	public String getSoilData(HttpServletRequest request) throws ParseException {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Soildata> soildataList = new ArrayList<Soildata>();
 		String jsonStr  =(String) request.getParameter("soildata");
 		Map tMap = JSON.parseObject(jsonStr,Map.class);  

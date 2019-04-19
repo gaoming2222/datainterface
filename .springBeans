@@ -8,12 +8,18 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>java:com.itclj.database.controller.HydlstationController</config>
+		<config>java:com.itclj.Application</config>
 	</configs>
 	<autoconfigs>
 		<config>java:com.itclj.database.controller.SubcenterController</config>
-		<config>java:com.itclj.ItcljApplication</config>
+		<config>java:com.itclj.database.controller.ErrorLogController</config>
+		<config>java:com.itclj.database.controller.SeriaoPortController</config>
+		<config>java:com.itclj.database.controller.SoilStationController</config>
+		<config>java:com.itclj.database.controller.CurrentDataController</config>
 		<config>java:com.itclj.database.controller.VoltageDataController</config>
+		<config>java:com.itclj.database.controller.SoilDataController</config>
 		<config>java:com.itclj.database.controller.WaterDataController</config>
+		<config>java:com.itclj.database.controller.UserInfoController</config>
 		<config>java:com.itclj.database.controller.RainDataController</config>
 	</autoconfigs>
 	<configSets>

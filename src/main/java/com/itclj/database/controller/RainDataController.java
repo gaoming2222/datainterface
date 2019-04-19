@@ -41,7 +41,7 @@ public class RainDataController {
 	@RequestMapping(value = "/rain/getRain", method = RequestMethod.POST)
 	@ResponseBody
 	public String getRainData(HttpServletRequest request) throws ParseException {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Rain> rainList = new ArrayList<Rain>();
 		String jsonStr  =(String) request.getParameter("rain");
 		Map tMap = JSON.parseObject(jsonStr,Map.class);  

@@ -37,7 +37,7 @@ public class HydlstationController {
 	@RequestMapping(value = "/hydlstation/getHydlStation", method = RequestMethod.POST)
 	@ResponseBody
 	public String getSubcenterData(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<HydlStation> hydlStationList = new ArrayList<HydlStation>();
 		String jsonStr  =(String) request.getParameter("hydlstation");
 		Map tMap = JSON.parseObject(jsonStr,Map.class); 

@@ -39,7 +39,7 @@ public class SoilStationController {
     @RequestMapping(value = "/soilstation/getSoilstation", method = RequestMethod.POST)
 	@ResponseBody
 	public String getSoilstation(HttpServletRequest request) {
-		Map<String,Object> param = new HashMap<>();
+		Map<String,Object> param = new HashMap<String, Object>();
 		List<Soilstation> soilstationList = new ArrayList<Soilstation>();
 		String jsonStr  =(String) request.getParameter("Soilstation");
 		Map tMap = JSON.parseObject(jsonStr,Map.class); 
