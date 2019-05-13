@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itclj.database.entity.Soildata;
+import com.itclj.database.entity.SoildataBS;
 import com.itclj.database.mapper.SoildataDAO;
 
 @Service
@@ -35,6 +36,25 @@ public class SoildataService {
 		logger.info("墒情数据查询完成");
 		return retList;
 	}
+	
+	/**
+	 * 根据参数 查询墒情信息BS
+	 * @param param
+	 * @return
+	 */
+	public List<SoildataBS> getSoildataListBS(Map<String,Object> param) {
+		List<SoildataBS> retList = new ArrayList<SoildataBS>();
+		logger.info("开始查询墒情数据" + param);
+		try {
+			retList = soildataDAO.getSoilListBS(param);
+		}catch (Exception e) {
+			logger.error("查询墒情数据出错" + e.getMessage());
+			return null;
+		}
+		logger.info("墒情数据查询完成");
+		return retList;
+	}
+	
 	
 	/**
 	 * 批量插入墒情数据

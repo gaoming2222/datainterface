@@ -3,6 +3,7 @@ package com.itclj.database.mapper;
 import java.util.List;
 import java.util.Map;
 import com.itclj.database.entity.Currentdata;
+import com.itclj.database.entity.CurrentdataCS;
 
 
 
@@ -15,11 +16,23 @@ public interface CurrentdataDAO {
 
     int insertSelective(Currentdata record);
 
-    List<Currentdata> selectByPrimaryKey(Map<String,Object> param);
-
     int updateByPrimaryKeySelective(Currentdata record);
 
     int updateByPrimaryKey(Currentdata record);
+    
+    
 
+    public List<Currentdata> getCurrentdataList(Map<String,Object> param);
+    
+    public int insertCurrentdata(List<Currentdata> records);
+    
+    public int insertCurrentdataCS(List<CurrentdataCS> records);
+
+	public int updateCurrentdata(List<Currentdata> records);
 	
+	public int updateCurrentdataCS(List<CurrentdataCS> records);
+	
+
+	public int deleteCurrentdata(Currentdata record);
+
 }

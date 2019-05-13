@@ -163,14 +163,14 @@ public class Rain implements Serializable {
         int result = 1;
         result = prime * result + ((getStationid() == null) ? 0 : getStationid().hashCode());
         result = prime * result + ((getDatatime() == null) ? 0 : getDatatime().hashCode());
-        result = prime * result + ((getPeriodrain() == null) ? 0 : getPeriodrain().hashCode());
-        result = prime * result + ((getDifferencerain() == null) ? 0 : getDifferencerain().hashCode());
-        result = prime * result + ((getTotalrain() == null) ? 0 : getTotalrain().hashCode());
-        result = prime * result + ((getDayrain() == null) ? 0 : getDayrain().hashCode());
-        result = prime * result + ((getTranstype() == null) ? 0 : getTranstype().hashCode());
-        result = prime * result + ((getMessagetype() == null) ? 0 : getMessagetype().hashCode());
-        result = prime * result + ((getRecvdatatime() == null) ? 0 : getRecvdatatime().hashCode());
-        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
+//        result = prime * result + ((getPeriodrain() == null) ? 0 : getPeriodrain().hashCode());
+//        result = prime * result + ((getDifferencerain() == null) ? 0 : getDifferencerain().hashCode());
+//        result = prime * result + ((getTotalrain() == null) ? 0 : getTotalrain().hashCode());
+//        result = prime * result + ((getDayrain() == null) ? 0 : getDayrain().hashCode());
+//        result = prime * result + ((getTranstype() == null) ? 0 : getTranstype().hashCode());
+//        result = prime * result + ((getMessagetype() == null) ? 0 : getMessagetype().hashCode());
+//        result = prime * result + ((getRecvdatatime() == null) ? 0 : getRecvdatatime().hashCode());
+//        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         return result;
     }
 

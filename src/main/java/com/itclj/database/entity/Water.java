@@ -136,12 +136,12 @@ public class Water implements Serializable {
         int result = 1;
         result = prime * result + ((getStationid() == null) ? 0 : getStationid().hashCode());
         result = prime * result + ((getDatatime() == null) ? 0 : getDatatime().hashCode());
-        result = prime * result + ((getWaterstage() == null) ? 0 : getWaterstage().hashCode());
-        result = prime * result + ((getWaterflow() == null) ? 0 : getWaterflow().hashCode());
-        result = prime * result + ((getTranstype() == null) ? 0 : getTranstype().hashCode());
-        result = prime * result + ((getMessagetype() == null) ? 0 : getMessagetype().hashCode());
-        result = prime * result + ((getRecvdatatime() == null) ? 0 : getRecvdatatime().hashCode());
-        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
+//        result = prime * result + ((getWaterstage() == null) ? 0 : getWaterstage().hashCode());
+//        result = prime * result + ((getWaterflow() == null) ? 0 : getWaterflow().hashCode());
+//        result = prime * result + ((getTranstype() == null) ? 0 : getTranstype().hashCode());
+//        result = prime * result + ((getMessagetype() == null) ? 0 : getMessagetype().hashCode());
+//        result = prime * result + ((getRecvdatatime() == null) ? 0 : getRecvdatatime().hashCode());
+//        result = prime * result + ((getState() == null) ? 0 : getState().hashCode());
         return result;
     }
 

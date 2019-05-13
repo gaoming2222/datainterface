@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.StationonlineDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Stationonline">
+    <id column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="STATIONNAME" jdbcType="VARCHAR" property="stationname" />
+    <result column="SUBCENTER" jdbcType="VARCHAR" property="subcenter" />
+    <result column="STATIONTYPE" jdbcType="VARCHAR" property="stationtype" />
+    <result column="CONNECTIME" jdbcType="TIMESTAMP" property="connectime" />
+    <result column="FRESHTIME" jdbcType="TIMESTAMP" property="freshtime" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STATIONID, STATIONNAME, SUBCENTER, STATIONTYPE, CONNECTIME, FRESHTIME, STATE
+  </sql>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from STATIONONLINE
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 批量插入 -->
+  <insert id="insertStationOnlineList" parameterType="java.util.List">
+    	insert into STATIONONLINE
+    	(STATIONID,STATIONNAME,SUBCENTER,STATIONTYPE,CONNECTIME,FRESHTIME,STATE)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.stationid},
+                #{item.stationname},
+                #{item.subcenter},
+                #{item.subcenter},
+                to_date(#{item.connectime},'yyyy-MM-dd HH24:mi:ss'),
+                to_date(#{item.freshtime},'yyyy-MM-dd HH24:mi:ss'),
+                #{item.subcenter}
+                from dual
+                )
+        </foreach >
+    </insert>
+    
+    <!-- 批量更新CS -->
+    <update id="updateStationOnline" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update STATIONONLINE
+    			<set>
+    				<if test="item.StrStationName !=null and item.StrStationName != ''">
+    				CNAME = #{item.StrStationName},
+    				</if>
+    				<if test="item.EIStationType !=null and item.EIStationType != ''">
+    				CTYPE = #{item.EIStationType},
+    				</if>
+    				<if test="item.LastDayRainFall !=null and item.LastDayRainFall != ''">
+    				YESTERDAYRAIN = #{item.LastDayRainFall},
+    				</if>
+    				<if test="item.DDayRainFall !=null and item.DDayRainFall != ''">
+    				TODAYRAIN = #{item.TodayRain},
+    				</if>
+    				<if test="item.DPeriodRain !=null and item.DPeriodRain != ''">
+    				PERIODRAIN = #{item.DPeriodRain},
+    				</if>
+    				<if test="item.DWaterYield !=null and item.DWaterYield != ''">
+    				WATERSTAGE = #{item.DWaterYield},
+    				</if>
+    				
+    				<if test="item.Dvoltage !=null and item.Dvoltage != ''">
+    				VOLTAGE = #{item.Dvoltage},
+    				</if>
+    				<if test="item.ERTDState !=null and item.ERTDState != ''">
+    				CURRENTSTATE = #{item.ERTDState},
+    				</if>
+    				<if test="item.EIMessageType !=null and item.EIMessageType != ''">
+    				REPORTTYPE = #{item.EIMessageType},
+    				</if>
+    				<if test="item.EIChannelType !=null and item.EIChannelType != ''">
+    				GPRSTYPE = #{item.EIChannelType},
+    				</if>
+    				<if test="item.TimeDeviceGained !=null and item.TimeDeviceGained != ''">
+    				DATATIME = to_date(#{item.TimeDeviceGained},'yyyy-MM-dd HH24:mi:ss')
+    				</if>
+    				
+    			</set>
+    			 where 
+    			STATIONID= #{item.StrStationID}
+    		</foreach>
+    	;end;
+    </update>
+    
+    
+    
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from STATIONONLINE
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itclj.database.entity.Stationonline">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into STATIONONLINE (STATIONNAME, SUBCENTER, STATIONTYPE, 
+      CONNECTIME, FRESHTIME, `STATE`
+      )
+    values (#{stationname,jdbcType=VARCHAR}, #{subcenter,jdbcType=VARCHAR}, #{stationtype,jdbcType=VARCHAR}, 
+      #{connectime,jdbcType=TIMESTAMP}, #{freshtime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Stationonline">
+    <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
+      Oracle
+    </selectKey>
+    insert into STATIONONLINE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationname != null">
+        STATIONNAME,
+      </if>
+      <if test="subcenter != null">
+        SUBCENTER,
+      </if>
+      <if test="stationtype != null">
+        STATIONTYPE,
+      </if>
+      <if test="connectime != null">
+        CONNECTIME,
+      </if>
+      <if test="freshtime != null">
+        FRESHTIME,
+      </if>
+      <if test="state != null">
+        `STATE`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationname != null">
+        #{stationname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenter != null">
+        #{subcenter,jdbcType=VARCHAR},
+      </if>
+      <if test="stationtype != null">
+        #{stationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="connectime != null">
+        #{connectime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freshtime != null">
+        #{freshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Stationonline">
+    update STATIONONLINE
+    <set>
+      <if test="stationname != null">
+        STATIONNAME = #{stationname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcenter != null">
+        SUBCENTER = #{subcenter,jdbcType=VARCHAR},
+      </if>
+      <if test="stationtype != null">
+        STATIONTYPE = #{stationtype,jdbcType=VARCHAR},
+      </if>
+      <if test="connectime != null">
+        CONNECTIME = #{connectime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="freshtime != null">
+        FRESHTIME = #{freshtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        `STATE` = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Stationonline">
+    update STATIONONLINE
+    set STATIONNAME = #{stationname,jdbcType=VARCHAR},
+      SUBCENTER = #{subcenter,jdbcType=VARCHAR},
+      STATIONTYPE = #{stationtype,jdbcType=VARCHAR},
+      CONNECTIME = #{connectime,jdbcType=TIMESTAMP},
+      FRESHTIME = #{freshtime,jdbcType=TIMESTAMP},
+      `STATE` = #{state,jdbcType=VARCHAR}
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+</mapper>

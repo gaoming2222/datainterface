@@ -7,6 +7,15 @@
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
     <result column="ADMINISTRATOR" jdbcType="DECIMAL" property="administrator" />
   </resultMap>
+  
+  <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.UserBS">
+    <result column="ID" jdbcType="DECIMAL" property="ID" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="SUBCENTER" jdbcType="DECIMAL" property="subcenter" />
+    <result column="AUTHORITY" jdbcType="DECIMAL" property="authority" />
+  </resultMap>
+  
   <!-- 插入新用户 -->
   <insert id="insert" parameterType="com.itclj.database.entity.User">
     insert into USER_ (NAME, PASSWORD, 
@@ -19,6 +28,22 @@
                 from dual
                 )
   </insert>
+  
+  <!-- 插入新用户 B/S -->
+  <insert id="insertBS" parameterType="com.itclj.database.entity.UserBS">
+    insert into USER_BS (ID, NAME, PASSWORD, SUBCENTER,
+      AUTHORITY)
+      			(
+           		select
+           		#{ID,jdbcType=DECIMAL},
+                #{name,jdbcType=VARCHAR},
+                #{password,jdbcType=VARCHAR},
+                #{subcenter,jdbcType=DECIMAL},
+                #{authority,jdbcType=DECIMAL}
+                from dual
+                )
+  </insert>
+  
   <insert id="insertSelective" parameterType="com.itclj.database.entity.User">
     insert into USER_
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -67,6 +92,24 @@
     </set>
     where UID_ = #{UID_}
   </update>
+  
+  <!-- 更新用户 B/S -->
+  <update id="updateUserBS" parameterType="UserBS">
+    update USER_BS
+    <set>
+      <if test="subcenter != null and subcenter != ''">
+        SUBCENTER = #{subcenter,jdbcType=DECIMAL},
+      </if>
+      <if test="password != null and password != ''">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="authority != null and authority != ''">
+        AUTHORITY = #{authority,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where NAME = #{name}
+  </update>
+  
 
 
   <!-- 删除用户 -->
@@ -77,6 +120,19 @@
        and UID_ = #{UID_}
        </if>
     </delete>
+    
+    <!-- 删除用户 -->
+    <delete id="deleteUserBS" parameterType="UserBS">
+    	delete from USER_BS
+    	where  1=1
+       <if test="ID != null and ID != ''">
+       and ID = #{ID}
+       </if>
+       <if test="name != null and name != ''">
+       and NAME LIKE #{name}
+       </if>
+    </delete>
+    
 
   <!-- 查询用户 -->
   <select id="getUserList" resultType="User" >
@@ -95,6 +151,26 @@
        and NAME LIKE #{name}
        </if>
        order by t.UID_
+    </select>
+    
+    <!-- 查询用户 -->
+  <select id="getUserListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS" >
+       select 
+       t.ID,
+       t.NAME,
+       t.PASSWORD,
+       t.SUBCENTER,
+       t.AUTHORITY
+       from USER_BS t
+       where
+       1=1
+       <if test="ID != null and ID != ''">
+       and ID = #{ID}
+       </if>
+       <if test="name != null and name != ''">
+       and NAME LIKE #{name}
+       </if>
+       order by t.ID
     </select>
 
 </mapper>

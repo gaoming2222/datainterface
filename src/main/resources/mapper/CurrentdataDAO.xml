@@ -2,19 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itclj.database.mapper.CurrentdataDAO">
   <resultMap id="BaseResultMap" type="com.itclj.database.entity.Currentdata">
-    <id column="STATIONID" jdbcType="CHAR" property="stationid" />
-    <result column="CNAME" jdbcType="VARCHAR" property="cname" />
-    <result column="CTYPE" jdbcType="VARCHAR" property="ctype" />
-    <result column="YESTERDAYRAIN" jdbcType="DECIMAL" property="yesterdayrain" />
-    <result column="TODAYRAIN" jdbcType="DECIMAL" property="todayrain" />
-    <result column="PERIODRAIN" jdbcType="DECIMAL" property="periodrain" />
-    <result column="WATERSTAGE" jdbcType="DECIMAL" property="waterstage" />
-    <result column="WATERFLOW" jdbcType="DECIMAL" property="waterflow" />
-    <result column="VOLTAGE" jdbcType="DECIMAL" property="voltage" />
-    <result column="CURRENTSTATE" jdbcType="VARCHAR" property="currentstate" />
-    <result column="REPORTTYPE" jdbcType="VARCHAR" property="reporttype" />
-    <result column="GPRSTYPE" jdbcType="VARCHAR" property="gprstype" />
-    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="CNAME" jdbcType="VARCHAR" property="CName" />
+    <result column="STATIONID" jdbcType="VARCHAR" property="StationID" />
+    <result column="CTYPE" jdbcType="VARCHAR" property="CType" />
+    <result column="YESTERDAYRAIN" jdbcType="DECIMAL" property="YesterdayRain" />
+    <result column="TODAYRAIN" jdbcType="DECIMAL" property="TodayRain" />
+    <result column="PERIODRAIN" jdbcType="DECIMAL" property="PeriodRain" />
+    <result column="WATERSTAGE" jdbcType="DECIMAL" property="WaterStage" />
+    <result column="WATERFLOW" jdbcType="DECIMAL" property="WaterFlow" />
+    <result column="VOLTAGE" jdbcType="DECIMAL" property="Voltage" />
+    <result column="CURRENTSTATE" jdbcType="VARCHAR" property="CurrentState" />
+    <result column="REPORTTYPE" jdbcType="VARCHAR" property="ReportType" />
+    <result column="GPRSTYPE" jdbcType="VARCHAR" property="GPRSType" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="DataTime" />
   </resultMap>
   
   <sql id="Base_Column_List">
@@ -22,6 +22,189 @@
     VOLTAGE, CURRENTSTATE, REPORTTYPE, GPRSTYPE, DATATIME
   </sql>
   
+  <!-- 查询 -->
+    <select id="getCurrentdataList" parameterType="java.util.Map" resultMap="BaseResultMap" >
+       select 
+       t.CNAME,
+       t.STATIONID,
+       t.CTYPE,
+       t.YESTERDAYRAIN,
+       t.TODAYRAIN,
+       t.PERIODRAIN,
+       t.WATERSTAGE,
+       t.WATERFLOW,
+       t.VOLTAGE,
+       t.CURRENTSTATE,
+       t.REPORTTYPE,
+       t.GPRSTYPE,
+       t.DATATIME
+       from CURRENTDATA t
+       where
+       1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID = #{StationID}
+       </if>
+       order by t.STATIONID
+    </select>
+    
+    <!-- 批量插入 -->
+  <insert id="insertCurrentdata" parameterType="java.util.List">
+    	insert into CURRENTDATA
+    	(CNAME,STATIONID,CTYPE,YESTERDAYRAIN,TODAYRAIN,PERIODRAIN,WATERSTAGE,WATERFLOW, VOLTAGE,
+    	CURRENTSTATE, REPORTTYPE, GPRSTYPE, DATATIME)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.CName,jdbcType=VARCHAR},
+                #{item.StationID,jdbcType=VARCHAR},
+                #{item.CType,jdbcType=VARCHAR},
+                #{item.YesterdayRain,jdbcType=DECIMAL},
+                #{item.TodayRain,jdbcType=DECIMAL},
+                #{item.PeriodRain,jdbcType=DECIMAL},
+                #{item.WaterStage,jdbcType=DECIMAL},
+                #{item.WaterFlow,jdbcType=DECIMAL},
+                #{item.Voltage,jdbcType=DECIMAL},
+                #{item.CurrentState,jdbcType=VARCHAR},
+                #{item.ReportType,jdbcType=VARCHAR},
+                #{item.GPRSType,jdbcType=VARCHAR},
+                to_date(#{item.DataTime},'yyyy-MM-dd HH24:mi:ss')
+                from dual
+                )
+        </foreach >
+    </insert>
+    <!-- 批量插入CS -->
+    <insert id="insertCurrentdataCS" parameterType="java.util.List">
+    	insert into CURRENTDATA
+    	(CNAME,STATIONID,CTYPE,YESTERDAYRAIN,TODAYRAIN,PERIODRAIN,WATERSTAGE, VOLTAGE,
+    	CURRENTSTATE, REPORTTYPE, GPRSTYPE, DATATIME)
+    	<foreach collection ="list" item="item" index= "index" separator ="union all">
+                (
+                select
+                #{item.StrStationName,jdbcType=VARCHAR},
+                #{item.StrStationID,jdbcType=VARCHAR},
+                #{item.EIStationType,jdbcType=VARCHAR},
+                #{item.LastDayRainFall,jdbcType=DECIMAL},
+                #{item.DDayRainFall,jdbcType=DECIMAL},
+                #{item.DPeriodRain,jdbcType=DECIMAL},
+                #{item.DWaterYield,jdbcType=DECIMAL},
+                #{item.Dvoltage,jdbcType=DECIMAL},
+                #{item.ERTDState,jdbcType=VARCHAR},
+                #{item.EIMessageType,jdbcType=VARCHAR},
+                #{item.EIChannelType,jdbcType=VARCHAR},
+                to_date(#{item.TimeDeviceGained},'yyyy-MM-dd HH24:mi:ss')
+                from dual
+                )
+        </foreach >
+    </insert>
+    
+    <!-- 批量更新 -->
+    <update id="updateCurrentdata" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update CURRENTDATA
+    			<set>
+    				<if test="item.CName !=null and item.CName != ''">
+    				CNAME = #{item.CName},
+    				</if>
+    				<if test="item.CType !=null and item.CType != ''">
+    				CTYPE = #{item.CType},
+    				</if>
+    				<if test="item.YesterdayRain !=null and item.YesterdayRain != ''">
+    				YESTERDAYRAIN = #{item.YesterdayRain},
+    				</if>
+    				<if test="item.TodayRain !=null and item.TodayRain != ''">
+    				TODAYRAIN = #{item.TodayRain},
+    				</if>
+    				<if test="item.PeriodRain !=null and item.PeriodRain != ''">
+    				PERIODRAIN = #{item.PeriodRain},
+    				</if>
+    				<if test="item.DWaterYield !=null and item.DWaterYield != ''">
+    				WATERSTAGE = #{item.DWaterYield},
+    				</if>
+    				<if test="item.Voltage !=null and item.Voltage != ''">
+    				VOLTAGE = #{item.Voltage},
+    				</if>
+    				<if test="item.CurrentState !=null and item.CurrentState != ''">
+    				CURRENTSTATE = #{item.CurrentState},
+    				</if>
+    				<if test="item.ReportType !=null and item.ReportType != ''">
+    				REPORTTYPE = #{item.ReportType},
+    				</if>
+    				<if test="item.GPRSType !=null and item.GPRSType != ''">
+    				GPRSTYPE = #{item.GPRSType}
+    				</if>
+    				<if test="item.DataTime !=null and item.DataTime != ''">
+    				DATATIME = to_date(#{item.DataTime},'yyyy-MM-dd HH24:mi:ss')
+    				</if>
+    			</set>
+    			 where 
+    			STATIONID= #{item.StationID}
+    		</foreach>
+    	;end;
+    </update>
+    
+    <!-- 批量更新CS -->
+    <update id="updateCurrentdataCS" parameterType="java.util.List">
+    	begin
+    		<foreach collection="list" item="item" index="index" separator=";">
+    			update CURRENTDATA
+    			<set>
+    				<if test="item.StrStationName !=null and item.StrStationName != ''">
+    				CNAME = #{item.StrStationName},
+    				</if>
+    				<if test="item.EIStationType !=null and item.EIStationType != ''">
+    				CTYPE = #{item.EIStationType},
+    				</if>
+    				<if test="item.LastDayRainFall !=null and item.LastDayRainFall != ''">
+    				YESTERDAYRAIN = #{item.LastDayRainFall},
+    				</if>
+    				<if test="item.DDayRainFall !=null and item.DDayRainFall != ''">
+    				TODAYRAIN = #{item.TodayRain},
+    				</if>
+    				<if test="item.DPeriodRain !=null and item.DPeriodRain != ''">
+    				PERIODRAIN = #{item.DPeriodRain},
+    				</if>
+    				<if test="item.DWaterYield !=null and item.DWaterYield != ''">
+    				WATERSTAGE = #{item.DWaterYield},
+    				</if>
+    				
+    				<if test="item.Dvoltage !=null and item.Dvoltage != ''">
+    				VOLTAGE = #{item.Dvoltage},
+    				</if>
+    				<if test="item.ERTDState !=null and item.ERTDState != ''">
+    				CURRENTSTATE = #{item.ERTDState},
+    				</if>
+    				<if test="item.EIMessageType !=null and item.EIMessageType != ''">
+    				REPORTTYPE = #{item.EIMessageType},
+    				</if>
+    				<if test="item.EIChannelType !=null and item.EIChannelType != ''">
+    				GPRSTYPE = #{item.EIChannelType},
+    				</if>
+    				<if test="item.TimeDeviceGained !=null and item.TimeDeviceGained != ''">
+    				DATATIME = to_date(#{item.TimeDeviceGained},'yyyy-MM-dd HH24:mi:ss')
+    				</if>
+    				
+    			</set>
+    			 where 
+    			STATIONID= #{item.StrStationID}
+    		</foreach>
+    	;end;
+    </update>
+    
+    
+    <!-- 单挑删除 -->
+    <delete id="deleteCurrentdata" parameterType="Currentdata">
+    	delete from CURRENTDATA
+    	where  1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID = #{StationID}
+       </if>
+       <if test="DataTime != null and DataTime != ''">
+       AND DATATIME = to_date(#{DataTime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+    </delete>
+    
+    
   <!-- 根据主键查询,如果为空则查找全部-->
   <select id="selectByPrimaryKey" resultType="Currentdata">
     select 

@@ -1,5 +1,6 @@
 package com.itclj.database.entity;
 import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * 
  * @author gaoming

@@ -14,6 +14,20 @@
     <result column="STATE" jdbcType="DECIMAL" property="state" />
   </resultMap>
   
+    <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.RainBS">
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="PERIODRAIN" jdbcType="DECIMAL" property="periodrain" />
+    <result column="DIFFERENCERAIN" jdbcType="DECIMAL" property="differencerain" />
+    <result column="TOTALRAIN" jdbcType="DECIMAL" property="totalrain" />
+    <result column="DAYRAIN" jdbcType="DECIMAL" property="dayrain" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
+  
   <!-- 单条插入 -->
   <insert id="insert" parameterType="com.itclj.database.entity.Rain">
     <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">
@@ -116,6 +130,46 @@
         </foreach >
     </insert>
     
+    <!-- 覆盖重复记录，并批量插入 -->
+  <insert id="insertRpRainList" parameterType="java.util.List">
+    	merge into into RAIN r
+    	using
+    	(
+    	  <foreach collection ="list" item="item" separator ="union all">
+    	  select 
+          #{item.stationid, jdbcType=VARCHAR} stationid,
+          to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss') datatime,
+          #{item.periodrain,jdbcType=DECIMAL} periodrain,
+          #{item.differencerain,jdbcType=DECIMAL} differencerain,
+          #{item.totalrain,jdbcType=DECIMAL} totalrain,
+          #{item.dayrain,jdbcType=DECIMAL} dayrain,
+          #{item.transtype,jdbcType=CHAR} transtype,
+          #{item.messagetype,jdbcType=CHAR} messagetype,
+          to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss') recvdatatime,
+          #{item.state,jdbcType=DECIMAL} state
+          from dual 
+    	  </foreach>
+    	) t1
+    	on (r.stationid = t1.stationid and r.datatime = t1.datatime)
+    	when matched then
+    	update set
+    	r.PERIODRAIN = t1.periodrain,
+    	r.DIFFERENCERAIN = t1.differencerain,
+    	r.TOTALRAIN = t1.totalrain,
+    	r.DAYRAIN = t1.dayrain,
+    	r.TRANSTYPE = t1.transtype,
+    	r.MESSAGETYPE = t1.messagetype,
+    	r.RECVDATATIME = t1.recvdatatime,
+    	r.STATE = t1.state
+    	when not matched then
+    	insert
+    	(r.STATIONID,r.DATATIME,r.PERIODRAIN,r.DIFFERENCERAIN,
+    	r.TOTALRAIN,r.DAYRAIN,r.TRANSTYPE,r.MESSAGETYPE,r.RECVDATATIME,r.STATE)
+    	values
+    	(t1.stationid,t1.datatime,t1.periodrain,t1.differencerain,
+    	t1.totalrain,t1.dayrain,t1.transtype,t1.messagetype,t1.recvdatatime,t1.state)
+    </insert>
+    
     <!-- 批量更新 -->
     <update id="updateRainList" parameterType="java.util.List">
     	begin
@@ -165,6 +219,37 @@
        t.DAYRAIN,
        t.TRANSTYPE,
        t.MESSAGETYPE,
+       t.RECVDATATIME,
+       t.STATE
+       from RAIN t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >= to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID,t.DATATIME desc
+    </select>
+    
+    <!-- 查询B/S -->
+    <select id="getRainListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS" >
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.PERIODRAIN,
+       t.DIFFERENCERAIN,
+       t.TOTALRAIN,
+       t.DAYRAIN,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
        t.RECVDATATIME，
        t.STATE
        from RAIN t
@@ -196,5 +281,6 @@
        AND DATATIME = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
        </if>
     </delete>
+    
     
 </mapper>

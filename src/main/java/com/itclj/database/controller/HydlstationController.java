@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.itclj.database.entity.HydlStation;
+import com.itclj.database.entity.HydlStationBS;
 import com.itclj.database.service.HydlstationService;
 
 @Controller
@@ -55,6 +56,36 @@ public class HydlstationController {
 	}
 	
 	/**
+	 * 查询水情站信息 B/S
+	 * @param request
+	 * @return
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@RequestMapping(value = "/hydlstation/getHydlStationBS", method = RequestMethod.POST)
+	@ResponseBody
+	public String getHydlstationListBS(HttpServletRequest request){
+		Map<String, Object> param = new HashMap();
+		List<HydlStationBS> hydlstationList = new ArrayList<HydlStationBS>();
+		String jsonStr = request.getParameter("hydlstation");
+		Map tMap = JSON.parseObject(jsonStr,Map.class);
+		logger.info("查询水情站点信息，接收的参数为" + jsonStr);
+		if(jsonStr == null || jsonStr.trim() ==""){
+			param.put("StationID", "");
+			param.put("SubCenterID", "");
+
+		}else{
+			param.put("StationID", (String)tMap.get("StationID"));
+			param.put("SubCenterID", (String)tMap.get("SubCenterID"));
+
+		}
+		hydlstationList = hydlstationService.getHydlstationListBS(param);
+		String result = JSON.toJSONString(hydlstationList);
+		return result;
+	}
+	
+	
+	
+	/**
 	 * 插入水情站信息
 	 * @param request
 	 * @return
@@ -70,6 +101,23 @@ public class HydlstationController {
 		result = hydlstationService.insertHydlStation(hydlstationList);
 		return result;
 		
+	}
+	
+	/**
+	 * 插入水情站信息 B/S
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/hydlstation/insertHydlstationBS", method = RequestMethod.POST)
+	@ResponseBody
+	public int  insertHydlstationBS(HttpServletRequest request) {
+		int result = 0;
+		List<HydlStationBS> hydlstationList = new ArrayList<HydlStationBS>();
+		String jsonStr  =(String) request.getParameter("hydlstation");
+		logger.info("插入站点数据，参数为" + jsonStr);
+		hydlstationList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<HydlStationBS>>() {});
+		result = hydlstationService.insertHydlStationBS(hydlstationList);
+		return result;
 	}
 	
 	/**
@@ -90,6 +138,24 @@ public class HydlstationController {
 	}
 	
 	/**
+	 * 更新站点信息 B/S
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/hydlstation/updateHydlstationBS", method = RequestMethod.POST)
+	@ResponseBody
+	public int  updateHydlstationBS(HttpServletRequest request) {
+		int result = 0;
+		List<HydlStationBS> hydlstationList = new ArrayList<HydlStationBS>();
+		String jsonStr  =(String) request.getParameter("hydlstation");
+		logger.info("更新站点信息，参数为" + jsonStr);
+		hydlstationList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<HydlStationBS>>() {});
+		result = hydlstationService.updateHydlStationBS(hydlstationList);
+		return result;
+	}
+	
+	
+	/**
 	 * 批量删除水情站信息
 	 * @param request
 	 * @return
@@ -106,4 +172,21 @@ public class HydlstationController {
 		return result;
 	}
 
+	/**
+	 * 批量删除站点信息 B/S
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/hydlstation/deleteHydlstationBS", method = RequestMethod.POST)
+	@ResponseBody
+	public int deleteHydlstationBS(HttpServletRequest request) {
+		int result = 0;
+		List<HydlStationBS> hydlstationList = new ArrayList<HydlStationBS>();
+		String jsonStr  =(String) request.getParameter("hydlstation");
+		logger.info("删除站点信息，参数为" + jsonStr);
+		hydlstationList = JSON.parseObject(jsonStr, new TypeReference<ArrayList<HydlStationBS>>() {});
+		result = hydlstationService.deleteHydlStationBS(hydlstationList);
+		return result;
+	}
+	
 }

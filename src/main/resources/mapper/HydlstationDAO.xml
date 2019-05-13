@@ -26,6 +26,31 @@
     <result column="REPORTINTERVAL" jdbcType="VARCHAR" property="reportinterval" />
   </resultMap>
   
+  <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.HydlStationBS">
+    <result column="STATIONID" jdbcType="VARCHAR" property="StationID" />
+    <result column="SUBCENTERID" jdbcType="DECIMAL" property="SubCenterID" />
+    <result column="CNAME" jdbcType="VARCHAR" property="CName" />
+    <result column="CTYPE" jdbcType="CHAR" property="CType" />
+    <result column="WBASE" jdbcType="DECIMAL" property="WBase" />
+    <result column="WMAX" jdbcType="DECIMAL" property="WMax" />
+    <result column="WMIN" jdbcType="DECIMAL" property="WMin" />
+    <result column="WCHANGE" jdbcType="DECIMAL" property="WChange" />
+    <result column="RACCURACY" jdbcType="DECIMAL" property="RAccuracy" />
+    <result column="RCHANGE" jdbcType="DECIMAL" property="RChange" />
+    <result column="GSM" jdbcType="VARCHAR" property="Gsm" />
+    <result column="GPRS" jdbcType="VARCHAR" property="Gprs" />
+    <result column="BDSATELLITE" jdbcType="VARCHAR" property="BDSatellite" />
+    <result column="BDMEMBER" jdbcType="VARCHAR" property="BDmember" />
+    <result column="VOLTAGEMIN" jdbcType="DECIMAL" property="VoltageMin" />
+    <result column="MAINTRAN" jdbcType="VARCHAR" property="maintran" />
+    <result column="SUBTRAN" jdbcType="VARCHAR" property="subtran" />
+    <result column="DATAPROTOCOL" jdbcType="VARCHAR" property="dataprotocol" />
+    <result column="WATERSENSOR" jdbcType="CHAR" property="watersensor" />
+    <result column="RAINSENSOR" jdbcType="VARCHAR" property="rainsensor" />
+    <result column="REPORTINTERVAL" jdbcType="VARCHAR" property="reportinterval" />
+  </resultMap>
+  
+  
   
   <sql id="Base_Column_List">
     STATIONID, SUBCENTERID, CNAME, CTYPE, WBASE, WMAX, WMIN, WCHANGE, RACCURACY, RCHANGE, 
@@ -67,6 +92,42 @@
     
   </select>
   
+  <!-- 查询水情站点 B/S -->
+    <select id="selectHydlstationListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS" >
+       select 
+       t.STATIONID,
+       t.SUBCENTERID,
+       t.CNAME,
+       t.CTYPE,
+       t.WBASE,
+       t.WMAX,
+       t.WMIN,
+       t.WCHANGE,
+       t.RACCURACY,
+       t.RCHANGE,
+       t.GSM,
+       t.GPRS,
+       t.BDSATELLITE,
+       t.BDMEMBER,
+       t.VOLTAGEMIN,
+       t.MAINTRAN,
+       t.SUBTRAN,
+       t.DATAPROTOCOL,
+       t.WATERSENSOR,
+       t.RAINSENSOR,
+       t.REPORTINTERVAL
+       from HYDLSTATION t
+       where
+       1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID = #{StationID,jdbcType=VARCHAR}
+       </if>
+       <if test="SubCenterID != null and SubCenterID != ''">
+       and SUBCENTERID = #{SubCenterID,jdbcType=DECIMAL}
+       </if>
+       order by t.StationID
+    </select>
+    
   <!-- 根据主键删除水情站点 物理删除 -->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from HYDLSTATION
@@ -99,7 +160,119 @@
       )
       </foreach >
     </insert>
+
+  <!-- 单条插入水情站点 B/S -->
+  <insert id="insertHydlstationBS" parameterType="com.itclj.database.entity.HydlStationBS">
+    insert into HYDLSTATION (StationID, SubCenterID, CName, CType, WBase, WMax, WMin, WChange, RAccuracy,
+      RChange, Gsm, Gprs, BDSatellite, BDmember, VoltageMin, maintran, subtran, dataprotocol,
+      watersensor, rainsensor, reportinterval)
+      			(
+           		select
+           		#{StationID,jdbcType=VARCHAR},
+                #{SubCenterID,jdbcType=DECIMAL},
+                #{CName,jdbcType=VARCHAR},
+                #{CType,jdbcType=CHAR},
+                #{WBase,jdbcType=DECIMAL},
+                #{WMax,jdbcType=DECIMAL},
+                #{WMin,jdbcType=DECIMAL},
+                #{WChange,jdbcType=DECIMAL},                
+                #{RAccuracy,jdbcType=DECIMAL},
+                #{RChange,jdbcType=DECIMAL},
+                #{Gsm,jdbcType=VARCHAR},
+                #{Gprs,jdbcType=VARCHAR},
+                #{BDSatellite,jdbcType=VARCHAR},
+                #{BDmember,jdbcType=VARCHAR},
+                #{VoltageMin,jdbcType=DECIMAL},
+                #{maintran,jdbcType=VARCHAR},
+                #{subtran,jdbcType=VARCHAR},
+                #{dataprotocol,jdbcType=VARCHAR},
+                #{watersensor,jdbcType=CHAR},
+                #{rainsensor,jdbcType=VARCHAR},
+                #{reportinterval,jdbcType=VARCHAR}
+                from dual
+                )
+  </insert>
   
+  <!-- 单条更新水情站点 B/S -->
+  <update id="updateHydlstationBS" parameterType="HydlStationBS">
+    update HYDLSTATION
+    <set>
+      <if test="StationID != null and StationID != ''">
+        StationID = #{StationID,jdbcType=VARCHAR},
+      </if>
+      <if test="SubCenterID != null and SubCenterID != ''">
+        SubCenterID = #{SubCenterID,jdbcType=DECIMAL},
+      </if>
+      <if test="CName != null and CName != ''">
+        CName = #{CName,jdbcType=VARCHAR},
+      </if>
+      <if test="CType != null and CType != ''">
+        CType = #{CType,jdbcType=CHAR},
+      </if>
+      <if test="WBase != null and WBase != ''">
+        WBase = #{WBase,jdbcType=DECIMAL},
+      </if>
+      <if test="WMax != null and WMax != ''">
+        WMax = #{WMax,jdbcType=DECIMAL},
+      </if>
+      <if test="WMin != null and WMin != ''">
+        WMin = #{WMin,jdbcType=DECIMAL},
+      </if>
+      <if test="WChange != null and WChange != ''">
+        WChange = #{WChange,jdbcType=DECIMAL},
+      </if>
+      <if test="RAccuracy != null and RAccuracy != ''">
+        RAccuracy = #{RAccuracy,jdbcType=DECIMAL},
+      </if>
+      <if test="RChange != null and RChange != ''">
+        RChange = #{RChange,jdbcType=DECIMAL},
+      </if>
+      <if test="Gsm != null and Gsm != ''">
+        Gsm = #{Gsm,jdbcType=VARCHAR},
+      </if>
+      <if test="Gprs != null and Gprs != ''">
+        Gprs = #{Gprs,jdbcType=VARCHAR},
+      </if>
+      <if test="BDSatellite != null and BDSatellite != ''">
+        BDSatellite = #{BDSatellite,jdbcType=VARCHAR},
+      </if>
+      <if test="BDmember != null and BDmember != ''">
+        BDmember = #{BDmember,jdbcType=VARCHAR},
+      </if>
+      <if test="VoltageMin != null and VoltageMin != ''">
+        VoltageMin = #{VoltageMin,jdbcType=DECIMAL},
+      </if>
+      <if test="maintran != null and maintran != ''">
+        maintran = #{maintran,jdbcType=VARCHAR},
+      </if>
+      <if test="subtran != null and subtran != ''">
+        subtran = #{subtran,jdbcType=VARCHAR},
+      </if>
+      <if test="dataprotocol != null and dataprotocol != ''">
+        dataprotocol = #{dataprotocol,jdbcType=VARCHAR},
+      </if>
+      <if test="watersensor != null and watersensor != ''">
+        watersensor = #{watersensor,jdbcType=CHAR},
+      </if>
+      <if test="rainsensor != null and rainsensor != ''">
+        rainsensor = #{rainsensor,jdbcType=VARCHAR},
+      </if>
+      <if test="reportinterval != null and reportinterval != ''">
+        reportinterval = #{reportinterval,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where STATIONID = #{StationID}
+  </update>
+  
+  <!-- 单条删除水情站点 B/S -->
+  <delete id="deleteHydlstationBS" parameterType="HydlStationBS">
+    	delete from HYDLSTATION
+    	where  1=1
+       <if test="StationID != null and StationID != ''">
+       and STATIONID LIKE #{StationID}
+       </if>
+    </delete>
+    
   <!-- 单条插入 -->
   <insert id="insert" parameterType="com.itclj.database.entity.HydlStation">
     <selectKey keyProperty="stationid" order="AFTER" resultType="java.lang.String">

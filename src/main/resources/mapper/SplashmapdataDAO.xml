@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itclj.database.mapper.SplashmapdataDAO">
+  <resultMap id="BaseResultMap" type="com.itclj.database.entity.Splashmapdata">
+    <id column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="RAIN1H" jdbcType="DECIMAL" property="rain1h" />
+    <result column="RAIN2H" jdbcType="DECIMAL" property="rain2h" />
+    <result column="RAIN6H" jdbcType="DECIMAL" property="rain6h" />
+    <result column="RAIN12H" jdbcType="DECIMAL" property="rain12h" />
+    <result column="RAIN24H" jdbcType="DECIMAL" property="rain24h" />
+    <result column="RAIN48H" jdbcType="DECIMAL" property="rain48h" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    STATIONID, RAIN1H, RAIN2H, RAIN6H, RAIN12H, RAIN24H, RAIN48H
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SPLASHMAPDATA
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SPLASHMAPDATA
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.itclj.database.entity.Splashmapdata">
+    insert into SPLASHMAPDATA (STATIONID, RAIN1H, RAIN2H, 
+      RAIN6H, RAIN12H, RAIN24H, 
+      RAIN48H)
+    values (#{stationid,jdbcType=VARCHAR}, #{rain1h,jdbcType=DECIMAL}, #{rain2h,jdbcType=DECIMAL}, 
+      #{rain6h,jdbcType=DECIMAL}, #{rain12h,jdbcType=DECIMAL}, #{rain24h,jdbcType=DECIMAL}, 
+      #{rain48h,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itclj.database.entity.Splashmapdata">
+    insert into SPLASHMAPDATA
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        STATIONID,
+      </if>
+      <if test="rain1h != null">
+        RAIN1H,
+      </if>
+      <if test="rain2h != null">
+        RAIN2H,
+      </if>
+      <if test="rain6h != null">
+        RAIN6H,
+      </if>
+      <if test="rain12h != null">
+        RAIN12H,
+      </if>
+      <if test="rain24h != null">
+        RAIN24H,
+      </if>
+      <if test="rain48h != null">
+        RAIN48H,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationid != null">
+        #{stationid,jdbcType=VARCHAR},
+      </if>
+      <if test="rain1h != null">
+        #{rain1h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain2h != null">
+        #{rain2h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain6h != null">
+        #{rain6h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain12h != null">
+        #{rain12h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain24h != null">
+        #{rain24h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain48h != null">
+        #{rain48h,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itclj.database.entity.Splashmapdata">
+    update SPLASHMAPDATA
+    <set>
+      <if test="rain1h != null">
+        RAIN1H = #{rain1h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain2h != null">
+        RAIN2H = #{rain2h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain6h != null">
+        RAIN6H = #{rain6h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain12h != null">
+        RAIN12H = #{rain12h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain24h != null">
+        RAIN24H = #{rain24h,jdbcType=DECIMAL},
+      </if>
+      <if test="rain48h != null">
+        RAIN48H = #{rain48h,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itclj.database.entity.Splashmapdata">
+    update SPLASHMAPDATA
+    set RAIN1H = #{rain1h,jdbcType=DECIMAL},
+      RAIN2H = #{rain2h,jdbcType=DECIMAL},
+      RAIN6H = #{rain6h,jdbcType=DECIMAL},
+      RAIN12H = #{rain12h,jdbcType=DECIMAL},
+      RAIN24H = #{rain24h,jdbcType=DECIMAL},
+      RAIN48H = #{rain48h,jdbcType=DECIMAL}
+    where STATIONID = #{stationid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -12,6 +12,16 @@
     <result column="STATE" jdbcType="DECIMAL" property="state" />
   </resultMap>
   
+    <resultMap id="BaseResultMapBS" type="com.itclj.database.entity.VoltageBS">
+    <result column="STATIONID" jdbcType="VARCHAR" property="stationid" />
+    <result column="DATATIME" jdbcType="TIMESTAMP" property="datatime" />
+    <result column="DATA" jdbcType="DECIMAL" property="data" />
+    <result column="TRANSTYPE" jdbcType="CHAR" property="transtype" />
+    <result column="MESSAGETYPE" jdbcType="CHAR" property="messagetype" />
+    <result column="RECVDATATIME" jdbcType="TIMESTAMP" property="recvdatatime" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  
   <!-- 单挑插入 -->
   <insert id="insert" parameterType="com.itclj.database.entity.Voltage">
     insert into VOLTAGE (STATIONID, DATATIME, `DATA`, 
@@ -92,6 +102,40 @@
         </foreach >
     </insert>
     
+    
+      <!-- 覆盖重复记录，并批量插入 -->
+  <insert id="insertRpVoltageList" parameterType="java.util.List">
+    	merge into into voltage r
+    	using
+    	(
+    	  <foreach collection ="list" item="item" separator ="union all">
+    	  select 
+          #{item.stationid, jdbcType=VARCHAR} stationid,
+          to_date(#{item.datatime},'yyyy-MM-dd HH24:mi:ss') datatime,
+          #{item.data,jdbcType=DECIMAL} data,
+          #{item.transtype,jdbcType=CHAR} transtype,
+          #{item.messagetype,jdbcType=CHAR} messagetype,
+          to_date(#{item.recvdatatime},'yyyy-MM-dd HH24:mi:ss') recvdatatime,
+          #{item.state,jdbcType=DECIMAL} state
+          from dual 
+    	  </foreach>
+    	) t1
+    	on (r.stationid = t1.stationid and r.datatime = t1.datatime)
+    	when matched then
+    	update set
+    	r.WATERSTAGE = t1.waterstage,
+    	r.DATA = t1.data,
+    	r.TRANSTYPE = t1.transtype,
+    	r.MESSAGETYPE = t1.messagetype,
+    	r.RECVDATATIME = t1.recvdatatime,
+    	r.STATE = t1.state
+    	when not matched then
+    	insert
+    	(r.STATIONID,r.DATATIME,r.DATA,r.TRANSTYPE,r.MESSAGETYPE,r.RECVDATATIME,r.STATE)
+    	values
+    	(t1.stationid,t1.datatime,t1.data,t1.transtype,t1.messagetype,t1.recvdatatime,t1.state)
+    </insert>
+    
     <!-- 批量更新 -->
     <update id="updateVolatgeList" parameterType="java.util.List">
     	begin
@@ -146,8 +190,37 @@
        <if test="endtime != null and endtime != ''">
        and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
        </if>
-       order by t.DATATIME desc
+       order by t.STATIONID,t.DATATIME desc
     </select>
+    
+    <!-- 查询 -->
+    <select id="getVoltageListBS" parameterType="java.util.Map" resultMap="BaseResultMapBS" >
+       select 
+       t.STATIONID,
+       t.DATATIME,
+       t.DATA,
+       t.TRANSTYPE,
+       t.MESSAGETYPE,
+       t.RECVDATATIME，
+       t.STATE
+       from VOLTAGE t
+       where
+       1=1
+       <if test="stationid != null and stationid != ''">
+       and STATIONID = #{stationid}
+       </if>
+       <if test="datatime != null and datatime != ''">
+       and DATATIME  = to_date(#{datatime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="strttime != null and strttime != ''">
+       and DATATIME  >=  to_date(#{strttime},'yyyy-MM-dd HH24:mi:ss')
+       </if>
+       <if test="endtime != null and endtime != ''">
+       and to_date(#{endtime},'yyyy-MM-dd HH24:mi:ss')  >=   DATATIME
+       </if>
+       order by t.STATIONID
+    </select>
+    
     
     <!-- 单挑删除 -->
     <delete id="deleteVoltage" parameterType="Voltage">

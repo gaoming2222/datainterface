@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itclj.database.entity.Water;
+import com.itclj.database.entity.WaterBS;
 import com.itclj.database.mapper.WaterDAO;
 
 
@@ -29,6 +30,23 @@ public class WaterService {
 		logger.info("开始查询水位数据" + param);
 		try {
 			retList = waterDAO.getWaterList(param);
+		}catch (Exception e) {
+			logger.error("查询水位数据出错" + e.getMessage());
+			return null;
+		}
+		logger.info("水位数据查询完成");
+		return retList;
+	}
+	/**
+	 * 水位数据查询B/S
+	 * @param param
+	 * @return
+	 */
+	public List<WaterBS> getWaterListBS(Map<String,Object> param) {
+		List<WaterBS> retList = new ArrayList<WaterBS>();
+		logger.info("开始查询水位数据" + param);
+		try {
+			retList = waterDAO.getWaterListBS(param);
 		}catch (Exception e) {
 			logger.error("查询水位数据出错" + e.getMessage());
 			return null;
@@ -60,12 +78,21 @@ public class WaterService {
 	 */
 	public int insertWater(List<Water> waterList) {
 		logger.info("开始插入雨量数据" + waterList.size());
-		int result = 0;
 		if(waterList == null || waterList.size() == 0) {
 			return 0;
 		}
+		List<Integer> hashValueList  = new ArrayList<>();
+		List<Water> insertList = new ArrayList<>();
+		for (Water water : waterList) {
+			int tmp = water.hashCode();
+			if(!hashValueList.contains(tmp)) {
+				insertList.add(water);
+				hashValueList.add(tmp);
+			}
+		}
+		int result = 0;
 		try {
-			result = waterDAO.insertWaterList(waterList);
+			result = waterDAO.insertRpWaterList(insertList);
 		}catch (Exception e) {
 			logger.error("水位信息插入失败" + e.getMessage());
 			return -1;

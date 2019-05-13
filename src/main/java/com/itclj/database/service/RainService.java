@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.itclj.database.entity.Rain;
+import com.itclj.database.entity.RainBS;
+import com.itclj.database.entity.Water;
 import com.itclj.database.mapper.RainDAO;
 
 /***
@@ -38,6 +40,26 @@ public class RainService {
 		logger.info("雨量数据查询完成");
 		return retList;
 	}
+	
+	/**
+	 * 根据参数 查询雨量信息BS
+	 * @param param
+	 * @return
+	 */
+	public List<RainBS> getRainListBS(Map<String,Object> param) {
+		List<RainBS> retList = new ArrayList<RainBS>();
+		logger.info("开始查询雨量数据" + param);
+		try {
+			retList = rainDAO.getRainListBS(param);
+		}catch (Exception e) {
+			logger.error("查询雨量数据出错" + e.getMessage());
+			return null;
+		}
+		logger.info("雨量数据查询完成");
+		return retList;
+	}
+	
+	
 	/**
 	 * 批量更新雨量数据
 	 * @param rainList
@@ -87,8 +109,17 @@ public class RainService {
 		if(rainList == null || rainList.size() == 0) {
 			return 0;
 		}
+		List<Integer> hashValueList  = new ArrayList<>();
+		List<Rain> insertList = new ArrayList<>();
+		for (Rain rain : rainList) {
+			int tmp = rain.hashCode();
+			if(!hashValueList.contains(tmp)) {
+				insertList.add(rain);
+				hashValueList.add(tmp);
+			}
+		}
 		try {
-			result = rainDAO.insertRainList(rainList);
+			result = rainDAO.insertRainList(insertList);
 		}catch (Exception e) {
 			logger.error("雨量信息插入失败" + e.getMessage());
 			return -1;
