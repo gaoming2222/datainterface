@@ -65,9 +65,22 @@ public class CurrentdataService {
 	 */
 	public int insertCurrentdataCS(List<CurrentdataCS> currentdataList) {
 		logger.info("开始插入实时数据信息" + currentdataList.size());
+		if(currentdataList == null || currentdataList.size() == 0) {
+			return 0;
+		}
+		List<String> hasValueList = new ArrayList<>();
+		List<CurrentdataCS> insertList = new ArrayList<>();
+		for(CurrentdataCS currentCS : currentdataList) {
+			String id = currentCS.getStrStationID();
+			if(!hasValueList.contains(id)) {
+				insertList.add(currentCS);
+				hasValueList.add(id);
+			}
+		}
 		int result = 0;
 		try {
-			result = currentdataDAO.insertCurrentdataCS(currentdataList);
+			//result = currentdataDAO.insertCurrentdataCS(currentdataList);
+			result = currentdataDAO.insertRpCurrentdataList(insertList);
 		}catch (Exception e) {
 			logger.error("实时数据信息插入失败" + e.getMessage());
 			return -1;

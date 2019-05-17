@@ -21,9 +21,9 @@ public class Splashmapdata implements Serializable {
 
     private BigDecimal rain12h;
 
-    private Short rain24h;
+    private BigDecimal rain24h;
 
-    private Short rain48h;
+    private BigDecimal rain48h;
 
     private static final long serialVersionUID = 1L;
 
@@ -67,19 +67,19 @@ public class Splashmapdata implements Serializable {
         this.rain12h = rain12h;
     }
 
-    public Short getRain24h() {
+    public BigDecimal getRain24h() {
         return rain24h;
     }
 
-    public void setRain24h(Short rain24h) {
+    public void setRain24h(BigDecimal rain24h) {
         this.rain24h = rain24h;
     }
 
-    public Short getRain48h() {
+    public BigDecimal getRain48h() {
         return rain48h;
     }
 
-    public void setRain48h(Short rain48h) {
+    public void setRain48h(BigDecimal rain48h) {
         this.rain48h = rain48h;
     }
 

@@ -97,6 +97,55 @@
         </foreach >
     </insert>
     
+    
+   <!-- 覆盖重复记录并批量插入-->
+   <insert id="insertRpCurrentdataList" parameterType="java.util.List">
+   		merge into CURRENTDATA r
+   		using
+   		(
+   			<foreach collection ="list" item="item" separator ="union all">
+    	  	select 
+          	#{item.StrStationName, jdbcType=VARCHAR} StrStationName,
+          	#{item.StrStationID, jdbcType=VARCHAR} StrStationID,
+          	#{item.EIStationType, jdbcType=VARCHAR} EIStationType,
+          	#{item.LastDayRainFall,jdbcType=DECIMAL} LastDayRainFall,
+          	#{item.DDayRainFall,jdbcType=DECIMAL} DDayRainFall,
+          	#{item.DPeriodRain,jdbcType=DECIMAL} DPeriodRain,
+          	#{item.DWaterYield,jdbcType=DECIMAL} DWaterYield,
+          	#{item.Dvoltage,jdbcType=DECIMAL} Dvoltage,
+          	#{item.ERTDState, jdbcType=VARCHAR} ERTDState,
+          	#{item.EIMessageType, jdbcType=VARCHAR} EIMessageType,
+          	#{item.EIChannelType,jdbcType=CHAR} EIChannelType,
+          	to_date(#{item.TimeDeviceGained},'yyyy-MM-dd HH24:mi:ss') TimeDeviceGained
+          	from dual
+    	  	</foreach>
+    	) t1
+    	on (r.STATIONID = t1.StrStationID)
+    	when matched then
+    	update set
+    	r.CNAME = t1.StrStationName,
+    	r.CTYPE = t1.EIStationType,
+    	r.YESTERDAYRAIN = t1.LastDayRainFall,
+    	r.TODAYRAIN = t1.DDayRainFall,
+    	r.PERIODRAIN = t1.DPeriodRain,
+    	r.WATERSTAGE = t1.DWaterYield,
+    	r.VOLTAGE = t1.Dvoltage,
+    	r.CURRENTSTATE = t1.ERTDState,
+    	r.REPORTTYPE = t1.EIMessageType,
+    	r.GPRSTYPE = t1.EIChannelType,
+    	r.DATATIME = t1.TimeDeviceGained
+    	when not matched then
+    	insert
+    	(r.CNAME,r.STATIONID,r.CTYPE,r.YESTERDAYRAIN,r.TODAYRAIN,
+    	r.PERIODRAIN,r.WATERSTAGE,r.VOLTAGE,r.CURRENTSTATE,
+    	r.REPORTTYPE,r.GPRSTYPE,r.DATATIME)
+    	values
+    	(t1.StrStationName,t1.StrStationID,t1.EIStationType,t1.LastDayRainFall,
+    	t1.DDayRainFall,t1.DPeriodRain,t1.DWaterYield,t1.Dvoltage,
+    	t1.ERTDState,t1.EIMessageType,t1.EIChannelType,t1.TimeDeviceGained
+    	)
+   </insert>
+    
     <!-- 批量更新 -->
     <update id="updateCurrentdata" parameterType="java.util.List">
     	begin

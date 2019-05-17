@@ -26,6 +26,8 @@ public interface CurrentdataDAO {
     
     public int insertCurrentdata(List<Currentdata> records);
     
+    public int insertRpCurrentdataList(List<CurrentdataCS> records);
+    
     public int insertCurrentdataCS(List<CurrentdataCS> records);
 
 	public int updateCurrentdata(List<Currentdata> records);
